@@ -37,7 +37,10 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="grain-velour relative flex min-h-screen items-center justify-center overflow-hidden bg-velour-black"
+      /* 100svh y no 100vh: en móvil, vh se mide con la barra de URL retraída,
+         así que al cargar (con la barra visible) el hero queda más alto que el
+         área visible y empuja el indicador de scroll fuera de pantalla. */
+      className="grain-velour relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-velour-black"
     >
       {/* Fondo cinematográfico */}
       <div className="absolute inset-0">

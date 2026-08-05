@@ -52,10 +52,15 @@ function SectorCardBody({
   const reversed = index % 2 === 1;
 
   return (
-    <div className="grid w-full max-w-[1200px] items-center gap-10 lg:grid-cols-2 lg:gap-16">
+    <div className="grid w-full max-w-[1200px] items-center gap-6 sm:gap-10 lg:grid-cols-2 lg:gap-16">
+      {/* En móvil la card vive dentro de un contenedor pineado de una pantalla y
+          se apila en una sola columna: imagen + título + párrafo tienen que
+          caber en 100svh. Con aspect-[4/5] a ancho completo la imagen sola se
+          comía la pantalla, así que aquí manda max-h y el aspect solo entra
+          desde sm, donde ya hay altura de sobra. */}
       <div
         className={cn(
-          "relative aspect-[4/5] w-full max-h-[62vh] overflow-hidden rounded-3xl border border-white/8",
+          "relative max-h-[34svh] w-full overflow-hidden rounded-3xl border border-white/8 [aspect-ratio:4/5] sm:max-h-[62vh]",
           reversed && "lg:order-2"
         )}
       >
@@ -85,10 +90,10 @@ function SectorCardBody({
             <Icon className="h-5 w-5" strokeWidth={1.4} />
           </span>
         </div>
-        <h3 className="mt-6 font-garamond text-4xl font-light leading-[1.1] text-velour-white sm:text-5xl">
+        <h3 className="mt-4 font-garamond text-3xl font-light leading-[1.1] text-velour-white sm:mt-6 sm:text-4xl lg:text-5xl">
           {item.title}
         </h3>
-        <p className="mt-5 max-w-md text-base leading-relaxed text-velour-stone sm:text-lg">
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-velour-stone sm:mt-5 sm:text-base lg:text-lg">
           {item.text}
         </p>
       </div>
@@ -214,7 +219,10 @@ export function Sectors() {
           className="relative mt-16"
           style={{ height: `${items.length * VH_PER_CARD}vh` }}
         >
-          <div className="sticky top-0 h-screen overflow-hidden">
+          {/* svh: con 100vh el contenedor pineado supera el área visible en
+              móvil mientras la barra de URL está desplegada, y overflow-hidden
+              recorta la card por abajo. */}
+          <div className="sticky top-0 h-[100svh] overflow-hidden">
             {items.map((item, i) => (
               <SectorCard
                 key={item.title}

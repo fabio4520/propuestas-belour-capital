@@ -48,20 +48,23 @@ const VH_PER_CARD = 100;
 
 function ServiceCardBody({ item, icon: Icon }: { item: Item; icon: LucideIcon }) {
   return (
-    <div className="glass-velour w-full max-w-[560px] rounded-3xl border border-white/10 p-8 sm:p-10">
-      <h3 className="font-garamond text-2xl font-light text-velour-white sm:text-3xl">
+    <div className="glass-velour w-full max-w-[560px] rounded-3xl border border-white/10 p-6 sm:p-10">
+      <h3 className="font-garamond text-xl font-light text-velour-white sm:text-3xl">
         {item.title}
       </h3>
 
-      <div className="relative mt-7 flex h-52 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-velour-black sm:h-60">
+      <div className="relative mt-5 flex h-36 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-velour-black sm:mt-7 sm:h-60">
         <div
           aria-hidden
-          className="absolute h-36 w-36 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.25),transparent_70%)] blur-xl"
+          className="absolute h-28 w-28 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.25),transparent_70%)] blur-xl sm:h-36 sm:w-36"
         />
-        <Icon className="relative h-14 w-14 text-velour-gold" strokeWidth={1} />
+        <Icon
+          className="relative h-11 w-11 text-velour-gold sm:h-14 sm:w-14"
+          strokeWidth={1}
+        />
       </div>
 
-      <p className="mt-7 text-sm leading-relaxed text-velour-stone sm:text-base">
+      <p className="mt-5 text-sm leading-relaxed text-velour-stone sm:mt-7 sm:text-base">
         {item.text}
       </p>
     </div>
@@ -211,8 +214,14 @@ export function Services() {
           className="relative mt-16"
           style={{ height: `${items.length * VH_PER_CARD}vh` }}
         >
-          <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden">
-            <div className="relative h-[420px] w-full sm:h-[460px]">
+          {/* svh por el mismo motivo que en sectors: con vh el contenedor
+              pineado excede el área visible en móvil y recorta la card. */}
+          <div className="sticky top-0 flex h-[100svh] flex-col items-center justify-center overflow-hidden">
+            {/* La pista necesita altura definida porque las cards son absolute
+                inset-0. Se ajusta por breakpoint al alto real de la card (que
+                también encoge en móvil) con holgura para el párrafo más largo:
+                los textos en inglés ocupan una línea más que en español. */}
+            <div className="relative h-[380px] w-full sm:h-[540px]">
               {items.map((item, i) => (
                 <ServiceCard
                   key={item.title}
