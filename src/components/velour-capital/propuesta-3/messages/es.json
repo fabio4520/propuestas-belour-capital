@@ -1,0 +1,415 @@
+{
+  "nav": {
+    "manifesto": "Manifiesto",
+    "sectors": "Sectores",
+    "strategy": "Estrategia",
+    "services": "Servicios",
+    "trackRecord": "Track Record",
+    "leadership": "Equipo",
+    "geography": "Alcance",
+    "investors": "Inversionistas",
+    "faq": "Cómo Invertir",
+    "contact": "Contacto",
+    "news": "Prensa",
+    "cta": "Contactar"
+  },
+  "hero": {
+    "slogan": "Desarrollo empresarial y financiero con visión estratégica",
+    "scroll": "Desliza"
+  },
+  "introduction": {
+    "eyebrow": "Capital Privado Institucional",
+    "headline": "Capital disciplinado para activos que definen el futuro.",
+    "highlight": "futuro.",
+    "subheadline": "Invertimos y estructuramos capital en minería, real estate e infraestructura a través de LATAM y Houston, con el mismo criterio con el que protegemos cada decisión.",
+    "ctaPrimary": "Ver el Protocolo Belour",
+    "ctaSecondary": "Contactar"
+  },
+  "manifesto": {
+    "label": "Quiénes Somos",
+    "headline": "Un registro institucional, no una promesa de marketing.",
+    "highlight": "institucional,",
+    "textBefore": "Belour Capital existe para quienes entienden que el capital serio no necesita ruido. Operamos con",
+    "emphasis": "disciplina, discreción y criterio de largo plazo",
+    "textAfter": ", estructurando cada inversión con el mismo rigor con el que protegemos la relación de confianza con cada inversionista.",
+    "stats": [
+      { "value": 1.8, "decimals": 1, "prefix": "USD ", "suffix": "B+", "label": "Capital desplegado y asesorado" },
+      { "value": 35, "decimals": 0, "prefix": "", "suffix": "+", "label": "Transacciones ejecutadas" },
+      { "value": 12, "decimals": 0, "prefix": "", "suffix": "+", "label": "Años de experiencia combinada" },
+      { "value": 6, "decimals": 0, "prefix": "", "suffix": "", "label": "Plazas entre LATAM y Houston" }
+    ],
+    "note": "Cifras ilustrativas con fines de propuesta."
+  },
+  "sectors": {
+    "label": "Sectores Estratégicos",
+    "headline": "Tres sectores. Un mismo criterio de convicción.",
+    "highlight": "convicción.",
+    "subtext": "Activos reales con fundamentos sólidos, evaluados con la misma rigurosidad en cada jurisdicción.",
+    "items": [
+      {
+        "title": "Minería",
+        "text": "Exploración, desarrollo y oportunidades mineras estratégicas en jurisdicciones de alto potencial a través de LATAM."
+      },
+      {
+        "title": "Real Estate",
+        "text": "Oportunidades inmobiliarias selectivas con fundamentos sólidos y potencial de apreciación a largo plazo."
+      },
+      {
+        "title": "Infraestructura",
+        "text": "Proyectos de infraestructura crítica que conectan capital, territorio y crecimiento regional."
+      }
+    ]
+  },
+  "strategy": {
+    "label": "Estrategia de Inversión",
+    "headline": "Una tesis clara, con parámetros definidos.",
+    "highlight": "parámetros",
+    "subtext": "No perseguimos cada oportunidad. Invertimos donde nuestro criterio, red y estructura generan una ventaja real.",
+    "parameters": [
+      {
+        "label": "Ticket de inversión",
+        "value": "USD 20–150M",
+        "note": "Por transacción, con capacidad de co-inversión."
+      },
+      {
+        "label": "Etapa",
+        "value": "Desarrollo & cash-flow",
+        "note": "Activos con fundamentos probados, no exploración especulativa."
+      },
+      {
+        "label": "Horizonte",
+        "value": "4–7 años",
+        "note": "Capital paciente, alineado con el ciclo del activo."
+      },
+      {
+        "label": "Retorno objetivo",
+        "value": "18–25% IRR",
+        "note": "Bruto, dependiente del sector y la estructura."
+      }
+    ],
+    "criteriaLabel": "Criterios de convicción",
+    "criteria": [
+      {
+        "title": "Activos reales con fundamento",
+        "text": "Minería, real estate e infraestructura con demanda estructural y barreras de entrada claras."
+      },
+      {
+        "title": "Jurisdicciones que conocemos",
+        "text": "LATAM y Houston, donde nuestra red local convierte información en ventaja."
+      },
+      {
+        "title": "Estructura que protege",
+        "text": "Gobernanza, garantías y términos diseñados para proteger el capital antes de buscar el upside."
+      },
+      {
+        "title": "Alineación de incentivos",
+        "text": "Co-invertimos junto a nuestros socios: el mismo riesgo, el mismo lado de la mesa."
+      }
+    ],
+    "note": "Parámetros ilustrativos de propuesta; cada mandato se define caso por caso."
+  },
+  "services": {
+    "label": "Líneas de Servicio",
+    "headline": "Estructuras diseñadas para proteger y hacer crecer capital.",
+    "highlight": "crecer",
+    "subtext": "Un servicio integral, desde la estructuración inicial hasta la gestión activa de cada posición.",
+    "items": [
+      {
+        "title": "Estructuración de Capital",
+        "text": "Diseño de vehículos y estructuras de inversión a medida de cada oportunidad y jurisdicción."
+      },
+      {
+        "title": "Gestión de Activos",
+        "text": "Administración activa de posiciones con reporting institucional y visión de largo plazo."
+      },
+      {
+        "title": "Asesoría Institucional",
+        "text": "Acompañamiento estratégico a inversionistas y family offices en decisiones de asignación de capital."
+      },
+      {
+        "title": "Gobernanza & Compliance",
+        "text": "Marcos de gobernanza rigurosos que sostienen cada estructura frente a inversionistas y reguladores."
+      }
+    ]
+  },
+  "protocol": {
+    "label": "El Protocolo Belour",
+    "headline": "Un proceso disciplinado, sin atajos, en cada transacción.",
+    "highlight": "disciplinado,",
+    "steps": [
+      {
+        "title": "Diagnóstico",
+        "text": "Evaluamos fundamentos, riesgo y timing antes de comprometer una sola conversación seria."
+      },
+      {
+        "title": "Estructuración",
+        "text": "Diseñamos la arquitectura de capital óptima para el activo, la jurisdicción y el inversionista."
+      },
+      {
+        "title": "Cierre",
+        "text": "Ejecutamos con precisión legal y financiera, protegiendo cada término de la transacción."
+      },
+      {
+        "title": "Gestión & Reporting",
+        "text": "Acompañamos el activo con supervisión activa y reporting institucional continuo."
+      }
+    ]
+  },
+  "trackRecord": {
+    "label": "Track Record",
+    "headline": "Un historial construido transacción por transacción.",
+    "highlight": "transacción",
+    "subtext": "Operaciones representativas a través de sectores y jurisdicciones, ejecutadas con el mismo criterio de convicción.",
+    "columns": {
+      "year": "Año",
+      "sector": "Sector",
+      "location": "Plaza",
+      "size": "Tamaño",
+      "role": "Rol",
+      "status": "Estatus"
+    },
+    "deals": [
+      {
+        "year": "2026",
+        "sector": "Minería · Cobre",
+        "location": "Sur del Perú",
+        "size": "USD 120M",
+        "role": "Estructuración de vehículo",
+        "status": "En desarrollo"
+      },
+      {
+        "year": "2025",
+        "sector": "Real Estate",
+        "location": "Ciudad de México",
+        "size": "USD 45M",
+        "role": "Co-inversión (equity)",
+        "status": "Estabilizado"
+      },
+      {
+        "year": "2024",
+        "sector": "Infraestructura",
+        "location": "Bogotá",
+        "size": "USD 80M",
+        "role": "Asesoría & structuring",
+        "status": "Cerrado"
+      },
+      {
+        "year": "2024",
+        "sector": "Minería · Oro",
+        "location": "Santiago",
+        "size": "USD 60M",
+        "role": "Deuda estructurada",
+        "status": "En gestión"
+      },
+      {
+        "year": "2023",
+        "sector": "Real Estate logístico",
+        "location": "Lima",
+        "size": "USD 30M",
+        "role": "Equity",
+        "status": "Realizado · exit"
+      },
+      {
+        "year": "2023",
+        "sector": "Energía & infraestructura",
+        "location": "Buenos Aires",
+        "size": "USD 95M",
+        "role": "Co-inversión estratégica",
+        "status": "En gestión"
+      }
+    ],
+    "note": "Transacciones representativas con fines ilustrativos de propuesta. No constituyen una recomendación ni una oferta de inversión."
+  },
+  "leadership": {
+    "label": "Liderazgo",
+    "headline": "Criterio, experiencia y visión internacional.",
+    "members": [
+      {
+        "name": "Lucero Polo",
+        "role": "Managing Partner",
+        "bio": "Lidera la estrategia de inversión y la originación de oportunidades en LATAM."
+      },
+      {
+        "name": "Eduardo Lanao",
+        "role": "Partner · Structuring",
+        "bio": "Responsable de estructuración de capital y relación con inversionistas institucionales."
+      },
+      {
+        "name": "M. Antúnez",
+        "role": "Director · Mining & Infrastructure",
+        "bio": "Más de una década evaluando activos mineros y de infraestructura en etapas tempranas."
+      },
+      {
+        "name": "V. Ríos",
+        "role": "Head of Real Estate",
+        "bio": "Especialista en oportunidades inmobiliarias institucionales de alto valor."
+      }
+    ]
+  },
+  "geography": {
+    "label": "Alcance Geográfico",
+    "headline": "Una red institucional entre LATAM y Houston.",
+    "highlight": "Houston.",
+    "text": "Houston opera como puerta de entrada de capital hacia una red de plazas estratégicas en toda LATAM.",
+    "locations": {
+      "houston": "Houston",
+      "cdmx": "Ciudad de México",
+      "bogota": "Bogotá",
+      "lima": "Lima",
+      "santiago": "Santiago",
+      "buenosaires": "Buenos Aires"
+    },
+    "hint": "Explora cada plaza",
+    "markets": {
+      "houston": "Hub financiero y puerta de entrada de capital hacia LATAM.",
+      "cdmx": "Mercado consolidado con flujo constante de oportunidades transfronterizas.",
+      "bogota": "Mercado en expansión con oportunidades en activos reales e infraestructura.",
+      "lima": "Núcleo minero con proyectos de alto potencial en etapas tempranas.",
+      "santiago": "Jurisdicción minera consolidada y estable para capital de largo plazo.",
+      "buenosaires": "Oportunidades contrarian en energía, recursos e infraestructura estratégica."
+    }
+  },
+  "investors": {
+    "label": "Inversionistas",
+    "headline": "Acceso a la información, según tu relación con la firma.",
+    "highlight": "información,",
+    "subtext": "Materiales de inversión confidenciales, disponibles para inversionistas calificados bajo acuerdo.",
+    "prospect": {
+      "tag": "Prospecto",
+      "title": "¿Evaluando una inversión?",
+      "text": "Solicita el deck institucional y una conversación confidencial para explorar sectores, estructuras y oportunidades actuales.",
+      "cta": "Solicitar el deck"
+    },
+    "lp": {
+      "tag": "Inversionista actual",
+      "title": "¿Ya inviertes con Belour?",
+      "text": "Accede al portal de inversionistas: reportes trimestrales, estados de posición y documentos del data room.",
+      "cta": "Acceder al portal LP"
+    },
+    "documentsLabel": "Documentación disponible",
+    "documents": ["Deck institucional", "Memorándum de inversión (PPM)", "Reporte trimestral", "Política ESG"],
+    "note": "El acceso a la documentación se otorga a inversionistas calificados bajo acuerdo de confidencialidad."
+  },
+  "faq": {
+    "label": "Cómo Invertir",
+    "headline": "Lo que un inversionista necesita saber.",
+    "highlight": "inversionista",
+    "subtext": "Respuestas a las preguntas más frecuentes sobre estructura, acceso y proceso de inversión.",
+    "items": [
+      {
+        "q": "¿Cuál es el ticket mínimo de inversión?",
+        "a": "El compromiso mínimo típico es de USD 250,000, con flexibilidad según el vehículo y la transacción. Los co-inversionistas institucionales operan con tickets mayores."
+      },
+      {
+        "q": "¿Quién puede invertir?",
+        "a": "Trabajamos exclusivamente con inversionistas calificados: family offices, inversionistas institucionales e individuos de alto patrimonio que cumplan los requisitos de acreditación de su jurisdicción."
+      },
+      {
+        "q": "¿Cómo se estructura cada inversión?",
+        "a": "Cada oportunidad se estructura en un vehículo dedicado (SPV) o fondo, con gobernanza, garantías y términos definidos según el activo y la jurisdicción."
+      },
+      {
+        "q": "¿Cuál es el horizonte y la liquidez?",
+        "a": "Las inversiones son de capital paciente, con horizontes de 4 a 7 años. La liquidez está ligada al ciclo del activo; no son instrumentos líquidos de corto plazo."
+      },
+      {
+        "q": "¿Cómo es el reporting?",
+        "a": "Los inversionistas reciben reporting institucional trimestral, estados de posición y acceso al data room con la documentación de cada vehículo."
+      },
+      {
+        "q": "¿Cómo empieza el proceso?",
+        "a": "Con una conversación confidencial. Tras firmar un acuerdo de confidencialidad, compartimos el deck y el memorándum de inversión (PPM) del mandato correspondiente."
+      }
+    ],
+    "note": "Información ilustrativa de propuesta; los términos definitivos se establecen en la documentación legal de cada vehículo."
+  },
+  "contact": {
+    "label": "Consulta Privada",
+    "headline": "Conversemos sobre oportunidades estratégicas.",
+    "highlight": "estratégicas.",
+    "subheadline": "Un primer contacto confidencial para explorar activos, sectores y estructuras de capital.",
+    "fields": {
+      "name": "Nombre",
+      "company": "Empresa / Family Office",
+      "email": "Email",
+      "phone": "Teléfono",
+      "interest": "Interés de inversión",
+      "message": "Mensaje"
+    },
+    "interestPlaceholder": "Selecciona un sector",
+    "interestOptions": ["Minería", "Real Estate", "Infraestructura", "Asesoría Institucional"],
+    "messagePlaceholder": "Cuéntanos sobre tu interés de inversión…",
+    "submit": "Enviar consulta",
+    "success": "Gracias, pronto nos contactaremos.",
+    "note": "Consulta privada y confidencial · demostración sin backend."
+  },
+  "news": {
+    "label": "Sala de Prensa",
+    "headline": "Perspectivas de mercado y notas de la firma.",
+    "highlight": "mercado",
+    "subtext": "Análisis, transacciones y decisiones que reflejan cómo pensamos el capital de largo plazo.",
+    "cta": "Ver todas las notas",
+    "readMore": "Leer nota",
+    "featured": {
+      "category": "Transacción",
+      "date": "Julio 2026",
+      "readTime": "4 min de lectura",
+      "title": "Belour Capital estructura un vehículo de USD 120M para cobre en el sur del Perú.",
+      "excerpt": "La operación reúne a inversionistas institucionales de LATAM y Houston en torno a un activo minero en etapa de desarrollo, bajo un marco de gobernanza diseñado para proteger cada término."
+    },
+    "items": [
+      {
+        "category": "Perspectiva",
+        "date": "Junio 2026",
+        "readTime": "6 min de lectura",
+        "title": "Por qué el cobre sigue siendo un activo de convicción en 2026."
+      },
+      {
+        "category": "Perspectiva",
+        "date": "Mayo 2026",
+        "readTime": "5 min de lectura",
+        "title": "Real estate institucional en LATAM: dónde está el valor hoy."
+      },
+      {
+        "category": "Firma",
+        "date": "Abril 2026",
+        "readTime": "3 min de lectura",
+        "title": "Consolidamos nuestra presencia con una oficina de representación en Houston."
+      }
+    ]
+  },
+  "legal": {
+    "label": "Avisos Legales & Divulgaciones",
+    "headline": "La información de este sitio es de carácter ilustrativo.",
+    "lead": "El contenido de este sitio tiene fines informativos y no constituye una oferta, invitación ni recomendación para comprar o vender valores, ni asesoría de inversión, legal o tributaria.",
+    "items": [
+      {
+        "title": "No es una oferta",
+        "text": "Ninguna sección de este sitio constituye una oferta de valores ni una solicitud de inversión en jurisdicciones donde ello no esté autorizado."
+      },
+      {
+        "title": "Riesgo de inversión",
+        "text": "Toda inversión en activos privados conlleva riesgo, incluida la posible pérdida del capital. Los rendimientos pasados no garantizan resultados futuros."
+      },
+      {
+        "title": "Estatus regulatorio",
+        "text": "Belour Capital opera mediante vehículos y entidades sujetos a la regulación de cada jurisdicción. La información regulatoria específica se entrega a inversionistas calificados."
+      },
+      {
+        "title": "Confidencialidad",
+        "text": "La documentación de inversión (deck, PPM, estados) es confidencial y se comparte únicamente bajo acuerdo con inversionistas calificados."
+      }
+    ],
+    "finePrint": "Sitio de demostración con datos ficticios. Cifras, transacciones y estatus regulatorio son ilustrativos y sin valor contractual."
+  },
+  "footer": {
+    "description": "Capital privado institucional para minería, real estate e infraestructura en LATAM y Houston.",
+    "columns": {
+      "explore": "Explorar",
+      "legal": "Legal"
+    },
+    "legal": ["Aviso Legal", "Política de Privacidad", "Términos de Uso"],
+    "rights": "Belour Capital. Todos los derechos reservados.",
+    "demo": "Sitio de demostración · datos ficticios"
+  }
+}

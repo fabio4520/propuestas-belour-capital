@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3002/balanz-consulting/propuesta-2)",
+      "Bash(curl -s -o /tmp/out.html -w \"%{http_code}\\\\n\" http://localhost:3002/balanz-consulting/propuesta-2/servicios)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -o \"C:/Users/fabio/AppData/Local/Temp/claude/c--Users-fabio-OneDrive-Escritorio-proyectos-paginas-web-lucero-paginas-corporativo-propuestas/6685f84f-56ac-44fa-b2e6-768b9c485971/scratchpad/out.html\" -w \"%{http_code}\\\\n\" http://localhost:3002/balanz-consulting/propuesta-2/servicios)",
+      "Bash(npx tsc *)",
+      "Bash(curl -s -o /dev/null -w \"home: %{http_code}\\\\n\" http://localhost:3002/balanz-consulting/propuesta-2)",
+      "Bash(curl -s -o /dev/null -w \"servicios: %{http_code}\\\\n\" http://localhost:3002/balanz-consulting/propuesta-2/servicios)",
+      "Bash(ls .claude/skills)",
+      "Bash(ls ../.claude/skills)",
+      "Bash(npx --no-install playwright --version)",
+      "Read(//c/Program Files/Google/Chrome/Application//**)",
+      "Read(//c/Program Files \\(x86\\)/Google/Chrome/**)",
+      "Bash(node -e \"console.log\\(require.resolve\\('ws'\\)\\)\")",
+      "Bash(node -e \"console.log\\(typeof WebSocket, typeof fetch\\)\")",
+      "Bash(mkdir -p /c/Users/fabio/AppData/Local/Temp/claude/c--Users-fabio-OneDrive-Escritorio-proyectos-paginas-web-lucero-paginas-corporativo-propuestas/72bd4a80-df01-4e2b-a5f9-ec913bc627c3/scratchpad/chrome-profile)",
+      "Bash('/c/Program Files/Google/Chrome/Application/chrome.exe' --headless=new --remote-debugging-port=9333 --user-data-dir=/c/Users/fabio/AppData/Local/Temp/claude/c--Users-fabio-OneDrive-Escritorio-proyectos-paginas-web-lucero-paginas-corporativo-propuestas/72bd4a80-df01-4e2b-a5f9-ec913bc627c3/scratchpad/chrome-profile --window-size=1400,1000 --disable-gpu --no-first-run --no-default-browser-check about:blank)",
+      "Bash(disown)",
+      "Bash(curl -s http://localhost:9333/json/version)",
+      "Bash(curl -s \"http://localhost:9333/json/new?about:blank\")",
+      "Bash(curl -s -X PUT \"http://localhost:9333/json/new\")",
+      "Read(//c/Users/fabio/AppData/Local/Temp/claude/c--Users-fabio-OneDrive-Escritorio-proyectos-paginas-web-lucero-paginas-corporativo-propuestas/72bd4a80-df01-4e2b-a5f9-ec913bc627c3/scratchpad/**)",
+      "Bash(node cdp.js \"http://localhost:3000/balanz-consulting/propuesta-2\" \"steps.json\")",
+      "Bash(taskkill //F //IM chrome.exe //T)",
+      "Bash(tasklist //FI \"IMAGENAME eq chrome.exe\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\fabio\\.claude\\projects\\C--Users-fabio-OneDrive-Escritorio-proyectos-paginas-web-lucero-paginas-corporativo-propuestas\\memory"
+    ]
+  }
+}
