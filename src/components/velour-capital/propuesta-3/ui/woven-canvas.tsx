@@ -1,7 +1,23 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
+// Named imports en vez de `import * as THREE`: el namespace completo obliga al
+// bundler a conservar módulos de three que esta escena nunca toca.
+import {
+  Scene,
+  PerspectiveCamera,
+  WebGLRenderer,
+  Vector2,
+  Vector3,
+  Timer,
+  TorusKnotGeometry,
+  BufferGeometry,
+  BufferAttribute,
+  PointsMaterial,
+  Points,
+  Color,
+  NormalBlending,
+} from "three";
 
 /**
  * Fondo generativo del Hero: un torus-knot "tejido" en partículas que
@@ -26,8 +42,8 @@ export function WovenCanvas() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
+    const scene = new Scene();
+    const camera = new PerspectiveCamera(
       75,
       mount.clientWidth / mount.clientHeight,
       0.1,
@@ -35,32 +51,38 @@ export function WovenCanvas() {
     );
     camera.position.z = 5;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    // antialias:false — son puntos de 0.018 de tamaño, el MSAA no aporta nada
+    // visible y sí cuesta fill-rate sobre un canvas a pantalla completa.
+    const renderer = new WebGLRenderer({
+      antialias: false,
+      alpha: true,
+      powerPreference: "high-performance",
+    });
     renderer.setSize(mount.clientWidth, mount.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     mount.appendChild(renderer.domElement);
 
-    const mouse = new THREE.Vector2(0, 0);
-    const timer = new THREE.Timer();
+    const mouse = new Vector2(0, 0);
+    const timer = new Timer();
 
     // Torus-knot "tejido" — geometría fuente que se dispersa en partículas.
     // Degradación en móvil: la mitad de partículas reduce a la mitad el coste
     // del loop por frame en pantallas pequeñas (menos GPU/CPU, menos calor).
-    const particleCount = mount.clientWidth < 768 ? 3500 : 7000;
+    const particleCount = mount.clientWidth < 768 ? 2000 : 4000;
     const positions = new Float32Array(particleCount * 3);
     const originalPositions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
     const velocities = new Float32Array(particleCount * 3);
 
-    const torusKnot = new THREE.TorusKnotGeometry(1.5, 0.5, 200, 32);
+    const torusKnot = new TorusKnotGeometry(1.5, 0.5, 200, 32);
     const sourcePositions = torusKnot.attributes.position;
 
     // Paleta de marca — blanco/stone dominante, dorado como acento escaso
     // (nunca HSL aleatorio, para no romper la regla ≤2% dorado del sitio).
-    const WHITE = new THREE.Color("#FFFFFF");
-    const STONE = new THREE.Color("#A3A3A3");
-    const GOLD = new THREE.Color("#D4AF37");
-    const CHAMPAGNE = new THREE.Color("#E8D9A0");
+    const WHITE = new Color("#FFFFFF");
+    const STONE = new Color("#A3A3A3");
+    const GOLD = new Color("#D4AF37");
+    const CHAMPAGNE = new Color("#E8D9A0");
 
     for (let i = 0; i < particleCount; i++) {
       const vertexIndex = i % sourcePositions.count;
@@ -83,43 +105,55 @@ export function WovenCanvas() {
     }
     torusKnot.dispose();
 
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    const geometry = new BufferGeometry();
+    geometry.setAttribute("position", new BufferAttribute(positions, 3));
+    geometry.setAttribute("color", new BufferAttribute(colors, 3));
 
-    const material = new THREE.PointsMaterial({
+    const material = new PointsMaterial({
       size: 0.018,
       vertexColors: true,
-      blending: THREE.NormalBlending,
+      blending: NormalBlending,
       transparent: true,
       opacity: 0.75,
     });
 
-    const points = new THREE.Points(geometry, material);
+    const points = new Points(geometry, material);
     scene.add(points);
+
+    // El sistema se marca "sucio" al mover el mouse; ver el bucle de animación.
+    let settled = true;
 
     const handleMouseMove = (event: MouseEvent) => {
       const rect = mount.getBoundingClientRect();
       mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
       mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+      settled = false;
     };
     if (!prefersReducedMotion) {
       window.addEventListener("mousemove", handleMouseMove);
     }
 
     // Vectores "scratch" reutilizados — evita ~28k allocations/frame.
-    const mouseWorld = new THREE.Vector3();
-    const scratchDir = new THREE.Vector3();
+    const mouseWorld = new Vector3();
+    const scratchDir = new Vector3();
     let frameId = 0;
     let inView = true;
+
+    // Por debajo de este umbral (suma de velocidad y de desplazamiento respecto
+    // al torus-knot original) el movimiento residual es sub-píxel: el sistema se
+    // declara en reposo y se deja de simular hasta el próximo movimiento de
+    // mouse. Sin esto, el bucle de N partículas seguía corriendo a 60 fps para
+    // siempre resolviendo un retorno que ya había convergido.
+    const SETTLE_EPSILON = 1e-3;
 
     const animate = () => {
       frameId = requestAnimationFrame(animate);
       timer.update();
       const elapsedTime = timer.getElapsed();
 
-      if (!prefersReducedMotion) {
+      if (!prefersReducedMotion && !settled) {
         mouseWorld.set(mouse.x * 3, mouse.y * 3, 0);
+        let maxMotion = 0;
 
         for (let i = 0; i < particleCount; i++) {
           const ix = i * 3;
@@ -148,9 +182,12 @@ export function WovenCanvas() {
           }
 
           // Retorno a la posición original del torus-knot.
-          vx += (originalPositions[ix] - px) * 0.001;
-          vy += (originalPositions[iy] - py) * 0.001;
-          vz += (originalPositions[iz] - pz) * 0.001;
+          const ox = originalPositions[ix] - px;
+          const oy = originalPositions[iy] - py;
+          const oz = originalPositions[iz] - pz;
+          vx += ox * 0.001;
+          vy += oy * 0.001;
+          vz += oz * 0.001;
 
           // Damping.
           vx *= 0.95;
@@ -164,11 +201,22 @@ export function WovenCanvas() {
           velocities[ix] = vx;
           velocities[iy] = vy;
           velocities[iz] = vz;
+
+          // El desplazamiento cuenta además de la velocidad: una partícula
+          // lejos de su sitio con velocidad momentáneamente baja no debe
+          // congelarse fuera de posición.
+          const motion =
+            Math.abs(vx) + Math.abs(vy) + Math.abs(vz) +
+            Math.abs(ox) + Math.abs(oy) + Math.abs(oz);
+          if (motion > maxMotion) maxMotion = motion;
         }
+        if (maxMotion < SETTLE_EPSILON) settled = true;
         geometry.attributes.position.needsUpdate = true;
         points.rotation.y = elapsedTime * 0.05;
       } else {
-        points.rotation.y = elapsedTime * 0.02;
+        // En reposo (o con movimiento reducido) solo queda la rotación: un
+        // cambio de matriz y un draw call, sin recorrer el buffer.
+        points.rotation.y = elapsedTime * (prefersReducedMotion ? 0.02 : 0.05);
       }
 
       renderer.render(scene, camera);

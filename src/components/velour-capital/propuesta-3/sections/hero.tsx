@@ -1,11 +1,21 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ArrowDown } from "lucide-react";
 import { AnimatedText } from "../ui/animated-text";
-import { WovenCanvas } from "../ui/woven-canvas";
 import { EASE_OUT_EXPO } from "../motion/transitions";
+
+/* three.js pesa ~600 KB minificado. Importado de forma estática viajaba en el
+   chunk inicial de la página aunque el canvas sea puro efecto de cliente que no
+   aporta una sola etiqueta al HTML. Con dynamic/ssr:false sale del camino
+   crítico y llega en paralelo, sin retrasar el wordmark (que es el LCP real de
+   esta pantalla). El fondo negro de la sección cubre el hueco mientras carga. */
+const WovenCanvas = dynamic(
+  () => import("../ui/woven-canvas").then((m) => m.WovenCanvas),
+  { ssr: false }
+);
 
 /**
  * Hero de impacto: solo el wordmark de marca + slogan, centrados sobre el
