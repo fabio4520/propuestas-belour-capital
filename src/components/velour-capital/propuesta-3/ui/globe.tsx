@@ -21,6 +21,10 @@ import {
     CatmullRomCurve3,
     Vector3,
     CanvasTexture,
+    BufferGeometry,
+    Float32BufferAttribute,
+    LineSegments,
+    LineBasicMaterial,
 } from "three";
 import { geoEquirectangular, geoPath } from "d3-geo";
 
@@ -297,48 +301,9 @@ export default function Globe({
         const oceanMesh = new Mesh(oceanGeometry, oceanMaterial);
         scene.add(oceanMesh);
 
-        let globeOutlineMesh: Mesh | null = null;
-        if (showOutline && outlineColor && outlineRgba.a > 0) {
-            const outlinePositions: number[] = [];
-            const segments = 128;
-            for (let i = 0; i <= segments; i++) {
-                const angle = (i / segments) * Math.PI * 2;
-                const x = Math.cos(angle) * globeRadius;
-                const y = Math.sin(angle) * globeRadius;
-                const z = 0;
-                outlinePositions.push(x, y, z);
-            }
-            const outlinePoints: Vector3[] = [];
-            for (let i = 0; i < outlinePositions.length; i += 3) {
-                outlinePoints.push(
-                    new Vector3(
-                        outlinePositions[i],
-                        outlinePositions[i + 1],
-                        outlinePositions[i + 2]
-                    )
-                );
-            }
-            if (outlinePoints.length >= 2) {
-                outlinePoints.push(outlinePoints[0].clone());
-                const outlineColorObj = new Color(resolvedOutlineColor);
-                const outlineMaterial = new MeshBasicMaterial({
-                    color: outlineColorObj,
-                    transparent: outlineRgba.a < 1,
-                    opacity: outlineRgba.a,
-                });
-                const curve = new CatmullRomCurve3(outlinePoints);
-                const radius = (outlineWidth / 10) * 0.01;
-                const tubeGeometry = new TubeGeometry(
-                    curve,
-                    outlinePoints.length * 2,
-                    radius,
-                    8,
-                    false
-                );
-                globeOutlineMesh = new Mesh(tubeGeometry, outlineMaterial);
-            }
-        }
-        void globeOutlineMesh;
+        /* Aquí vivía un bloque que construía un TubeGeometry de 128 segmentos
+           para el aro del globo y lo descartaba con `void` sin añadirlo nunca a
+           la escena: trabajo puro desperdiciado en cada montaje. Eliminado. */
 
         const continentOutlineGroup = new Group();
 
@@ -445,9 +410,12 @@ export default function Globe({
         const loadWorldData = async () => {
             try {
                 setIsLoading(true);
-                const response = await fetch(
-                    "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/50m/physical/ne_50m_land.json"
-                );
+                /* Antes se descargaba ne_50m_land.json (2.7 MB) desde
+                   raw.githubusercontent.com en cada montaje: un tercero en el
+                   camino crítico, sin control de caché y con DNS/TLS propios.
+                   Ahora es un asset local de 232 KB (Natural Earth 110m), que a
+                   un globo decorativo de ~500 px le sobra de resolución. */
+                const response = await fetch("/data/land-110m.json");
                 if (!response.ok) throw new Error("Failed to load land data");
                 const landFeatures = await response.json();
 
@@ -457,18 +425,23 @@ export default function Globe({
                     );
                 }
                 if (showOutline && outlineColor && outlineRgba.a > 0) {
+                    /* Antes cada anillo de costa producía su propio
+                       CatmullRomCurve3 + TubeGeometry + Mesh: cientos de mallas
+                       tubulares y otros tantos draw calls. Con outlineWidth=1 el
+                       radio del tubo es 0.001 — subpíxel a cualquier tamaño
+                       razonable del globo, así que el resultado en pantalla es
+                       una línea. Se acumulan todos los segmentos en un único
+                       buffer y se dibujan con un solo LineSegments. */
                     const outlineColorObj = new Color(resolvedOutlineColor);
-                    const outlineMaterial = new MeshBasicMaterial({
+                    const outlineMaterial = new LineBasicMaterial({
                         color: outlineColorObj,
                         transparent: outlineRgba.a < 1,
                         opacity: outlineRgba.a,
                         depthTest: true,
                         depthWrite: true,
                     });
-                    const projection = geoEquirectangular();
-                    const pathGenerator = geoPath().projection(projection);
-                    let processedCount = 0;
-                    let skippedCount = 0;
+                    const segmentPositions: number[] = [];
+
                     landFeatures.features.forEach((feature: any) => {
                         const featureType =
                             feature.properties?.featurecla ||
@@ -483,14 +456,8 @@ export default function Globe({
                             featureName.toLowerCase().includes("grid") ||
                             featureName.toLowerCase().includes("line")
                         ) {
-                            skippedCount++;
                             return;
                         }
-                        processedCount++;
-                        const pathString = pathGenerator(feature);
-                        if (!pathString) return;
-                        const commands = pathString.match(/[ML][^MLZ]*/g) || [];
-                        if (commands.length === 0) return;
 
                         const geometry = feature.geometry;
                         if (!geometry || !geometry.coordinates) return;
@@ -508,44 +475,32 @@ export default function Globe({
                                     pos.z * globeRadius
                                 );
                             });
-                            if (positions && positions.length >= 6) {
-                                const points: Vector3[] = [];
-                                for (let i = 0; i < positions.length; i += 3) {
-                                    points.push(
-                                        new Vector3(
-                                            positions[i],
-                                            positions[i + 1],
-                                            positions[i + 2]
-                                        )
-                                    );
-                                }
-                                if (
-                                    points.length > 0 &&
-                                    points[0].distanceTo(
-                                        points[points.length - 1]
-                                    ) > 0.001
-                                ) {
-                                    points.push(points[0].clone());
-                                }
-                                if (points.length >= 2) {
-                                    const curve = new CatmullRomCurve3(points);
-                                    const radius = (outlineWidth / 10) * 0.01;
-                                    const tubeGeometry = new TubeGeometry(
-                                        curve,
-                                        points.length * 2,
-                                        radius,
-                                        8,
-                                        false
-                                    );
-                                    const tubeMesh = new Mesh(
-                                        tubeGeometry,
-                                        outlineMaterial
-                                    );
-                                    tubeMesh.renderOrder = 0;
-                                    continentOutlineGroup.add(tubeMesh);
-                                }
+                            const count = positions.length / 3;
+                            if (count < 2) return;
+
+                            // LineSegments consume pares sueltos: cada vértice
+                            // se emite dos veces salvo los extremos.
+                            for (let i = 0; i < count - 1; i++) {
+                                const a = i * 3;
+                                const b = (i + 1) * 3;
+                                segmentPositions.push(
+                                    positions[a], positions[a + 1], positions[a + 2],
+                                    positions[b], positions[b + 1], positions[b + 2]
+                                );
+                            }
+                            // Cierre del anillo si el dato no venía cerrado.
+                            const last = (count - 1) * 3;
+                            const dx = positions[0] - positions[last];
+                            const dy = positions[1] - positions[last + 1];
+                            const dz = positions[2] - positions[last + 2];
+                            if (dx * dx + dy * dy + dz * dz > 1e-6) {
+                                segmentPositions.push(
+                                    positions[last], positions[last + 1], positions[last + 2],
+                                    positions[0], positions[1], positions[2]
+                                );
                             }
                         };
+
                         if (
                             geometry.type === "Polygon" &&
                             geometry.coordinates.length > 0
@@ -559,13 +514,29 @@ export default function Globe({
                             });
                         }
                     });
-                    console.log(
-                        `[Globe] Processed ${processedCount} land features, skipped ${skippedCount} grid features`
-                    );
+
+                    if (segmentPositions.length >= 6) {
+                        const outlineGeometry = new BufferGeometry();
+                        outlineGeometry.setAttribute(
+                            "position",
+                            new Float32BufferAttribute(segmentPositions, 3)
+                        );
+                        const outlineLines = new LineSegments(
+                            outlineGeometry,
+                            outlineMaterial
+                        );
+                        outlineLines.renderOrder = 0;
+                        continentOutlineGroup.add(outlineLines);
+                    }
                 }
 
-                const bitmapWidth = 2048;
-                const bitmapHeight = 1024;
+                /* Máscara de tierra para decidir dónde va cada punto. A 1024×512
+                   el paso es de 0.35°/px, cinco veces más fino que el paso real
+                   entre puntos (~1.2°): bajar de 2048×1024 no cambia una sola
+                   posición y recorta el getImageData de ~8 MB a ~2 MB en el
+                   hilo principal. */
+                const bitmapWidth = 1024;
+                const bitmapHeight = 512;
                 const offscreenCanvas = document.createElement("canvas");
                 offscreenCanvas.width = bitmapWidth;
                 offscreenCanvas.height = bitmapHeight;

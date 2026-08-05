@@ -123,7 +123,10 @@ export function Geography() {
               showOutline
               showGrid={false}
               dragSpeed={4}
-              detail={6}
+              /* El dataset local es Natural Earth 110m, ya de baja resolución:
+                 decimarlo otra vez (detail<10) dejaría las costas dentadas.
+                 Con 10 se usa tal cual y sigue costando menos que el 50m. */
+              detail={10}
               stopOnHover
               markerConfig={GLOBE_MARKERS}
             />
