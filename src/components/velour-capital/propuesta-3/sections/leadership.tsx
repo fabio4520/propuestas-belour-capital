@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Linkedin } from "lucide-react";
@@ -19,116 +19,123 @@ const MEMBER_IMAGES = [
   "/velour/p3/leadership/v-rios.jpg",
 ] as const;
 
-/* Offsets editoriales del collage — asimetría deliberada, no un grid parejo */
-const TILE_OFFSET = ["", "mt-10", "-mt-6", "mt-4"];
-const TILE_ASPECT = ["aspect-[3/4]", "aspect-[3/4]", "aspect-[4/5]", "aspect-[3/4]"];
-
 /**
- * Team Showcase: lista de nombres y collage de retratos comparten un mismo
- * estado "activo" — hover en cualquiera de los dos ilumina ambos a la vez.
- * Estado inicial: todo en escala de grises (ninguno activo). En touch/sin
- * hover fino no hay forma de "pasar el mouse", así que se muestran todos
- * los retratos ya en color (el filtro grayscale solo tiene sentido como
- * estado de reposo cuando existe hover real) — check vía matchMedia,
- * gateado con mounted por el mismo motivo de SSR que el resto del sitio.
+ * Team Showcase: un solo retrato grande que hace cross-fade al miembro activo,
+ * con la lista de nombres a su lado. Recorrer la lista —con el mouse, con el
+ * teclado o con un toque— cambia el retrato.
+ *
+ * El collage 2×2 anterior medía ~950 px de alto y llevaba la sección a ~1450 px:
+ * no cabía entera en ninguna pantalla. Con un único retrato la altura pasa a ser
+ * una variable que controlamos, así que en desktop la sección se ancla a una
+ * pantalla exacta (lg:h-[100svh]); en móvil no hay tope y todo apila con scroll
+ * natural, porque forzar 100vh en un teléfono deja los retratos ilegibles.
+ *
+ * Los cuatro retratos quedan montados y solo se cruza su opacidad: el cambio es
+ * instantáneo al recorrer la lista, sin el parpadeo de una carga en caliente.
+ *
+ * No hay estado "ninguno activo" (el panel no puede quedar vacío) ni guard de
+ * matchMedia: los tres handlers —enter, focus y click— cubren puntero, teclado
+ * y touch por igual, el mismo trío que usa la lista de plazas en geography.tsx.
  */
 export function Leadership() {
   const t = useTranslations("leadership");
   const members = t.raw("members") as Member[];
-  const [activeId, setActiveId] = useState<number | null>(null);
-  const [canHover, setCanHover] = useState(false);
-
-  useEffect(() => {
-    setCanHover(window.matchMedia("(hover: hover) and (pointer: fine)").matches);
-  }, []);
-
-  const isActive = (i: number) => (canHover ? activeId === i : true);
-  const enter = (i: number) => canHover && setActiveId(i);
-  const leave = () => canHover && setActiveId(null);
+  const [active, setActive] = useState(0);
 
   return (
-    <section id="leadership" className="relative bg-velour-black py-28 sm:py-36">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        <SectionHeading index="07" eyebrow={t("label")} title={t("headline")} />
+    <section
+      id="leadership"
+      className="relative bg-velour-black py-24 sm:py-28 lg:flex lg:h-[100svh] lg:flex-col lg:overflow-hidden lg:pb-12 lg:pt-24"
+    >
+      {/* pt-24 en desktop deja el eyebrow por debajo del header fijo (h-20)
+          cuando se llega a la sección por ancla o por scroll. */}
+      <div className="mx-auto w-full max-w-[1400px] px-6 lg:flex lg:min-h-0 lg:flex-1 lg:flex-col lg:px-10">
+        <SectionHeading
+          index="07"
+          eyebrow={t("label")}
+          title={t("headline")}
+          className="lg:shrink-0"
+        />
 
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-16 grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-20"
+          className="mt-12 grid gap-10 lg:mt-10 lg:min-h-0 lg:flex-1 lg:grid-cols-[auto_1fr] lg:items-stretch lg:gap-16"
         >
-          {/* Collage de retratos */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-5">
+          {/* Retrato activo. En desktop toma exactamente el alto que sobra tras
+              el encabezado (h-full dentro de la fila flexible) y el ancho se
+              deriva de la proporción 3/4 — así se adapta a cualquier altura de
+              pantalla sin volverse apaisado ni desbordar. */}
+          <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-2xl border border-white/8 lg:mx-0 lg:h-full lg:w-auto lg:max-w-none">
             {members.map((member, i) => (
-              <div
+              <Image
                 key={member.name}
-                onMouseEnter={() => enter(i)}
-                onMouseLeave={leave}
+                src={MEMBER_IMAGES[i]}
+                alt={member.name}
+                fill
+                sizes="(min-width: 1024px) 450px, (min-width: 640px) 384px, 90vw"
+                priority={i === 0}
                 className={cn(
-                  "relative overflow-hidden rounded-2xl border border-white/8",
-                  TILE_ASPECT[i],
-                  TILE_OFFSET[i]
+                  "object-cover transition-opacity duration-500 ease-out",
+                  i === active ? "opacity-100" : "opacity-0"
                 )}
-              >
-                <Image
-                  src={MEMBER_IMAGES[i]}
-                  alt={member.name}
-                  fill
-                  sizes="(min-width: 1024px) 30vw, 45vw"
-                  className={cn(
-                    "object-cover transition-all duration-500 ease-out",
-                    isActive(i) ? "grayscale-0 scale-100" : "grayscale scale-[1.03]"
-                  )}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-velour-black/50 via-transparent to-transparent" />
-              </div>
+              />
             ))}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-velour-black/50 via-transparent to-transparent" />
           </div>
 
-          {/* Lista vinculada */}
-          <ul className="flex flex-col divide-y divide-white/8 border-t border-white/8 lg:justify-center">
+          {/* Lista vinculada. self-center la mantiene ópticamente alineada con
+              el retrato en vez de estirarse a toda la altura de la fila. */}
+          <ul className="flex flex-col divide-y divide-white/8 border-t border-white/8 lg:max-w-xl lg:self-center">
             {members.map((member, i) => {
-              const active = isActive(i);
+              const isActive = i === active;
               return (
-                <li
-                  key={member.name}
-                  onMouseEnter={() => enter(i)}
-                  onMouseLeave={leave}
-                  className="flex cursor-default items-center gap-4 py-5"
-                >
-                  <span
-                    className={cn(
-                      "h-px shrink-0 bg-velour-gold transition-all duration-300",
-                      active ? "w-8" : "w-0"
-                    )}
-                  />
-                  <div className="flex-1">
-                    <p
-                      className={cn(
-                        "font-garamond text-2xl transition-colors duration-300 sm:text-3xl",
-                        active ? "text-velour-white" : "text-velour-stone/70"
-                      )}
-                    >
-                      {member.name}
-                    </p>
-                    <p
-                      className={cn(
-                        "mt-1 text-xs uppercase tracking-[0.2em] transition-colors duration-300",
-                        active ? "text-velour-gold" : "text-velour-stone/40"
-                      )}
-                    >
-                      {member.role}
-                    </p>
-                  </div>
-                  <span
-                    className={cn(
-                      "text-velour-gold transition-all duration-300",
-                      active ? "translate-x-0 opacity-100" : "translate-x-2 opacity-0"
-                    )}
+                <li key={member.name}>
+                  <button
+                    type="button"
+                    onMouseEnter={() => setActive(i)}
+                    onFocus={() => setActive(i)}
+                    onClick={() => setActive(i)}
+                    aria-pressed={isActive}
+                    className="flex w-full items-center gap-4 py-5 text-left"
                   >
-                    <Linkedin className="h-4 w-4" strokeWidth={1.5} />
-                  </span>
+                    <span
+                      className={cn(
+                        "h-px shrink-0 bg-velour-gold transition-all duration-300",
+                        isActive ? "w-8" : "w-0"
+                      )}
+                    />
+                    <span className="flex-1">
+                      <span
+                        className={cn(
+                          "block font-garamond text-2xl transition-colors duration-300 sm:text-3xl",
+                          isActive ? "text-velour-white" : "text-velour-stone/70"
+                        )}
+                      >
+                        {member.name}
+                      </span>
+                      <span
+                        className={cn(
+                          "mt-1 block text-xs uppercase tracking-[0.2em] transition-colors duration-300",
+                          isActive ? "text-velour-gold" : "text-velour-stone/40"
+                        )}
+                      >
+                        {member.role}
+                      </span>
+                    </span>
+                    <span
+                      className={cn(
+                        "text-velour-gold transition-all duration-300",
+                        isActive
+                          ? "translate-x-0 opacity-100"
+                          : "translate-x-2 opacity-0"
+                      )}
+                    >
+                      <Linkedin className="h-4 w-4" strokeWidth={1.5} />
+                    </span>
+                  </button>
                 </li>
               );
             })}
