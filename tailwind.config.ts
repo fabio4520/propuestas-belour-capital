@@ -182,9 +182,11 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "Georgia", "serif"],
+        // Playfair y Sora se retiraron con la propuesta 1: `serif` ahora
+        // comparte familia con `garamond` (el índice era su último consumidor)
+        // y `display` desapareció porque no tenía ni un uso en el marcado.
+        serif: ["var(--font-eb-garamond)", "Georgia", "serif"],
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-sora)", "var(--font-inter)", "sans-serif"],
         cormorant: ["var(--font-cormorant)", "Georgia", "serif"],
         manrope: ["var(--font-manrope)", "system-ui", "sans-serif"],
         garamond: ["var(--font-eb-garamond)", "Georgia", "serif"],

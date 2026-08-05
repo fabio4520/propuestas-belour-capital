@@ -1,64 +1,35 @@
 import type { Metadata } from "next";
-import {
-  Playfair_Display,
-  Inter,
-  Sora,
-  Cormorant_Garamond,
-  Manrope,
-  EB_Garamond,
-} from "next/font/google";
+import { Inter, EB_Garamond } from "next/font/google";
 import "./globals.css";
 
 /*
- * Tipografías compartidas por todas las propuestas (cargadas como CSS vars):
- *   Velour Capital · P1   → Playfair Display (serif) + Inter (sans)
- *   Balance Consulting    → Sora (display sans) + Inter (sans)
- *   Velour Capital · P2   → Cormorant Garamond (editorial serif) + Manrope (sans)
- *   Balanz Consulting     → EB Garamond (tipografía única del manual de marca)
+ * Tipografías del tronco común — solo las que necesita Belour Capital (P3),
+ * que es la propuesta de este repositorio, más el índice.
+ *
+ * Cada @font-face que se declara aquí viaja en el CSS raíz, que bloquea el
+ * render de TODA ruta. Por eso las familias exclusivas de otra propuesta se
+ * declaran en el layout de su propio segmento (ver
+ * app/velour-capital/propuesta-2/layout.tsx) y no aquí.
+ *
+ * Los pesos son los que realmente aparecen en el marcado: 300 (font-light),
+ * 400 y 500 (font-medium). No hay un solo font-semibold/bold en el proyecto,
+ * y cada peso extra es un archivo woff2 más por subrango unicode.
  */
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-});
-
-const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  variable: "--font-cormorant",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const ebGaramond = EB_Garamond({
-  subsets: ["latin"],
-  variable: "--font-eb-garamond",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-});
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
-  weight: ["300", "400", "500", "600"],
+  weight: ["300", "400", "500"],
+});
+
+/* EB Garamond arranca en 400: font-light sobre esta familia ya resolvía a 400,
+   declararlo no cambiaría nada visualmente y sí añadiría archivos. */
+const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  variable: "--font-eb-garamond",
+  display: "swap",
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -71,10 +42,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="es"
-      className={`${playfair.variable} ${sora.variable} ${inter.variable} ${cormorant.variable} ${manrope.variable} ${ebGaramond.variable}`}
-    >
+    <html lang="es" className={`${inter.variable} ${ebGaramond.variable}`}>
       <body>{children}</body>
     </html>
   );
