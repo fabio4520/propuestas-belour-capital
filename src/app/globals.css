@@ -262,6 +262,22 @@
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.07);
   }
+
+  /*
+   * backdrop-filter es de los efectos más caros del compositor: obliga a
+   * rasterizar el fondo en una capa aparte por cada elemento. En esta página
+   * hay hasta siete .glass-velour vivos a la vez (las 4 tarjetas del carrusel
+   * de Servicios están montadas simultáneamente, más Contacto, Inversionistas
+   * y Geografía). Sobre el negro absoluto de la marca el desenfoque casi no se
+   * percibe, así que en móvil se cambia por un relleno opaco equivalente.
+   */
+  @media (max-width: 768px) {
+    .glass-velour {
+      background: rgba(24, 24, 24, 0.92);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
 }
 
 /* Lenis (scroll suave) — desactiva el scroll nativo mientras Lenis controla */
