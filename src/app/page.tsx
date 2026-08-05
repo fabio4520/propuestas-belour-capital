@@ -3,65 +3,26 @@ import { ArrowUpRight } from "lucide-react";
 
 /**
  * Índice de propuestas — punto de entrada del repositorio.
- * Organizado por empresa → cada empresa tiene una o más propuestas.
- *   /velour-capital/propuesta-1
- *   /balance-consulting/propuesta-1
+ * Esta copia está dedicada a Belour Capital: solo contiene las rutas que
+ * realmente existen aquí. Las propuestas de Balance/Balanz viven en el repo
+ * original y se retiraron del índice para no dejar enlaces a 404.
  */
 
 const empresas = [
   {
     id: "01",
-    company: "Velour Capital",
+    company: "Belour Capital",
     rubro: "Fondo de inversión privado",
     propuestas: [
       {
-        label: "Propuesta 1",
-        style: "Premium · institucional (ref. Integra Capital)",
-        href: "/velour-capital/propuesta-1",
+        label: "Propuesta 3",
+        style: "Obsidiana · institucional dark-luxury · ES/EN",
+        href: "/velour-capital/propuesta-3",
       },
       {
         label: "Propuesta 2",
         style: "Cinematográfica · editorial · ES/EN (Strategic Capital for Real Assets)",
         href: "/velour-capital/propuesta-2",
-      },
-    ],
-  },
-  {
-    id: "02",
-    company: "Balance Consulting",
-    rubro: "Consultoría ambiental en minería",
-    propuestas: [
-      {
-        label: "Propuesta 1",
-        style: "Corporativo · limpio · técnico (ref. Phoenix Capital)",
-        href: "/balance-consulting/propuesta-1",
-      },
-      {
-        label: "Propuesta 2",
-        style: "Premium · técnica · cinematográfica · ES/EN (Environmental Intelligence)",
-        href: "/balance-consulting/propuesta-2",
-      },
-    ],
-  },
-  {
-    id: "03",
-    company: "Balanz Consulting",
-    rubro: "Consultoría ambiental en minería",
-    propuestas: [
-      {
-        label: "Propuesta 1",
-        style: "Institucional · manual de marca · colibrí dorado",
-        href: "/balanz-consulting/propuesta-1",
-      },
-      {
-        label: "Propuesta 2",
-        style: "Cinematográfica · viaje del colibrí scroll-driven",
-        href: "/balanz-consulting/propuesta-2",
-      },
-      {
-        label: "Propuesta 3",
-        style: "Institucional claro · marfil · editorial (ref. Integra Capital)",
-        href: "/balanz-consulting/propuesta-3",
       },
     ],
   },
