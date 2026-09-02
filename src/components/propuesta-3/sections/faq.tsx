@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Plus } from "lucide-react";
 import { SectionHeading } from "../ui/section-heading";
 import { SurfaceWipe } from "../ui/surface-wipe";
-import { EASE_OUT_EXPO } from "../motion/transitions";
+import { EASE_SOFT } from "../motion/transitions";
 import { cn } from "@/lib/utils";
 
 type QA = { q: string; a: string };
@@ -58,20 +58,38 @@ export function Faq() {
                   </span>
                   <span
                     className={cn(
-                      "shrink-0 text-brand transition-transform duration-300",
+                      "shrink-0 text-brand transition-transform duration-200",
                       isOpen && "rotate-45"
                     )}
                   >
                     <Plus className="h-5 w-5" strokeWidth={1.4} />
                   </span>
                 </button>
+                {/* Timing: EASE_OUT_EXPO —la curva del resto del sitio— aquí
+                    estaba mal elegida. Alcanza el 95% del recorrido en el
+                    primer tercio del tiempo y arrastra los últimos píxeles
+                    durante el resto: en un fundido es elegante, pero en una
+                    altura se lee como si el panel se hubiera colgado a medio
+                    abrir. Curva con final decidido, más corta, y la opacidad
+                    resuelta antes que la altura para que el texto ya esté ahí
+                    cuando el panel termina de crecer. */}
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
+                      exit={{
+                        height: 0,
+                        opacity: 0,
+                        transition: {
+                          height: { duration: 0.22, ease: EASE_SOFT },
+                          opacity: { duration: 0.14 },
+                        },
+                      }}
+                      transition={{
+                        height: { duration: 0.26, ease: EASE_SOFT },
+                        opacity: { duration: 0.18, ease: "linear" },
+                      }}
                       className="overflow-hidden"
                     >
                       <p className="pb-6 pr-10 text-sm leading-relaxed text-ink-muted sm:text-base">
