@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ArrowRight, CheckCircle2, Mail, MapPin, Phone } from "lucide-react";
 import { SectionHeading } from "../ui/section-heading";
+import { Parallax } from "../ui/parallax";
 import { CONTACT } from "../lib/constants";
 import { fadeUp, viewportOnce } from "../motion/variants";
 import { EASE_OUT_EXPO } from "../motion/transitions";
@@ -58,7 +59,7 @@ export function Contact() {
       <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgb(var(--brand)/0.07),transparent_65%)]" />
 
       <div className="relative mx-auto grid max-w-[1400px] gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:px-10">
-        <div>
+        <Parallax distance={14}>
           <SectionHeading
             index="07"
             eyebrow={t("label")}
@@ -95,8 +96,9 @@ export function Contact() {
               </li>
             ))}
           </motion.ul>
-        </div>
+        </Parallax>
 
+        <Parallax distance={-14}>
         <motion.form
           variants={fadeUp}
           initial="hidden"
@@ -191,6 +193,7 @@ export function Contact() {
 
           <p className="mt-4 text-xs text-ink-muted/60">{t("note")}</p>
         </motion.form>
+        </Parallax>
       </div>
     </section>
   );

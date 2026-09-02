@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Plus } from "lucide-react";
 import { SectionHeading } from "../ui/section-heading";
+import { SurfaceWipe } from "../ui/surface-wipe";
 import { EASE_OUT_EXPO } from "../motion/transitions";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +23,7 @@ export function Faq() {
 
   return (
     <section id="faq" className="grain-belour surface-hueso relative bg-surface py-28 sm:py-36">
+      <SurfaceWipe from="#0A0A0A" />
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="06"

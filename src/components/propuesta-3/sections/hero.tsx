@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { ArrowDown } from "lucide-react";
 import { AnimatedText } from "../ui/animated-text";
@@ -33,17 +34,49 @@ const WovenCanvas = dynamic(
  */
 export function Hero() {
   const t = useTranslations("hero");
+  const ref = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+
+  /* Salida del hero atada al scroll: en vez de desplazarse en bloque hasta
+     desaparecer por el borde, el hero se DISUELVE mientras la siguiente
+     sección lo empuja — el wordmark sube un poco más rápido que la página y
+     se apaga, y el tejido de partículas se aleja ganando escala. Es el gesto
+     que separa un scroll de documento de uno dirigido, y cuesta lo mismo que
+     no hacer nada: solo transform y opacity, sobre elementos que ya existen. */
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  /* Todo termina en 0.75 y no en 1: el último cuarto del recorrido ya está
+     fuera de pantalla, y estirar el fundido hasta ahí lo vuelve imperceptible
+     justo cuando debería haber acabado. */
+  const contentY = useTransform(scrollYProgress, [0, 0.75], [0, -110]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const canvasScale = useTransform(scrollYProgress, [0, 0.75], [1, 1.18]);
+  const canvasOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.25]);
+
+  // useScroll no mide geometría en SSR (mismo guard que sectors/services).
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const live = mounted && !reduce;
 
   return (
     <section
       id="top"
+      ref={ref}
       /* 100svh y no 100vh: en móvil, vh se mide con la barra de URL retraída,
          así que al cargar (con la barra visible) el hero queda más alto que el
          área visible y empuja el indicador de scroll fuera de pantalla. */
       className="grain-belour surface-noir relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-surface"
     >
       {/* Fondo cinematográfico */}
-      <div className="absolute inset-0">
+      <motion.div
+        style={{
+          scale: live ? canvasScale : 1,
+          opacity: live ? canvasOpacity : 1,
+        }}
+        className="absolute inset-0 will-change-transform"
+      >
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -58,9 +91,12 @@ export function Hero() {
         <div className="absolute inset-0 bg-[radial-gradient(55%_55%_at_50%_50%,transparent_0%,rgba(10,10,10,0.55)_65%,rgba(10,10,10,0.95)_100%)]" />
         {/* Viñeta vertical: funde el header arriba y el indicador de scroll abajo */}
         <div className="absolute inset-0 bg-gradient-to-b from-belour-noir/70 via-transparent to-belour-noir" />
-      </div>
+      </motion.div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-6 text-center">
+      <motion.div
+        style={{ y: live ? contentY : 0, opacity: live ? contentOpacity : 1 }}
+        className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-6 text-center will-change-transform"
+      >
         <AnimatedText
           as="h1"
           animateOnView={false}
@@ -77,24 +113,32 @@ export function Hero() {
         >
           {t("slogan")}
         </motion.p>
-      </div>
+      </motion.div>
 
-      {/* Indicador de scroll */}
+      {/* Indicador de scroll. Va en dos capas a propósito: la exterior lleva la
+          opacidad ligada al scroll y la interior su fade-in de entrada. En un
+          mismo elemento, el `style` inline del motion value pisaría al
+          `animate`, y el indicador aparecería de golpe al cargar. */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-ink-muted lg:flex"
+        style={{ opacity: live ? contentOpacity : 1 }}
+        className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 lg:block"
       >
-        <span className="text-[10px] uppercase tracking-[0.35em]">
-          {t("scroll")}
-        </span>
-        <motion.span
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
+          className="flex flex-col items-center gap-2 text-ink-muted"
         >
-          <ArrowDown className="h-4 w-4 text-brand" />
-        </motion.span>
+          <span className="text-[10px] uppercase tracking-[0.35em]">
+            {t("scroll")}
+          </span>
+          <motion.span
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ArrowDown className="h-4 w-4 text-brand" />
+          </motion.span>
+        </motion.div>
       </motion.div>
     </section>
   );

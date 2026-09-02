@@ -20,6 +20,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { SectionHeading } from "../ui/section-heading";
+import { SurfaceWipe } from "../ui/surface-wipe";
 import { SERVICE_ICONS, PROCESS_ICONS } from "../lib/constants";
 import { fadeUp, staggerItem, viewportOnce } from "../motion/variants";
 
@@ -198,6 +199,7 @@ export function Services() {
 
   return (
     <section id="services" className="surface-noir relative bg-surface py-28 sm:py-36">
+      <SurfaceWipe from="#E6E3DC" />
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="03"

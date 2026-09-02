@@ -35,10 +35,14 @@ export function Evaluation() {
           className="mt-16 grid grid-cols-1 gap-x-8 gap-y-10 border-t border-rule/10 pt-12 sm:grid-cols-2 lg:grid-cols-4"
         >
           {criteria.map((criterion, i) => (
-            <motion.div key={criterion.title} variants={staggerItem}>
-              <span className="font-cormorant text-sm italic text-brand/70">
+            <motion.div key={criterion.title} variants={staggerItem} className="group">
+              <span className="font-cormorant text-sm italic text-brand/70 transition-colors duration-500 group-hover:text-brand">
                 0{i + 1}
               </span>
+              <span
+                aria-hidden
+                className="mt-2 block h-px w-6 bg-brand/30 transition-all duration-500 ease-out group-hover:w-16 group-hover:bg-brand/70"
+              />
               <h3 className="mt-3 font-sans text-xl font-light leading-tight text-ink sm:text-2xl">
                 {criterion.title}
               </h3>

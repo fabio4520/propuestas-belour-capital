@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { fadeUp, staggerContainer, staggerItem, viewportOnce } from "../motion/variants";
+import { SurfaceWipe } from "../ui/surface-wipe";
 
 type Item = { title: string; text: string };
 
@@ -17,7 +18,8 @@ export function Legal() {
   const items = t.raw("items") as Item[];
 
   return (
-    <section id="legal" className="surface-noir border-t border-rule/10 bg-surface py-20 sm:py-24">
+    <section id="legal" className="surface-noir relative border-t border-rule/10 bg-surface py-20 sm:py-24">
+      <SurfaceWipe from="#E6E3DC" />
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <motion.div
           variants={fadeUp}

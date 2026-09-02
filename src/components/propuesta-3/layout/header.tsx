@@ -12,14 +12,18 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "../lib/constants";
+import { useActiveSection } from "../motion/use-active-section";
 import { LanguageSwitcher } from "../ui/language-switcher";
 import logo from "../../../../public/belour/logo.png";
+
+const NAV_IDS = NAV_ITEMS.map((item) => item.href.slice(1));
 
 export function Header() {
   const t = useTranslations("nav");
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
+  const active = useActiveSection(NAV_IDS);
 
   // Togglea una clase por cruce de umbral (no estado por frame/píxel).
   useMotionValueEvent(scrollY, "change", (y) => {
@@ -56,18 +60,37 @@ export function Header() {
           />
         </a>
 
-        {/* Nav desktop */}
+        {/* Nav desktop. El indicador de sección activa es un solo elemento
+            compartido por todos los items vía `layoutId`: Framer lo desplaza
+            de uno a otro en lugar de apagarlo aquí y encenderlo allá, así que
+            el nav acompaña el scroll en vez de parpadear. El subrayado de
+            hover sigue existiendo para los items inactivos. */}
         <div className="hidden items-center gap-8 lg:flex">
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.key}
-              href={item.href}
-              className="group relative text-sm text-ink-muted transition-colors hover:text-ink"
-            >
-              {t(item.key)}
-              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-brand transition-all duration-300 group-hover:w-full" />
-            </a>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const isActive = active === item.href.slice(1);
+            return (
+              <a
+                key={item.key}
+                href={item.href}
+                aria-current={isActive ? "true" : undefined}
+                className={cn(
+                  "group relative text-sm transition-colors duration-300",
+                  isActive ? "text-ink" : "text-ink-muted hover:text-ink"
+                )}
+              >
+                {t(item.key)}
+                {isActive ? (
+                  <motion.span
+                    layoutId="nav-active-belour"
+                    className="absolute -bottom-1.5 left-0 h-px w-full bg-brand"
+                    transition={{ type: "spring", stiffness: 380, damping: 34 }}
+                  />
+                ) : (
+                  <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-brand/60 transition-all duration-300 group-hover:w-full" />
+                )}
+              </a>
+            );
+          })}
         </div>
 
         <div className="hidden items-center gap-4 lg:flex">
@@ -107,7 +130,11 @@ export function Header() {
                   key={item.key}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="py-3 text-base text-ink-muted transition-colors hover:text-brand"
+                  aria-current={active === item.href.slice(1) ? "true" : undefined}
+                  className={cn(
+                    "py-3 text-base transition-colors hover:text-brand",
+                    active === item.href.slice(1) ? "text-ink" : "text-ink-muted"
+                  )}
                 >
                   {t(item.key)}
                 </a>

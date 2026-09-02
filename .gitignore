@@ -23,3 +23,9 @@ yarn-error.log*
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Skills de agentes (instalados con `npx skills add`, no son parte del sitio).
+# Los symlinks de .claude/skills apuntan a rutas absolutas de cada máquina.
+/.agents
+/.claude/skills
+/skills-lock.json

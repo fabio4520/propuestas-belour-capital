@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { CONTACT, FOOTER_LINKS } from "../lib/constants";
 import { LanguageSwitcher } from "../ui/language-switcher";
 import { Hairline } from "../ui/hairline";
+import { Parallax } from "../ui/parallax";
 
 export function Footer() {
   const t = useTranslations();
@@ -22,9 +23,11 @@ export function Footer() {
             desbordaba del contenedor en móvil (px-6 se come 48 px del ancho) y
             la palabra quedaba cortada. El tamaño se calcula ahora sobre el
             ancho útil y se limita para que la línea entre completa. */}
-        <p className="font-sans text-[min(11vw,3.5rem)] font-light leading-none tracking-tight text-ink/[0.06] sm:text-[9vw] lg:text-[6.5vw]">
-          Belour Capital
-        </p>
+        <Parallax axis="x" distance={40}>
+          <p className="font-sans text-[min(11vw,3.5rem)] font-light leading-none tracking-tight text-ink/[0.06] sm:text-[9vw] lg:text-[6.5vw]">
+            Belour Capital
+          </p>
+        </Parallax>
 
         <div className="-mt-6 grid gap-12 pb-16 sm:-mt-10 lg:-mt-16 lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-20">
           {/* Marca */}

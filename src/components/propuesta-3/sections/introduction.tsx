@@ -6,6 +6,7 @@ import { ArrowRight, Target, Eye, Lightbulb, type LucideIcon } from "lucide-reac
 import { Button } from "../ui/button";
 import { Magnetic } from "../ui/magnetic";
 import { SectionHeading } from "../ui/section-heading";
+import { SurfaceWipe } from "../ui/surface-wipe";
 import { PILLAR_ICONS } from "../lib/constants";
 import {
   fadeUp,
@@ -29,6 +30,7 @@ export function Introduction() {
 
   return (
     <section id="about" className="grain-belour surface-hueso relative bg-surface py-28 sm:py-36">
+      <SurfaceWipe from="#0A0A0A" />
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="01"

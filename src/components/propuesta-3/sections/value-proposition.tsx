@@ -54,16 +54,20 @@ export function ValueProposition() {
             <motion.div
               key={item.title}
               variants={staggerItem}
-              className="grid grid-cols-[auto_1fr] items-start gap-5"
+              className="group grid grid-cols-[auto_1fr] items-start gap-5"
             >
-              <span className="font-cormorant text-sm italic text-brand/70">
+              <span className="font-cormorant text-sm italic text-brand/70 transition-all duration-500 ease-out group-hover:-translate-y-0.5 group-hover:text-brand">
                 0{i + 1}
               </span>
               <div>
                 <h3 className="font-sans text-xl font-light text-ink sm:text-2xl">
                   {item.title}
                 </h3>
-                <p className="mt-2.5 max-w-md text-sm leading-relaxed text-ink-muted sm:text-base">
+                <span
+                  aria-hidden
+                  className="mt-3 block h-px w-8 bg-brand/35 transition-all duration-500 ease-out group-hover:w-20 group-hover:bg-brand/70"
+                />
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-muted sm:text-base">
                   {item.text}
                 </p>
               </div>
