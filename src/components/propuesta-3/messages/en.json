@@ -1,415 +1,272 @@
 {
   "nav": {
-    "manifesto": "Manifesto",
-    "sectors": "Sectors",
-    "strategy": "Strategy",
+    "about": "About Us",
+    "value": "Value Proposition",
     "services": "Services",
-    "trackRecord": "Track Record",
-    "leadership": "Leadership",
-    "geography": "Reach",
-    "investors": "Investors",
-    "faq": "How to Invest",
+    "process": "How We Work",
+    "evaluation": "Evaluation",
+    "sectors": "Sectors",
+    "faq": "FAQ",
     "contact": "Contact",
-    "news": "Newsroom",
     "cta": "Get in Touch"
   },
   "hero": {
-    "slogan": "Strategic business and financial development",
+    "slogan": "Your Strategic Partner for Business Development",
     "scroll": "Scroll"
   },
   "introduction": {
-    "eyebrow": "Institutional Private Capital",
-    "headline": "Disciplined capital for the assets that define the future.",
-    "highlight": "future.",
-    "subheadline": "We invest and structure capital in mining, real estate and infrastructure across LATAM and Houston, with the same rigor we bring to every decision.",
-    "ctaPrimary": "See the Belour Protocol",
-    "ctaSecondary": "Get in Touch"
+    "eyebrow": "About Us",
+    "headline": "A boutique firm for capital structuring and private investment.",
+    "highlight": "boutique",
+    "subheadline": "We work with companies and projects seeking financing alternatives and investment structures tailored to their needs. Our approach goes beyond providing capital: we analyze every opportunity, assess risks and strategically support the growth and development of the business.",
+    "ctaPrimary": "Explore our services",
+    "ctaSecondary": "Let's talk",
+    "pillars": [
+      {
+        "title": "Our Purpose",
+        "text": "Creating value and supporting growth."
+      },
+      {
+        "title": "Our Vision",
+        "text": "To be a leading strategic ally in investment and private capital."
+      },
+      {
+        "title": "Our Approach",
+        "text": "Driving opportunities through strategic capital."
+      }
+    ]
   },
-  "manifesto": {
-    "label": "Who We Are",
-    "headline": "An institutional record, not a marketing promise.",
-    "highlight": "institutional",
-    "textBefore": "Belour Capital exists for those who understand that serious capital needs no noise. We operate with",
-    "emphasis": "discipline, discretion and long-term judgment",
-    "textAfter": ", structuring every investment with the same rigor we bring to protecting each investor's trust.",
-    "stats": [
-      { "value": 1.8, "decimals": 1, "prefix": "USD ", "suffix": "B+", "label": "Capital deployed and advised" },
-      { "value": 35, "decimals": 0, "prefix": "", "suffix": "+", "label": "Transactions executed" },
-      { "value": 12, "decimals": 0, "prefix": "", "suffix": "+", "label": "Years of combined experience" },
-      { "value": 6, "decimals": 0, "prefix": "", "suffix": "", "label": "Markets across LATAM and Houston" }
-    ],
-    "note": "Illustrative figures for proposal purposes."
+  "value": {
+    "label": "Value Proposition",
+    "headline": "More than capital: structure, judgment and partnership.",
+    "highlight": "partnership.",
+    "textBefore": "Capital is only the starting point. We support every opportunity with",
+    "emphasis": "analysis, structure and a long-term vision",
+    "textAfter": " to turn it into real growth.",
+    "items": [
+      {
+        "title": "Tailor-made structures",
+        "text": "Every opportunity requires a different financial structure. We design solutions adapted to the needs and characteristics of each business or project."
+      },
+      {
+        "title": "Rigorous risk assessment",
+        "text": "We analyze collateral, payment capacity, risks and the conditions of every transaction to make informed decisions."
+      },
+      {
+        "title": "Strategic partnership",
+        "text": "We build long-term relationships and support the growth and development of the businesses we take part in."
+      },
+      {
+        "title": "Flexible capital",
+        "text": "We explore a range of financing and investment alternatives, from asset-backed lending to capital, debt and royalty structures."
+      }
+    ]
+  },
+  "services": {
+    "label": "Services",
+    "headline": "Three service lines, one same discipline.",
+    "highlight": "discipline.",
+    "subtext": "From asset-backed financing to strategic advisory: solutions for every stage of the business.",
+    "items": [
+      {
+        "title": "Asset-Backed Financing",
+        "text": "Financing solutions backed by assets and structured on a comprehensive risk assessment.",
+        "bullets": [
+          "Real estate collateral loans",
+          "Vehicle collateral loans",
+          "Bridge financing",
+          "Working capital"
+        ]
+      },
+      {
+        "title": "Capital Structuring",
+        "text": "We design investment structures adapted to the potential and needs of each project.",
+        "bullets": [
+          "Royalty structures",
+          "Equity with buy-back options",
+          "Mezzanine debt and hybrid structures",
+          "Co-investment and strategic alliances",
+          "Tailor-made capital structures"
+        ]
+      },
+      {
+        "title": "Strategic Advisory",
+        "text": "We support every opportunity with analysis and advisory to build a solid financial structure and better decision-making.",
+        "bullets": [
+          "Due diligence",
+          "Financial modeling",
+          "Collateral structuring",
+          "Compliance and risk management",
+          "Strategic support"
+        ]
+      }
+    ]
+  },
+  "howWeWork": {
+    "label": "How We Work",
+    "headline": "From opportunity to growth.",
+    "steps": [
+      {
+        "title": "We evaluate",
+        "text": "We analyze the business, project or opportunity, considering its potential, risks and needs."
+      },
+      {
+        "title": "We structure",
+        "text": "We design a financial structure adapted to the characteristics and goals of each opportunity."
+      },
+      {
+        "title": "We implement",
+        "text": "We support the structuring of the transaction, the collateral and everything required for its execution."
+      },
+      {
+        "title": "We accompany",
+        "text": "We monitor and provide strategic support throughout the life of the investment."
+      }
+    ]
+  },
+  "evaluation": {
+    "label": "Evaluation Approach",
+    "headline": "Informed decisions, backed by rigorous analysis.",
+    "highlight": "rigorous",
+    "subtext": "Every transaction is analyzed across four dimensions before committing capital.",
+    "criteria": [
+      {
+        "title": "LTV analysis",
+        "text": "Loan-to-value ratio measured against appraisals and the real market value of the collateral."
+      },
+      {
+        "title": "Collateral evaluation",
+        "text": "Review, design and perfection of the guarantees backing every transaction."
+      },
+      {
+        "title": "Payment capacity",
+        "text": "Analysis of cash flows, income and scenarios to ensure structures that hold over time."
+      },
+      {
+        "title": "AML / CFT compliance",
+        "text": "Prevention and compliance processes in every transaction and every business relationship."
+      }
+    ]
   },
   "sectors": {
-    "label": "Strategic Sectors",
-    "headline": "Three sectors. One standard of conviction.",
-    "highlight": "conviction.",
-    "subtext": "Real assets with solid fundamentals, evaluated with the same rigor in every jurisdiction.",
+    "label": "Sectors",
+    "headline": "Five sectors. One same judgment.",
+    "highlight": "judgment.",
+    "subtext": "We work with real assets and businesses, evaluated with the same rigor in every transaction.",
     "items": [
       {
         "title": "Mining",
-        "text": "Exploration, development and strategic mining opportunities in high-potential jurisdictions across LATAM."
+        "text": "Financing and capital structures for mining operations and projects with solid fundamentals and collateral."
+      },
+      {
+        "title": "Small and Medium Businesses",
+        "text": "Liquidity and working capital solutions for SMEs with real asset backing."
       },
       {
         "title": "Real Estate",
-        "text": "Selective real estate opportunities with solid fundamentals and long-term appreciation potential."
+        "text": "Real estate collateral loans and investment structures for projects and assets in the sector."
       },
       {
-        "title": "Infrastructure",
-        "text": "Critical infrastructure projects that connect capital, territory and regional growth."
+        "title": "Productive Projects",
+        "text": "Capital for projects that generate real value, from agribusiness to operating businesses."
+      },
+      {
+        "title": "Growth Companies",
+        "text": "Strategic capital for companies and opportunities ready to take their next step."
       }
     ]
-  },
-  "strategy": {
-    "label": "Investment Strategy",
-    "headline": "A clear thesis, with defined parameters.",
-    "highlight": "parameters",
-    "subtext": "We don't chase every opportunity. We invest where our judgment, network and structure create a real edge.",
-    "parameters": [
-      {
-        "label": "Investment ticket",
-        "value": "USD 20–150M",
-        "note": "Per transaction, with co-investment capacity."
-      },
-      {
-        "label": "Stage",
-        "value": "Development & cash-flow",
-        "note": "Assets with proven fundamentals, not speculative exploration."
-      },
-      {
-        "label": "Horizon",
-        "value": "4–7 years",
-        "note": "Patient capital, aligned with the asset's cycle."
-      },
-      {
-        "label": "Target return",
-        "value": "18–25% IRR",
-        "note": "Gross, depending on sector and structure."
-      }
-    ],
-    "criteriaLabel": "Conviction criteria",
-    "criteria": [
-      {
-        "title": "Real assets with fundamentals",
-        "text": "Mining, real estate and infrastructure with structural demand and clear barriers to entry."
-      },
-      {
-        "title": "Jurisdictions we know",
-        "text": "LATAM and Houston, where our local network turns information into an edge."
-      },
-      {
-        "title": "Structure that protects",
-        "text": "Governance, guarantees and terms designed to protect capital before chasing upside."
-      },
-      {
-        "title": "Aligned incentives",
-        "text": "We co-invest alongside our partners: same risk, same side of the table."
-      }
-    ],
-    "note": "Illustrative proposal parameters; each mandate is defined case by case."
-  },
-  "services": {
-    "label": "Service Lines",
-    "headline": "Structures built to protect and grow capital.",
-    "highlight": "grow",
-    "subtext": "Full-service coverage, from initial structuring to the active management of every position.",
-    "items": [
-      {
-        "title": "Capital Structuring",
-        "text": "Design of tailored investment vehicles and structures for each opportunity and jurisdiction."
-      },
-      {
-        "title": "Asset Management",
-        "text": "Active management of positions with institutional reporting and a long-term view."
-      },
-      {
-        "title": "Institutional Advisory",
-        "text": "Strategic guidance for investors and family offices on capital allocation decisions."
-      },
-      {
-        "title": "Governance & Compliance",
-        "text": "Rigorous governance frameworks that stand up to investors and regulators alike."
-      }
-    ]
-  },
-  "protocol": {
-    "label": "The Belour Protocol",
-    "headline": "A disciplined process, with no shortcuts, on every transaction.",
-    "highlight": "disciplined",
-    "steps": [
-      {
-        "title": "Diagnosis",
-        "text": "We assess fundamentals, risk and timing before committing to a single serious conversation."
-      },
-      {
-        "title": "Structuring",
-        "text": "We design the optimal capital architecture for the asset, jurisdiction and investor."
-      },
-      {
-        "title": "Closing",
-        "text": "We execute with legal and financial precision, protecting every term of the transaction."
-      },
-      {
-        "title": "Management & Reporting",
-        "text": "We accompany the asset with active oversight and continuous institutional reporting."
-      }
-    ]
-  },
-  "trackRecord": {
-    "label": "Track Record",
-    "headline": "A record built transaction by transaction.",
-    "highlight": "transaction",
-    "subtext": "Representative deals across sectors and jurisdictions, executed with the same conviction criteria.",
-    "columns": {
-      "year": "Year",
-      "sector": "Sector",
-      "location": "Market",
-      "size": "Size",
-      "role": "Role",
-      "status": "Status"
-    },
-    "deals": [
-      {
-        "year": "2026",
-        "sector": "Mining · Copper",
-        "location": "Southern Peru",
-        "size": "USD 120M",
-        "role": "Vehicle structuring",
-        "status": "In development"
-      },
-      {
-        "year": "2025",
-        "sector": "Real Estate",
-        "location": "Mexico City",
-        "size": "USD 45M",
-        "role": "Co-investment (equity)",
-        "status": "Stabilized"
-      },
-      {
-        "year": "2024",
-        "sector": "Infrastructure",
-        "location": "Bogotá",
-        "size": "USD 80M",
-        "role": "Advisory & structuring",
-        "status": "Closed"
-      },
-      {
-        "year": "2024",
-        "sector": "Mining · Gold",
-        "location": "Santiago",
-        "size": "USD 60M",
-        "role": "Structured debt",
-        "status": "Under management"
-      },
-      {
-        "year": "2023",
-        "sector": "Logistics Real Estate",
-        "location": "Lima",
-        "size": "USD 30M",
-        "role": "Equity",
-        "status": "Realized · exit"
-      },
-      {
-        "year": "2023",
-        "sector": "Energy & infrastructure",
-        "location": "Buenos Aires",
-        "size": "USD 95M",
-        "role": "Strategic co-investment",
-        "status": "Under management"
-      }
-    ],
-    "note": "Representative transactions for illustrative proposal purposes. They do not constitute a recommendation or an offer to invest."
-  },
-  "leadership": {
-    "label": "Leadership",
-    "headline": "Judgment, experience and international perspective.",
-    "members": [
-      {
-        "name": "Lucero Polo",
-        "role": "Managing Partner",
-        "bio": "Leads investment strategy and deal origination across LATAM."
-      },
-      {
-        "name": "Eduardo Lanao",
-        "role": "Partner · Structuring",
-        "bio": "Responsible for capital structuring and institutional investor relations."
-      },
-      {
-        "name": "M. Antúnez",
-        "role": "Director · Mining & Infrastructure",
-        "bio": "Over a decade evaluating early-stage mining and infrastructure assets."
-      },
-      {
-        "name": "V. Ríos",
-        "role": "Head of Real Estate",
-        "bio": "Specialist in high-value institutional real estate opportunities."
-      }
-    ]
-  },
-  "geography": {
-    "label": "Geographic Reach",
-    "headline": "An institutional network between LATAM and Houston.",
-    "highlight": "Houston.",
-    "text": "Houston serves as the capital gateway into a network of strategic markets across LATAM.",
-    "locations": {
-      "houston": "Houston",
-      "cdmx": "Mexico City",
-      "bogota": "Bogotá",
-      "lima": "Lima",
-      "santiago": "Santiago",
-      "buenosaires": "Buenos Aires"
-    },
-    "hint": "Explore each market",
-    "markets": {
-      "houston": "Financial hub and capital gateway into LATAM.",
-      "cdmx": "Consolidated market with steady cross-border deal flow.",
-      "bogota": "Expanding market with opportunities in real assets and infrastructure.",
-      "lima": "Mining core with high-potential early-stage projects.",
-      "santiago": "Consolidated, stable mining jurisdiction for long-term capital.",
-      "buenosaires": "Contrarian opportunities in energy, resources and strategic infrastructure."
-    }
-  },
-  "investors": {
-    "label": "Investors",
-    "headline": "Access to information, based on your relationship with the firm.",
-    "highlight": "information,",
-    "subtext": "Confidential investment materials, available to qualified investors under agreement.",
-    "prospect": {
-      "tag": "Prospect",
-      "title": "Evaluating an investment?",
-      "text": "Request the institutional deck and a confidential conversation to explore sectors, structures and current opportunities.",
-      "cta": "Request the deck"
-    },
-    "lp": {
-      "tag": "Current investor",
-      "title": "Already investing with Belour?",
-      "text": "Access the investor portal: quarterly reports, position statements and data room documents.",
-      "cta": "Access LP portal"
-    },
-    "documentsLabel": "Available documentation",
-    "documents": ["Institutional deck", "Private Placement Memorandum (PPM)", "Quarterly report", "ESG policy"],
-    "note": "Access to documentation is granted to qualified investors under a confidentiality agreement."
   },
   "faq": {
-    "label": "How to Invest",
-    "headline": "What an investor needs to know.",
-    "highlight": "investor",
-    "subtext": "Answers to the most common questions about structure, access and the investment process.",
+    "label": "Frequently Asked Questions",
+    "headline": "What you need to know before starting.",
+    "highlight": "know",
+    "subtext": "Answers to the most common questions about financing, collateral and process.",
     "items": [
       {
-        "q": "What is the minimum investment ticket?",
-        "a": "The typical minimum commitment is USD 250,000, with flexibility depending on the vehicle and transaction. Institutional co-investors operate with larger tickets."
+        "q": "What types of financing do you offer?",
+        "a": "Real estate and vehicle collateral loans, bridge financing and working capital, plus tailor-made capital structures: royalties, equity with buy-back options, mezzanine debt and co-investment."
       },
       {
-        "q": "Who can invest?",
-        "a": "We work exclusively with qualified investors: family offices, institutional investors and high-net-worth individuals who meet the accreditation requirements of their jurisdiction."
+        "q": "What collateral backs the transactions?",
+        "a": "We work mainly with real estate and vehicle assets, and evaluate other assets with real backing. Every guarantee is reviewed, structured and perfected as part of the transaction."
       },
       {
-        "q": "How is each investment structured?",
-        "a": "Each opportunity is structured in a dedicated vehicle (SPV) or fund, with governance, guarantees and terms defined according to the asset and jurisdiction."
+        "q": "How do you evaluate each transaction?",
+        "a": "Across four dimensions: LTV (loan-to-value) analysis, collateral evaluation, payment capacity and AML/CFT compliance. That analysis defines the structure and terms of each transaction."
       },
       {
-        "q": "What is the horizon and liquidity?",
-        "a": "Investments are patient capital, with horizons of 4 to 7 years. Liquidity is tied to the asset's cycle; these are not short-term liquid instruments."
+        "q": "Which sectors and companies do you work with?",
+        "a": "Mining, small and medium businesses, real estate, productive projects and growth companies. Every business is evaluated on its fundamentals, not just its sector."
       },
       {
-        "q": "What does reporting look like?",
-        "a": "Investors receive quarterly institutional reporting, position statements and access to the data room with each vehicle's documentation."
+        "q": "How fast can a transaction be structured?",
+        "a": "It depends on the complexity and the documentation available. For opportunities that require an agile response we offer bridge financing, always after risk and collateral evaluation."
       },
       {
         "q": "How does the process start?",
-        "a": "With a confidential conversation. After signing a confidentiality agreement, we share the deck and the private placement memorandum (PPM) for the relevant mandate."
+        "a": "With a confidential conversation. We evaluate the business or opportunity and, if there is a fit, we propose the most suitable financing or investment structure."
       }
     ],
-    "note": "Illustrative proposal information; definitive terms are set out in the legal documentation of each vehicle."
+    "note": "Have another question? Write to us at contacto@belourcapital.com."
   },
   "contact": {
-    "label": "Private Inquiry",
-    "headline": "Let's discuss strategic opportunities.",
-    "highlight": "opportunities.",
-    "subheadline": "A confidential first contact to explore assets, sectors and capital structures.",
+    "label": "Contact",
+    "headline": "Let's build the right structure together.",
+    "highlight": "together.",
+    "subheadline": "Every business and every project is different. Let's explore together the capital solution that best fits your needs.",
     "fields": {
       "name": "Name",
-      "company": "Company / Family Office",
+      "company": "Company / Project",
       "email": "Email",
       "phone": "Phone",
-      "interest": "Investment Interest",
+      "interest": "Service of interest",
       "message": "Message"
     },
-    "interestPlaceholder": "Select a sector",
-    "interestOptions": ["Mining", "Real Estate", "Infrastructure", "Institutional Advisory"],
-    "messagePlaceholder": "Tell us about your investment interest…",
-    "submit": "Send Inquiry",
-    "success": "Thank you, we'll be in touch shortly.",
-    "note": "Private and confidential inquiry · demo, no backend."
-  },
-  "news": {
-    "label": "Newsroom",
-    "headline": "Market perspectives and notes from the firm.",
-    "highlight": "perspectives",
-    "subtext": "Analysis, transactions and decisions that reflect how we think about long-term capital.",
-    "cta": "View all articles",
-    "readMore": "Read article",
-    "featured": {
-      "category": "Transaction",
-      "date": "July 2026",
-      "readTime": "4 min read",
-      "title": "Belour Capital structures a USD 120M vehicle for copper in southern Peru.",
-      "excerpt": "The deal brings together institutional investors from LATAM and Houston around a development-stage mining asset, under a governance framework designed to protect every term."
-    },
-    "items": [
-      {
-        "category": "Perspective",
-        "date": "June 2026",
-        "readTime": "6 min read",
-        "title": "Why copper remains a conviction asset in 2026."
-      },
-      {
-        "category": "Perspective",
-        "date": "May 2026",
-        "readTime": "5 min read",
-        "title": "Institutional real estate in LATAM: where the value is today."
-      },
-      {
-        "category": "Firm",
-        "date": "April 2026",
-        "readTime": "3 min read",
-        "title": "We strengthen our presence with a representative office in Houston."
-      }
-    ]
+    "interestPlaceholder": "Select a service",
+    "interestOptions": [
+      "Asset-backed financing",
+      "Capital structuring",
+      "Strategic advisory",
+      "Other"
+    ],
+    "messagePlaceholder": "Tell us about your business or project…",
+    "mailSubject": "Inquiry from belourcapital.com",
+    "submit": "Send inquiry",
+    "success": "Thank you — your inquiry is ready in your email client, just hit send.",
+    "note": "Private and confidential inquiry."
   },
   "legal": {
-    "label": "Legal & Disclosures",
-    "headline": "The information on this site is illustrative in nature.",
-    "lead": "The content of this site is for informational purposes and does not constitute an offer, invitation or recommendation to buy or sell securities, nor investment, legal or tax advice.",
+    "label": "Legal Notices",
+    "headline": "Information for informational purposes.",
+    "lead": "The content of this site does not constitute a public offering, an investment recommendation, or legal or tax advice. Each transaction is defined in its own documentation.",
     "items": [
       {
         "title": "Not an offer",
-        "text": "No section of this site constitutes an offer of securities or a solicitation to invest in jurisdictions where this is not authorized."
+        "text": "No section of this site constitutes an offer of securities or a solicitation of investment in jurisdictions where it is not authorized."
       },
       {
-        "title": "Investment risk",
-        "text": "All investment in private assets carries risk, including possible loss of capital. Past performance does not guarantee future results."
+        "title": "Case-by-case evaluation",
+        "text": "Every transaction is subject to risk, collateral and compliance evaluation. Final terms are set out in the documentation of each transaction."
       },
       {
-        "title": "Regulatory status",
-        "text": "Belour Capital operates through vehicles and entities subject to the regulation of each jurisdiction. Specific regulatory information is provided to qualified investors."
+        "title": "AML / CFT compliance",
+        "text": "We operate with anti-money-laundering and counter-terrorism-financing prevention processes in every transaction and relationship."
       },
       {
         "title": "Confidentiality",
-        "text": "Investment documentation (deck, PPM, statements) is confidential and shared only under agreement with qualified investors."
+        "text": "Information shared with Belour Capital is treated as strictly confidential."
       }
     ],
-    "finePrint": "Demo site with fictional data. Figures, transactions and regulatory status are illustrative and have no contractual value."
+    "finePrint": "© Belour Capital. Published information may be updated without prior notice."
   },
   "footer": {
-    "description": "Institutional private capital for mining, real estate and infrastructure across LATAM and Houston.",
+    "description": "A boutique firm specialized in capital structuring and private investment.",
     "columns": {
       "explore": "Explore",
       "legal": "Legal"
     },
     "legal": ["Legal Notice", "Privacy Policy", "Terms of Use"],
     "rights": "Belour Capital. All rights reserved.",
-    "demo": "Demo site · fictional data"
+    "tagline": "Your Strategic Partner for Business Development"
   }
 }

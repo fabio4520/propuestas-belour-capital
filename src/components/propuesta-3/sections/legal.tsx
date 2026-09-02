@@ -9,9 +9,8 @@ type Item = { title: string; text: string };
 /**
  * Banda Legal & Divulgaciones — deliberadamente understated (sin índice, sin
  * reveal palabra a palabra): señaliza "territorio de fine print", no marketing.
- * Cierra una bandera roja de compliance para una entidad financiera: aviso de
- * no-oferta, riesgo, estatus regulatorio y confidencialidad. Objetivo del
- * ancla #legal para los enlaces legales del footer. Contenido mock CMS-ready.
+ * Aviso de no-oferta, evaluación caso por caso, cumplimiento AML/PLAFT y
+ * confidencialidad. Objetivo del ancla #legal para los enlaces del footer.
  */
 export function Legal() {
   const t = useTranslations("legal");

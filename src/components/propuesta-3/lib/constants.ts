@@ -1,65 +1,58 @@
 /**
- * Datos NO traducibles de la Propuesta 3 (iconos, coordenadas, links).
+ * Datos NO traducibles del sitio Belour Capital (iconos, links, contacto).
  * Los textos viven en messages/{es,en}.json y se resuelven con next-intl.
  */
 
-/* Nav del header — curado a lo que importa a un inversionista (evita el
-   overflow de 10+ items). El resto de secciones se descubren por scroll y
-   desde el sitemap del footer (FOOTER_LINKS). */
+/* Datos de contacto oficiales (Brochure Belour Capital 2026). */
+export const CONTACT = {
+  email: "contacto@belourcapital.com",
+  phone: "+51 936 699 777",
+  phoneHref: "tel:+51936699777",
+  address: "Av. Javier Prado Oeste 1068, Oficina 603, San Isidro",
+  website: "belourcapital.com",
+} as const;
+
+/* Nav del header — curado a lo esencial para no desbordar en desktop. El
+   resto de secciones se descubren por scroll y desde el sitemap del footer. */
 export const NAV_ITEMS = [
-  { key: "manifesto", href: "#manifesto" },
-  { key: "strategy", href: "#strategy" },
+  { key: "about", href: "#about" },
+  { key: "services", href: "#services" },
+  { key: "process", href: "#process" },
   { key: "sectors", href: "#sectors" },
-  { key: "trackRecord", href: "#track-record" },
-  { key: "leadership", href: "#leadership" },
-  { key: "investors", href: "#investors" },
-  { key: "contact", href: "#contact" },
+  { key: "faq", href: "#faq" },
 ] as const;
 
 /* Sitemap completo del footer — incluye las secciones fuera del nav curado. */
 export const FOOTER_LINKS = [
-  { key: "manifesto", href: "#manifesto" },
-  { key: "strategy", href: "#strategy" },
-  { key: "sectors", href: "#sectors" },
+  { key: "about", href: "#about" },
+  { key: "value", href: "#value" },
   { key: "services", href: "#services" },
-  { key: "trackRecord", href: "#track-record" },
-  { key: "leadership", href: "#leadership" },
-  { key: "geography", href: "#geography" },
-  { key: "investors", href: "#investors" },
+  { key: "process", href: "#process" },
+  { key: "evaluation", href: "#evaluation" },
+  { key: "sectors", href: "#sectors" },
   { key: "faq", href: "#faq" },
-  { key: "news", href: "#news" },
   { key: "contact", href: "#contact" },
 ] as const;
 
-/* Íconos lucide por sector estratégico (orden = messages.sectors.items) */
-export const SECTOR_ICONS = ["Pickaxe", "Building2", "Route"] as const;
+/* Íconos lucide por pilar de "Quiénes somos" (orden = messages.introduction.pillars) */
+export const PILLAR_ICONS = ["Target", "Eye", "Lightbulb"] as const;
 
 /* Íconos lucide por línea de servicio (orden = messages.services.items) */
-export const SERVICE_ICONS = ["Layers", "LineChart", "Users", "ShieldCheck"] as const;
+export const SERVICE_ICONS = ["Landmark", "Layers", "Compass"] as const;
 
-/* Íconos lucide por paso del Protocolo Velour (orden = messages.protocol.steps) */
-export const PROTOCOL_ICONS = ["Search", "FileCheck2", "Handshake", "TrendingUp"] as const;
+/* Íconos lucide por paso de "Cómo trabajamos" (orden = messages.howWeWork.steps) */
+export const PROCESS_ICONS = [
+  "Search",
+  "PencilRuler",
+  "FileCheck2",
+  "TrendingUp",
+] as const;
 
-/*
- * Nodos del globo LATAM + Houston. lat/lng son coordenadas geográficas reales.
- */
-export type MapNode = {
-  id: string;
-  lat: number;
-  lng: number;
-  primary?: boolean;
-};
-
-export const MAP_NODES: MapNode[] = [
-  { id: "houston", lat: 29.7604, lng: -95.3698, primary: true },
-  { id: "cdmx", lat: 19.4326, lng: -99.1332 },
-  { id: "bogota", lat: 4.711, lng: -74.0721 },
-  { id: "lima", lat: -12.0464, lng: -77.0428 },
-  { id: "santiago", lat: -33.4489, lng: -70.6693 },
-  { id: "buenosaires", lat: -34.6037, lng: -58.3816 },
-];
-
-export const SOCIAL_LINKS = [
-  { name: "LinkedIn", href: "#" },
-  { name: "X", href: "#" },
-];
+/* Íconos lucide por sector (orden = messages.sectors.items) */
+export const SECTOR_ICONS = [
+  "Pickaxe",
+  "Store",
+  "Building2",
+  "Factory",
+  "LineChart",
+] as const;

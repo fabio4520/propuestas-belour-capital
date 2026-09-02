@@ -10,38 +10,37 @@ import {
 } from "framer-motion";
 import { useTranslations } from "next-intl";
 import {
+  Landmark,
   Layers,
-  LineChart,
-  Users,
-  ShieldCheck,
+  Compass,
   Search,
+  PencilRuler,
   FileCheck2,
-  Handshake,
   TrendingUp,
   type LucideIcon,
 } from "lucide-react";
 import { SectionHeading } from "../ui/section-heading";
-import { SERVICE_ICONS, PROTOCOL_ICONS } from "../lib/constants";
+import { SERVICE_ICONS, PROCESS_ICONS } from "../lib/constants";
 import { fadeUp, staggerItem, viewportOnce } from "../motion/variants";
 
 const ICONS: Record<string, LucideIcon> = {
+  Landmark,
   Layers,
-  LineChart,
-  Users,
-  ShieldCheck,
+  Compass,
   Search,
+  PencilRuler,
   FileCheck2,
-  Handshake,
   TrendingUp,
 };
 
-type Item = { title: string; text: string };
+type Item = { title: string; text: string; bullets: string[] };
+type Step = { title: string; text: string };
 
 /* Cuánto del tramo de cada card se dedica a la transición deslizante.
    Debe ser menor a la mitad del ancho de tramo (1/total items) o los
    keyframes [start, start+FADE, end-FADE, end] dejan de ser crecientes
-   y useTransform produce un hueco en blanco entre cards. Con 4 items
-   (tramo 0.25) el máximo seguro es 0.125 — se deja margen debajo. */
+   y useTransform produce un hueco en blanco entre cards. Con 3 servicios
+   (tramo 0.333) el máximo seguro es 0.166 — se deja margen debajo. */
 const FADE = 0.09;
 /* Alto de scroll dedicado a cada card dentro del tramo pineado */
 const VH_PER_CARD = 100;
@@ -49,24 +48,34 @@ const VH_PER_CARD = 100;
 function ServiceCardBody({ item, icon: Icon }: { item: Item; icon: LucideIcon }) {
   return (
     <div className="glass-belour w-full max-w-[560px] rounded-3xl border border-white/10 p-6 sm:p-10">
-      <h3 className="font-cormorant text-xl font-light text-belour-white sm:text-3xl">
-        {item.title}
-      </h3>
-
-      <div className="relative mt-5 flex h-36 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-belour-noir sm:mt-7 sm:h-60">
-        <div
-          aria-hidden
-          className="absolute h-28 w-28 rounded-full bg-[radial-gradient(circle,rgba(230,227,220,0.25),transparent_70%)] blur-xl sm:h-36 sm:w-36"
-        />
-        <Icon
-          className="relative h-11 w-11 text-belour-perla sm:h-14 sm:w-14"
-          strokeWidth={1}
-        />
+      <div className="flex items-center gap-4">
+        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-belour-perla/30 text-belour-perla">
+          <Icon className="h-5 w-5" strokeWidth={1.2} />
+        </span>
+        <h3 className="font-sans text-xl font-light text-belour-white sm:text-2xl">
+          {item.title}
+        </h3>
       </div>
 
-      <p className="mt-5 text-sm leading-relaxed text-belour-piedra sm:mt-7 sm:text-base">
+      <p className="mt-5 text-sm leading-relaxed text-belour-piedra sm:mt-6 sm:text-base">
         {item.text}
       </p>
+
+      {/* Sub-servicios oficiales del brochure */}
+      <ul className="mt-5 space-y-2.5 border-t border-white/8 pt-5 sm:mt-6 sm:pt-6">
+        {item.bullets.map((bullet) => (
+          <li
+            key={bullet}
+            className="flex items-start gap-3 text-sm text-belour-white/80 sm:text-[15px]"
+          >
+            <span
+              aria-hidden
+              className="mt-[0.6em] h-px w-4 shrink-0 bg-belour-perla/60"
+            />
+            {bullet}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -156,11 +165,17 @@ function CarouselDot({
   );
 }
 
+/**
+ * Servicios — las tres líneas oficiales del Brochure 2026 (financiamiento
+ * con garantía, estructuración de capital, asesoría estratégica), cada una
+ * con sus sub-servicios, seguidas del proceso "Cómo trabajamos" (01-04:
+ * evaluamos → estructuramos → implementamos → acompañamos).
+ */
 export function Services() {
   const t = useTranslations("services");
-  const tp = useTranslations("protocol");
+  const tw = useTranslations("howWeWork");
   const items = t.raw("items") as Item[];
-  const steps = tp.raw("steps") as Item[];
+  const steps = tw.raw("steps") as Step[];
 
   const carouselRef = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
@@ -185,7 +200,7 @@ export function Services() {
     <section id="services" className="relative bg-belour-coal/40 py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
-          index="05"
+          index="03"
           eyebrow={t("label")}
           title={t("headline")}
           highlight={t("highlight")}
@@ -219,9 +234,10 @@ export function Services() {
           <div className="sticky top-0 flex h-[100svh] flex-col items-center justify-center overflow-hidden">
             {/* La pista necesita altura definida porque las cards son absolute
                 inset-0. Se ajusta por breakpoint al alto real de la card (que
-                también encoge en móvil) con holgura para el párrafo más largo:
-                los textos en inglés ocupan una línea más que en español. */}
-            <div className="relative h-[380px] w-full sm:h-[540px]">
+                también encoge en móvil) con holgura para la lista más larga:
+                dos servicios traen cinco sub-servicios y los textos en inglés
+                pueden ocupar una línea más que en español. */}
+            <div className="relative h-[460px] w-full sm:h-[560px]">
               {items.map((item, i) => (
                 <ServiceCard
                   key={item.title}
@@ -234,7 +250,7 @@ export function Services() {
               ))}
             </div>
 
-            <div className="mt-10 flex items-center gap-2.5">
+            <div className="mt-6 flex items-center gap-2.5 sm:mt-10">
               {items.map((item, i) => (
                 <CarouselDot key={item.title} index={i} total={items.length} progress={carouselProgress} />
               ))}
@@ -244,16 +260,16 @@ export function Services() {
       )}
 
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-        {/* Protocolo Velour — proceso disciplinado 01-04 */}
-        <div className="mt-20 lg:mt-28">
+        {/* Cómo trabajamos — de la oportunidad al crecimiento (01-04) */}
+        <div id="process" className="mt-20 scroll-mt-24 lg:mt-28">
           <div className="flex items-center gap-3">
             <span className="h-px w-8 bg-belour-perla/50" />
             <span className="text-xs font-medium uppercase tracking-[0.35em] text-belour-perla">
-              {tp("label")}
+              {tw("label")}
             </span>
           </div>
-          <h3 className="mt-6 max-w-2xl font-cormorant text-3xl font-light leading-[1.15] text-belour-white sm:text-4xl">
-            {tp("headline")}
+          <h3 className="mt-6 max-w-2xl font-sans text-3xl font-light leading-[1.15] text-belour-white sm:text-4xl">
+            {tw("headline")}
           </h3>
 
           <div ref={processRef} className="relative mt-14">
@@ -265,7 +281,7 @@ export function Services() {
             </div>
             <div className="flex flex-col">
               {steps.map((step, i) => {
-                const Icon = ICONS[PROTOCOL_ICONS[i]];
+                const Icon = ICONS[PROCESS_ICONS[i]];
                 return (
                   <motion.div
                     key={step.title}
@@ -282,7 +298,7 @@ export function Services() {
                       <Icon className="h-5 w-5" strokeWidth={1.4} />
                     </span>
                     <div>
-                      <h4 className="font-cormorant text-xl text-belour-white sm:text-2xl">
+                      <h4 className="font-sans text-xl font-light text-belour-white sm:text-2xl">
                         {step.title}
                       </h4>
                       <p className="mt-2 max-w-md text-sm leading-relaxed text-belour-piedra">

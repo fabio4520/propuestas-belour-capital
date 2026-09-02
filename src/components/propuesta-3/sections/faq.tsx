@@ -11,10 +11,9 @@ import { cn } from "@/lib/utils";
 type QA = { q: string; a: string };
 
 /**
- * FAQ / Cómo Invertir — accordion con las preguntas que un inversionista hace
- * antes de comprometer capital: mínimos, acreditación, estructura, liquidez,
- * reporting y proceso. Cierra el vacío de "no hay claridad sobre cómo invertir".
- * Mock CMS-ready ES/EN.
+ * Preguntas frecuentes — accordion con lo que un cliente pregunta antes de
+ * iniciar una operación: tipos de financiamiento, garantías aceptadas,
+ * criterios de evaluación, sectores, plazos y cómo empieza el proceso.
  */
 export function Faq() {
   const t = useTranslations("faq");
@@ -25,7 +24,7 @@ export function Faq() {
     <section id="faq" className="relative bg-belour-coal/40 py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
-          index="10"
+          index="06"
           eyebrow={t("label")}
           title={t("headline")}
           highlight={t("highlight")}

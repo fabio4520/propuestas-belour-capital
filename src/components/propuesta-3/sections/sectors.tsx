@@ -10,29 +10,47 @@ import {
 } from "framer-motion";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { Pickaxe, Building2, Route, type LucideIcon } from "lucide-react";
+import {
+  Pickaxe,
+  Store,
+  Building2,
+  Factory,
+  LineChart,
+  type LucideIcon,
+} from "lucide-react";
 import { SectionHeading } from "../ui/section-heading";
-import { GoldLine } from "../ui/gold-line";
+import { Hairline } from "../ui/hairline";
 import { SECTOR_ICONS } from "../lib/constants";
 import { fadeUp, viewportOnce } from "../motion/variants";
 import { cn } from "@/lib/utils";
 
-const ICONS: Record<string, LucideIcon> = { Pickaxe, Building2, Route };
+const ICONS: Record<string, LucideIcon> = {
+  Pickaxe,
+  Store,
+  Building2,
+  Factory,
+  LineChart,
+};
 
-/* Imagen editorial por sector (generadas — dirección de arte Obsidiana:
-   monocromo negro/dorado, sin texto, sin personas). Orden = messages.sectors.items */
+/* Imagen editorial por sector (dirección de arte monocroma — sin texto,
+   sin personas). Orden = messages.sectors.items (Brochure 2026). */
 const SECTOR_IMAGES = [
-  "/velour/p3/sectors/mineria.jpg",
-  "/velour/p3/sectors/real-estate.jpg",
-  "/velour/p3/sectors/infraestructura.jpg",
+  "/belour/sectors/mineria.jpg",
+  "/belour/sectors/pymes.jpg",
+  "/belour/sectors/inmobiliario.jpg",
+  "/belour/sectors/productivos.jpg",
+  "/belour/sectors/crecimiento.jpg",
 ] as const;
 
 type Item = { title: string; text: string };
 
-/* Cuánto del tramo de cada card se dedica al cross-fade con la siguiente */
-const FADE = 0.14;
+/* Cuánto del tramo de cada card se dedica al cross-fade con la siguiente.
+   Debe ser menor a la mitad del ancho de tramo (1/total items) o los
+   keyframes [start, start+FADE, end-FADE, end] dejan de ser crecientes.
+   Con 5 sectores (tramo 0.2) el máximo seguro es 0.1 — se deja margen. */
+const FADE = 0.08;
 /* Alto de scroll dedicado a cada card dentro del tramo pineado */
-const VH_PER_CARD = 120;
+const VH_PER_CARD = 100;
 
 function SectorCardBody({
   item,
@@ -90,7 +108,7 @@ function SectorCardBody({
             <Icon className="h-5 w-5" strokeWidth={1.4} />
           </span>
         </div>
-        <h3 className="mt-4 font-cormorant text-3xl font-light leading-[1.1] text-belour-white sm:mt-6 sm:text-4xl lg:text-5xl">
+        <h3 className="mt-4 font-sans text-3xl font-light leading-[1.1] text-belour-white sm:mt-6 sm:text-4xl lg:text-5xl">
           {item.title}
         </h3>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-belour-piedra sm:mt-5 sm:text-base lg:text-lg">
@@ -105,7 +123,7 @@ function SectorCardBody({
  * Card pineada: su opacidad/escala están atadas al progreso de scroll del
  * contenedor padre (no a whileInView — todas las cards están montadas a la
  * vez, superpuestas). La card activa domina el tramo central de su rango;
- * en el 14% final se encoge y funde mientras la siguiente entra. La primera
+ * en el tramo final se encoge y funde mientras la siguiente entra. La primera
  * card empieza ya visible (edge inicial) y la última no hace fade-out
  * (edge final) — si no, ambas arrancarían/terminarían en opacidad 0.
  */
@@ -169,6 +187,11 @@ function SectorCard({
   );
 }
 
+/**
+ * Sectores en los que trabajamos — los cinco del Brochure 2026: minería,
+ * PYMES, sector inmobiliario, proyectos productivos y empresas en
+ * crecimiento.
+ */
 export function Sectors() {
   const t = useTranslations("sectors");
   const items = t.raw("items") as Item[];
@@ -183,7 +206,7 @@ export function Sectors() {
     <section id="sectors" className="relative bg-belour-noir">
       <div className="mx-auto max-w-[1400px] px-6 pt-28 sm:pt-36 lg:px-10">
         <SectionHeading
-          index="03"
+          index="05"
           eyebrow={t("label")}
           title={t("headline")}
           highlight={t("highlight")}
@@ -239,7 +262,7 @@ export function Sectors() {
       )}
 
       <div className="mx-auto max-w-[1400px] px-6 pb-20 lg:px-10">
-        <GoldLine />
+        <Hairline />
       </div>
     </section>
   );

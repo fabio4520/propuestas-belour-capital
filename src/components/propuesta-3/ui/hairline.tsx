@@ -5,8 +5,8 @@ import { viewportOnce } from "../motion/variants";
 import { EASE_OUT_EXPO } from "../motion/transitions";
 import { cn } from "@/lib/utils";
 
-/** Hairline dorada animada (scaleX 0→1 on view) — firma visual recurrente. */
-export function GoldLine({ className }: { className?: string }) {
+/** Hairline perla animada (scaleX 0→1 on view) — firma visual recurrente. */
+export function Hairline({ className }: { className?: string }) {
   return (
     <motion.span
       initial={{ scaleX: 0 }}

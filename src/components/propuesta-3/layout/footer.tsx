@@ -1,14 +1,19 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { FOOTER_LINKS, SOCIAL_LINKS } from "../lib/constants";
+import { CONTACT, FOOTER_LINKS } from "../lib/constants";
 import { LanguageSwitcher } from "../ui/language-switcher";
-import { GoldLine } from "../ui/gold-line";
+import { Hairline } from "../ui/hairline";
 
 export function Footer() {
   const t = useTranslations();
   const year = new Date().getFullYear();
   const legal = t.raw("footer.legal") as string[];
+
+  const contactLinks = [
+    { label: CONTACT.email, href: `mailto:${CONTACT.email}` },
+    { label: CONTACT.phone, href: CONTACT.phoneHref },
+  ];
 
   return (
     <footer className="relative overflow-hidden border-t border-white/8 bg-belour-noir">
@@ -35,6 +40,9 @@ export function Footer() {
             <p className="mt-4 text-sm leading-relaxed text-belour-piedra">
               {t("footer.description")}
             </p>
+            <p className="mt-3 text-sm leading-relaxed text-belour-piedra/80">
+              {CONTACT.address}
+            </p>
             <div className="mt-6">
               <LanguageSwitcher />
             </div>
@@ -56,7 +64,7 @@ export function Footer() {
             ))}
           </nav>
 
-          {/* Legal + social */}
+          {/* Legal + contacto directo */}
           <nav className="flex flex-col gap-3">
             <span className="mb-1 text-xs uppercase tracking-[0.25em] text-belour-perla/70">
               {t("footer.columns.legal")}
@@ -70,27 +78,27 @@ export function Footer() {
                 {l}
               </a>
             ))}
-            <div className="mt-2 flex gap-4">
-              {SOCIAL_LINKS.map((s) => (
+            <div className="mt-2 flex flex-col gap-2">
+              {contactLinks.map((c) => (
                 <a
-                  key={s.name}
-                  href={s.href}
-                  className="text-xs uppercase tracking-wider text-belour-piedra transition-colors hover:text-belour-perla"
+                  key={c.label}
+                  href={c.href}
+                  className="text-sm text-belour-piedra transition-colors hover:text-belour-perla"
                 >
-                  {s.name}
+                  {c.label}
                 </a>
               ))}
             </div>
           </nav>
         </div>
 
-        <GoldLine />
+        <Hairline />
 
         <div className="flex flex-col items-start justify-between gap-4 py-8 sm:flex-row sm:items-center">
           <p className="text-xs text-belour-piedra/70">
             © {year} {t("footer.rights")}
           </p>
-          <p className="text-xs text-belour-piedra/50">{t("footer.demo")}</p>
+          <p className="text-xs text-belour-piedra/50">{t("footer.tagline")}</p>
         </div>
       </div>
     </footer>

@@ -11,29 +11,26 @@ import { Header } from "./layout/header";
 import { Footer } from "./layout/footer";
 import { Hero } from "./sections/hero";
 import { Introduction } from "./sections/introduction";
-import { Manifesto } from "./sections/manifesto";
-import { Sectors } from "./sections/sectors";
-import { Strategy } from "./sections/strategy";
+import { ValueProposition } from "./sections/value-proposition";
 import { Services } from "./sections/services";
-import { TrackRecord } from "./sections/track-record";
-import { Leadership } from "./sections/leadership";
-import { Geography } from "./sections/geography";
-import { Investors } from "./sections/investors";
+import { Evaluation } from "./sections/evaluation";
+import { Sectors } from "./sections/sectors";
 import { Faq } from "./sections/faq";
 import { Contact } from "./sections/contact";
-import { News } from "./sections/news";
 import { Legal } from "./sections/legal";
 
 /**
- * Raíz cliente de la Propuesta 3 — Velour Capital · "Obsidiana".
+ * Raíz cliente del sitio Belour Capital.
  * i18n scopeado + scroll suave (Lenis) + cursor de marca + preloader.
  * MotionConfig reducedMotion="user" degrada toda animación a fades cuando el
  * usuario prefiere movimiento reducido, sin tocar cada componente individual.
- * Orden institucional: introducción → manifiesto → sectores → estrategia →
- * servicios/protocolo → track record → equipo → alcance → inversionistas →
- * cómo invertir (FAQ) → prensa → contacto → banda legal → footer.
+ *
+ * El orden sigue la estructura del Brochure Belour Capital 2026:
+ * quiénes somos → propuesta de valor → servicios/cómo trabajamos →
+ * enfoque de evaluación → sectores → preguntas frecuentes → contacto →
+ * banda legal → footer.
  */
-export function Propuesta3App() {
+export function BelourApp() {
   return (
     <MotionConfig reducedMotion="user">
       <LocaleProvider>
@@ -46,16 +43,11 @@ export function Propuesta3App() {
           <main>
             <Hero />
             <Introduction />
-            <Manifesto />
-            <Sectors />
-            <Strategy />
+            <ValueProposition />
             <Services />
-            <TrackRecord />
-            <Leadership />
-            <Geography />
-            <Investors />
+            <Evaluation />
+            <Sectors />
             <Faq />
-            <News />
             <Contact />
             <Legal />
           </main>
