@@ -54,7 +54,7 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="surface-noir relative overflow-hidden bg-surface py-28 sm:py-36">
+    <section id="contact" className="grain-belour surface-perla relative overflow-hidden bg-surface py-28 sm:py-36">
       <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgb(var(--brand)/0.07),transparent_65%)]" />
 
       <div className="relative mx-auto grid max-w-[1400px] gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:px-10">

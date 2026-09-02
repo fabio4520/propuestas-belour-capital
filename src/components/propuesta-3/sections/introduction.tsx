@@ -28,7 +28,7 @@ export function Introduction() {
   const pillars = t.raw("pillars") as Pillar[];
 
   return (
-    <section id="about" className="surface-noir relative bg-surface py-28 sm:py-36">
+    <section id="about" className="grain-belour surface-hueso relative bg-surface py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="01"

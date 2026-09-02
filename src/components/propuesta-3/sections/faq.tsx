@@ -21,7 +21,7 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="surface-coal relative bg-surface py-28 sm:py-36">
+    <section id="faq" className="grain-belour surface-hueso relative bg-surface py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="06"

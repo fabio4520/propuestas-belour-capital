@@ -197,7 +197,7 @@ export function Services() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section id="services" className="surface-coal relative bg-surface py-28 sm:py-36">
+    <section id="services" className="surface-noir relative bg-surface py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="03"

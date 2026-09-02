@@ -22,7 +22,7 @@ export function ValueProposition() {
   const items = t.raw("items") as Item[];
 
   return (
-    <section id="value" className="surface-noir relative bg-surface py-28 sm:py-36">
+    <section id="value" className="grain-belour surface-perla relative bg-surface py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="02"

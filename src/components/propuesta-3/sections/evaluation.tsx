@@ -17,7 +17,7 @@ export function Evaluation() {
   const criteria = t.raw("criteria") as Criterion[];
 
   return (
-    <section id="evaluation" className="surface-noir relative bg-surface py-28 sm:py-36">
+    <section id="evaluation" className="surface-coal relative bg-surface py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="04"
