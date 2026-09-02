@@ -28,7 +28,7 @@ export function Introduction() {
   const pillars = t.raw("pillars") as Pillar[];
 
   return (
-    <section id="about" className="relative bg-belour-noir py-28 sm:py-36">
+    <section id="about" className="surface-noir relative bg-surface py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="01"
@@ -53,10 +53,10 @@ export function Introduction() {
           </Magnetic>
           <a
             href="#contact"
-            className="group relative text-sm font-medium tracking-wide text-belour-white/85 transition-colors hover:text-belour-white"
+            className="group relative text-sm font-medium tracking-wide text-ink/85 transition-colors hover:text-ink"
           >
             {t("ctaSecondary")}
-            <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-belour-perla transition-transform duration-300 group-hover:scale-x-100" />
+            <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-brand transition-transform duration-300 group-hover:scale-x-100" />
           </a>
         </motion.div>
 
@@ -66,19 +66,19 @@ export function Introduction() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-20 grid gap-x-10 gap-y-12 border-t border-white/8 pt-12 sm:grid-cols-3"
+          className="mt-20 grid gap-x-10 gap-y-12 border-t border-rule/10 pt-12 sm:grid-cols-3"
         >
           {pillars.map((pillar, i) => {
             const Icon = ICONS[PILLAR_ICONS[i]];
             return (
               <motion.div key={pillar.title} variants={staggerItem}>
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-belour-perla/30 text-belour-perla">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand/30 text-brand">
                   <Icon className="h-5 w-5" strokeWidth={1.2} />
                 </span>
-                <h3 className="mt-5 text-xs font-medium uppercase tracking-[0.25em] text-belour-perla">
+                <h3 className="mt-5 text-xs font-medium uppercase tracking-[0.25em] text-brand">
                   {pillar.title}
                 </h3>
-                <p className="mt-3 max-w-xs font-cormorant text-xl italic leading-snug text-belour-white/90 sm:text-2xl">
+                <p className="mt-3 max-w-xs font-cormorant text-xl italic leading-snug text-ink/90 sm:text-2xl">
                   {pillar.text}
                 </p>
               </motion.div>

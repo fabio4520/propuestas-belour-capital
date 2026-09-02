@@ -8,6 +8,15 @@ import type { Config } from "tailwindcss";
  * y calidez sin romper la sobriedad. El acento (perla/hueso) ocupa el rol que
  * antes tenía el dorado: detalle escaso —eyebrows, hairlines, cursor, hover—
  * nunca fondos grandes.
+ *
+ * SUPERFICIES (surface/ink/brand/rule): la paleta de arriba son pigmentos
+ * fijos; estos son roles. Cada sección declara su superficie con una clase
+ * `.surface-*` (ver globals.css) y todo lo que hay dentro —texto, hairlines,
+ * bordes, acentos— se resuelve solo, sea la sección noir o papel. Por eso los
+ * componentes usan `text-ink` / `border-rule/10` y no `text-belour-white` /
+ * `border-white/8`: una misma card es legible sobre negro y sobre hueso.
+ * Formato `rgb(var(--x) / <alpha-value>)` para conservar el modificador de
+ * opacidad de Tailwind (`text-ink/80`).
  */
 const config: Config = {
   darkMode: ["class"],
@@ -36,6 +45,22 @@ const config: Config = {
           perla: "#E6E3DC", // GRIS PERLA — acento principal
           hueso: "#F4F2ED", // GRIS PERLA claro / hueso — acento alto
         },
+
+        // Roles de superficie — resueltos por la clase `.surface-*` de la sección
+        surface: {
+          DEFAULT: "rgb(var(--surface) / <alpha-value>)",
+          raised: "rgb(var(--surface-raised) / <alpha-value>)",
+        },
+        ink: {
+          DEFAULT: "rgb(var(--ink) / <alpha-value>)",
+          muted: "rgb(var(--ink-muted) / <alpha-value>)",
+        },
+        brand: {
+          DEFAULT: "rgb(var(--brand) / <alpha-value>)",
+          on: "rgb(var(--brand-on) / <alpha-value>)",
+        },
+        rule: "rgb(var(--rule) / <alpha-value>)",
+
         // tokens shadcn/ui (mapeados a variables CSS en globals.css)
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

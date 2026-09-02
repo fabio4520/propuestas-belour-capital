@@ -78,7 +78,7 @@ function SectorCardBody({
           desde sm, donde ya hay altura de sobra. */}
       <div
         className={cn(
-          "relative max-h-[34svh] w-full overflow-hidden rounded-3xl border border-white/8 [aspect-ratio:4/5] sm:max-h-[62vh]",
+          "relative max-h-[34svh] w-full overflow-hidden rounded-3xl border border-rule/10 [aspect-ratio:4/5] sm:max-h-[62vh]",
           reversed && "lg:order-2"
         )}
       >
@@ -95,23 +95,23 @@ function SectorCardBody({
             priority={priority}
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-belour-noir/70 via-transparent to-transparent" />
-        <div className="absolute inset-0 rounded-3xl border border-white/8" />
+        <div className="absolute inset-0 bg-gradient-to-t from-surface/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 rounded-3xl border border-rule/10" />
       </div>
 
       <div className={cn(reversed && "lg:order-1")}>
         <div className="flex items-center gap-4">
-          <span className="font-cormorant text-2xl italic text-belour-hueso/60">
+          <span className="font-cormorant text-2xl italic text-brand/60">
             0{index + 1}
           </span>
-          <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-belour-perla">
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-rule/15 text-brand">
             <Icon className="h-5 w-5" strokeWidth={1.4} />
           </span>
         </div>
-        <h3 className="mt-4 font-sans text-3xl font-light leading-[1.1] text-belour-white sm:mt-6 sm:text-4xl lg:text-5xl">
+        <h3 className="mt-4 font-sans text-3xl font-light leading-[1.1] text-ink sm:mt-6 sm:text-4xl lg:text-5xl">
           {item.title}
         </h3>
-        <p className="mt-3 max-w-md text-sm leading-relaxed text-belour-piedra sm:mt-5 sm:text-base lg:text-lg">
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-muted sm:mt-5 sm:text-base lg:text-lg">
           {item.text}
         </p>
       </div>
@@ -203,7 +203,7 @@ export function Sectors() {
   });
 
   return (
-    <section id="sectors" className="relative bg-belour-noir">
+    <section id="sectors" className="surface-noir relative bg-surface">
       <div className="mx-auto max-w-[1400px] px-6 pt-28 sm:pt-36 lg:px-10">
         <SectionHeading
           index="05"

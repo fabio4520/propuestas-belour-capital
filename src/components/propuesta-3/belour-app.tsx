@@ -38,7 +38,7 @@ export function BelourApp() {
         <SmoothScroll />
         <CustomCursor />
         <ReadingProgress />
-        <div className="relative min-h-screen bg-belour-noir font-sans text-belour-white antialiased">
+        <div className="surface-noir relative min-h-screen bg-surface font-sans text-ink antialiased">
           <Header />
           <main>
             <Hero />

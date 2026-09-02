@@ -40,7 +40,10 @@ export function ScrollToTop() {
           whileHover={{ y: -3 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           aria-label="Volver arriba"
-          className="glass-belour fixed bottom-6 right-6 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full text-belour-perla transition-colors duration-300 hover:bg-belour-perla hover:text-belour-noir"
+          /* Superficie propia (noir) y no `glass-belour`: el botón flota sobre
+             secciones que alternan negro y papel, y una veladura translúcida
+             desaparecía sobre las claras. Píldora oscura sólida = siempre visible. */
+          className="surface-noir fixed bottom-6 right-6 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border border-rule/12 bg-surface/85 text-brand backdrop-blur-xl transition-colors duration-300 hover:bg-brand hover:text-brand-on"
         >
           <ArrowUp className="h-5 w-5" />
         </motion.button>

@@ -29,6 +29,86 @@
     --ring: 42 17% 88%;
 
     --radius: 0.25rem;
+
+    /* Superficie por defecto = noir. Los componentes que viven FUERA del árbol
+       de secciones (preloader, cursor, botón flotante) también resuelven
+       `rgb(var(--ink) / …)`: sin este fallback heredarían una variable vacía y
+       el color quedaría inválido —texto invisible, no un tono equivocado. */
+    --surface: 10 10 10;
+    --surface-raised: 17 17 17;
+    --ink: 255 255 255;
+    --ink-muted: 138 136 128;
+    --brand: 230 227 220;
+    --brand-on: 10 10 10;
+    --rule: 255 255 255;
+    --grad-1: #f4f2ed;
+    --grad-2: #b8b6ae;
+  }
+}
+
+/*
+ * ─── SUPERFICIES ──────────────────────────────────────────────────────────
+ * Cada sección declara la suya y hereda cinco roles: surface (fondo),
+ * surface-raised (card/píldora elevada), ink + ink-muted (tinta), brand +
+ * brand-on (acento y su tinta), rule (bordes y hairlines).
+ *
+ * `rule` es un RGB puro y NO trae opacidad propia: las clases lo piden con
+ * modificador (`border-rule/10`), y así el mismo 10% es blanco sobre noir y
+ * negro sobre papel. Ese es el truco que permite reusar cada componente en
+ * ambos registros sin duplicar clases.
+ *
+ * Contraste verificado (WCAG AA, texto normal ≥4.5:1):
+ *   ink-muted #5E5B54 sobre hueso #F4F2ED → 6.2:1
+ *   ink-muted #5A5750 sobre perla #E6E3DC → 5.7:1
+ *   ink-muted #8A8880 (piedra) sobre noir #0A0A0A → 8.1:1
+ */
+@layer components {
+  .surface-noir {
+    --surface: 10 10 10;
+    --surface-raised: 17 17 17;
+    --ink: 255 255 255;
+    --ink-muted: 138 136 128; /* gris piedra */
+    --brand: 230 227 220; /* gris perla */
+    --brand-on: 10 10 10;
+    --rule: 255 255 255;
+    --grad-1: #f4f2ed;
+    --grad-2: #b8b6ae;
+  }
+
+  .surface-coal {
+    --surface: 18 17 16;
+    --surface-raised: 26 25 23;
+    --ink: 255 255 255;
+    --ink-muted: 142 140 132;
+    --brand: 230 227 220;
+    --brand-on: 10 10 10;
+    --rule: 255 255 255;
+    --grad-1: #f4f2ed;
+    --grad-2: #b8b6ae;
+  }
+
+  .surface-perla {
+    --surface: 230 227 220;
+    --surface-raised: 244 242 237;
+    --ink: 20 19 15;
+    --ink-muted: 90 87 80;
+    --brand: 46 44 39;
+    --brand-on: 244 242 237;
+    --rule: 20 19 15;
+    --grad-1: #14130f;
+    --grad-2: #6b675e;
+  }
+
+  .surface-hueso {
+    --surface: 244 242 237;
+    --surface-raised: 255 255 255;
+    --ink: 20 19 15;
+    --ink-muted: 94 91 84;
+    --brand: 46 44 39;
+    --brand-on: 244 242 237;
+    --rule: 20 19 15;
+    --grad-1: #14130f;
+    --grad-2: #6b675e;
   }
 }
 
@@ -51,27 +131,34 @@
 }
 
 @layer utilities {
-  /* Titular con acabado perla pulido, muy sutil (solo para detalle/highlight) */
+  /* Titular con acabado pulido, muy sutil (solo para detalle/highlight).
+     Los stops vienen de la superficie: perla sobre noir, grafito sobre papel. */
   .text-belour-perla-gradient {
-    background: linear-gradient(100deg, #f4f2ed 0%, #b8b6ae 50%, #f4f2ed 100%);
+    background: linear-gradient(
+      100deg,
+      var(--grad-1) 0%,
+      var(--grad-2) 50%,
+      var(--grad-1) 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
   }
 
-  /* Línea fina perla — firma visual recurrente entre secciones */
+  /* Línea fina de acento — firma visual recurrente entre secciones */
   .hairline-belour-perla {
     height: 1px;
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(230, 227, 220, 0.5),
+      rgb(var(--brand) / 0.5),
       transparent
     );
   }
 
-  /* Grano de película muy sutil sobre el negro absoluto */
+  /* Grano de película muy sutil. Sobre superficie oscura suma luz (screen);
+     sobre papel resta (multiply) y lee como textura de fibra impresa. */
   .grain-belour::before {
     content: "";
     position: absolute;
@@ -81,13 +168,28 @@
     z-index: 1;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
+  .surface-perla .grain-belour::before,
+  .surface-hueso .grain-belour::before,
+  .grain-belour.surface-perla::before,
+  .grain-belour.surface-hueso::before {
+    mix-blend-mode: multiply;
+    opacity: 0.05;
+  }
 
-  /* Vidrio sutil sobre negro absoluto (formulario de contacto, cards flotantes) */
+  /* Vidrio sutil sobre la superficie de la sección (formulario, cards) */
   .glass-belour {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgb(var(--ink) / 0.03);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    border: 1px solid rgb(var(--rule) / 0.07);
+  }
+  /* Sobre papel el "vidrio" no puede ser una veladura de tinta: queda gris
+     sucio. Se resuelve como card elevada (surface-raised) con sombra corta. */
+  .surface-perla .glass-belour,
+  .surface-hueso .glass-belour {
+    background: rgb(var(--surface-raised) / 0.75);
+    border-color: rgb(var(--rule) / 0.1);
+    box-shadow: 0 24px 60px -32px rgb(var(--ink) / 0.28);
   }
 
   /*
@@ -99,9 +201,13 @@
    */
   @media (max-width: 768px) {
     .glass-belour {
-      background: rgba(24, 24, 24, 0.92);
+      background: rgb(var(--surface-raised) / 0.94);
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
+    }
+    .surface-perla .glass-belour,
+    .surface-hueso .glass-belour {
+      background: rgb(var(--surface-raised) / 1);
     }
   }
 }

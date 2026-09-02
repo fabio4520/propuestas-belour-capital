@@ -21,7 +21,7 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative bg-belour-coal/40 py-28 sm:py-36">
+    <section id="faq" className="surface-coal relative bg-surface py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="06"
@@ -31,30 +31,32 @@ export function Faq() {
           description={t("subtext")}
         />
 
-        <div className="mx-auto mt-14 max-w-3xl border-t border-white/8">
+        <div className="mx-auto mt-14 max-w-3xl border-t border-rule/10">
           {items.map((item, i) => {
             const isOpen = open === i;
             return (
-              <div key={item.q} className="border-b border-white/8">
+              <div key={item.q} className="border-b border-rule/10">
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
                   className="group flex w-full items-center justify-between gap-6 py-6 text-left"
                   aria-expanded={isOpen}
                 >
+                  {/* El estado activo se marca con OPACIDAD de tinta, no con
+                      otro pigmento: `brand` es más claro que `ink` sobre noir
+                      pero más oscuro sobre papel, así que usarlo aquí invertía
+                      la jerarquía al cambiar de superficie. */}
                   <span
                     className={cn(
                       "font-sans text-lg font-light transition-colors duration-300 sm:text-xl",
-                      isOpen
-                        ? "text-belour-hueso"
-                        : "text-belour-white group-hover:text-belour-hueso"
+                      isOpen ? "text-ink" : "text-ink/65 group-hover:text-ink"
                     )}
                   >
                     {item.q}
                   </span>
                   <span
                     className={cn(
-                      "shrink-0 text-belour-perla transition-transform duration-300",
+                      "shrink-0 text-brand transition-transform duration-300",
                       isOpen && "rotate-45"
                     )}
                   >
@@ -70,7 +72,7 @@ export function Faq() {
                       transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-6 pr-10 text-sm leading-relaxed text-belour-piedra sm:text-base">
+                      <p className="pb-6 pr-10 text-sm leading-relaxed text-ink-muted sm:text-base">
                         {item.a}
                       </p>
                     </motion.div>
@@ -81,7 +83,7 @@ export function Faq() {
           })}
         </div>
 
-        <p className="mx-auto mt-10 max-w-3xl text-xs text-belour-piedra/50">
+        <p className="mx-auto mt-10 max-w-3xl text-xs text-ink-muted/60">
           {t("note")}
         </p>
       </div>

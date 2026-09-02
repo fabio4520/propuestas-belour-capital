@@ -22,7 +22,7 @@ export function ValueProposition() {
   const items = t.raw("items") as Item[];
 
   return (
-    <section id="value" className="relative bg-belour-noir py-28 sm:py-36">
+    <section id="value" className="surface-noir relative bg-surface py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="02"
@@ -36,10 +36,10 @@ export function ValueProposition() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-10 max-w-3xl font-cormorant text-2xl font-light leading-relaxed text-belour-white/90 sm:text-3xl"
+          className="mt-10 max-w-3xl font-cormorant text-2xl font-light leading-relaxed text-ink/90 sm:text-3xl"
         >
           {t("textBefore")}{" "}
-          <em className="text-belour-perla-gradient italic">{t("emphasis")}</em>
+          <em className="text-brand-gradient italic">{t("emphasis")}</em>
           {t("textAfter")}
         </motion.p>
 
@@ -48,7 +48,7 @@ export function ValueProposition() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-20 grid gap-x-12 gap-y-10 border-t border-white/8 pt-12 sm:grid-cols-2"
+          className="mt-20 grid gap-x-12 gap-y-10 border-t border-rule/10 pt-12 sm:grid-cols-2"
         >
           {items.map((item, i) => (
             <motion.div
@@ -56,14 +56,14 @@ export function ValueProposition() {
               variants={staggerItem}
               className="grid grid-cols-[auto_1fr] items-start gap-5"
             >
-              <span className="font-cormorant text-sm italic text-belour-hueso/70">
+              <span className="font-cormorant text-sm italic text-brand/70">
                 0{i + 1}
               </span>
               <div>
-                <h3 className="font-sans text-xl font-light text-belour-white sm:text-2xl">
+                <h3 className="font-sans text-xl font-light text-ink sm:text-2xl">
                   {item.title}
                 </h3>
-                <p className="mt-2.5 max-w-md text-sm leading-relaxed text-belour-piedra sm:text-base">
+                <p className="mt-2.5 max-w-md text-sm leading-relaxed text-ink-muted sm:text-base">
                   {item.text}
                 </p>
               </div>

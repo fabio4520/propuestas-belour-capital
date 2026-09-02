@@ -4,9 +4,16 @@ import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 /**
- * Cursor de seguimiento dorado (punto que crece a anillo sobre elementos
+ * Cursor de seguimiento (punto que crece a anillo sobre elementos
  * interactivos). No oculta el cursor nativo. Solo desktop con puntero fino;
  * desactivado con reduced-motion.
+ *
+ * Color: blanco en `mix-blend-difference` en vez de un pigmento fijo. Con
+ * secciones que alternan noir y papel, cualquier color fijo desaparece en la
+ * mitad del scroll; la diferencia lo invierte contra lo que tenga debajo
+ * (blanco sobre noir, casi negro sobre hueso) sin saber en qué sección está.
+ * El blend va en el wrapper —no en los puntos—: el wrapper ya crea un
+ * stacking context por el transform, y eso aísla el blending de sus hijos.
  */
 export function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
@@ -45,7 +52,7 @@ export function CustomCursor() {
   return (
     <motion.div
       style={{ x: sx, y: sy }}
-      className="pointer-events-none fixed left-0 top-0 z-[70] hidden lg:block"
+      className="pointer-events-none fixed left-0 top-0 z-[70] hidden mix-blend-difference lg:block"
       aria-hidden
     >
       <motion.span
@@ -54,7 +61,7 @@ export function CustomCursor() {
           opacity: active ? 0.9 : 0.6,
         }}
         transition={{ type: "spring", stiffness: 260, damping: 20 }}
-        className="block h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-belour-perla"
+        className="block h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white"
       />
       <motion.span
         animate={{
@@ -62,7 +69,7 @@ export function CustomCursor() {
           opacity: active ? 0.8 : 0,
         }}
         transition={{ type: "spring", stiffness: 260, damping: 20 }}
-        className="absolute left-0 top-0 block h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full border border-belour-perla/70"
+        className="absolute left-0 top-0 block h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/70"
       />
     </motion.div>
   );

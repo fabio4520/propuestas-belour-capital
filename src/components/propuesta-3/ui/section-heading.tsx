@@ -6,9 +6,10 @@ import { fadeUp, viewportOnce } from "../motion/variants";
 import { cn } from "@/lib/utils";
 
 /**
- * Cabecera de sección reutilizable: eyebrow dorado (índice + hairline +
- * texto uppercase) + titular Garamond font-light con reveal palabra a
- * palabra + descripción opcional.
+ * Cabecera de sección reutilizable: eyebrow de acento (índice + hairline +
+ * texto uppercase) + titular font-light con reveal palabra a palabra +
+ * descripción opcional. Todo en roles de superficie (brand/ink/ink-muted):
+ * la misma cabecera se lee igual sobre noir que sobre papel.
  */
 export function SectionHeading({
   index,
@@ -46,12 +47,12 @@ export function SectionHeading({
         )}
       >
         {index && (
-          <span className="font-cormorant text-sm italic text-belour-hueso/80">
+          <span className="font-cormorant text-sm italic text-brand/80">
             {index}
           </span>
         )}
-        <span className="h-px w-8 bg-belour-perla/50" />
-        <span className="text-xs font-medium uppercase tracking-[0.35em] text-belour-perla">
+        <span className="h-px w-8 bg-brand/50" />
+        <span className="text-xs font-medium uppercase tracking-[0.35em] text-brand">
           {eyebrow}
         </span>
       </motion.div>
@@ -60,7 +61,7 @@ export function SectionHeading({
         as="h2"
         text={title}
         highlight={highlight}
-        className="mt-6 font-sans text-4xl font-light leading-[1.12] tracking-[0.01em] text-belour-white sm:text-5xl"
+        className="mt-6 font-sans text-4xl font-light leading-[1.12] tracking-[0.01em] text-ink sm:text-5xl"
       />
 
       {description && (
@@ -69,7 +70,7 @@ export function SectionHeading({
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-5 max-w-xl text-base leading-relaxed text-belour-piedra sm:text-lg"
+          className="mt-5 max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg"
         >
           {description}
         </motion.p>

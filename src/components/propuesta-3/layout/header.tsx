@@ -32,10 +32,13 @@ export function Header() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+      /* El header conserva superficie noir aunque la sección de debajo sea
+         papel: es una barra sobre el documento, no parte de él, y mantenerla
+         oscura da un anclaje constante mientras el fondo alterna de tono. */
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        "surface-noir fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-white/8 bg-belour-noir/85 backdrop-blur-xl"
+          ? "border-b border-rule/10 bg-surface/85 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent",
       )}
     >
@@ -59,10 +62,10 @@ export function Header() {
             <a
               key={item.key}
               href={item.href}
-              className="group relative text-sm text-belour-piedra transition-colors hover:text-belour-white"
+              className="group relative text-sm text-ink-muted transition-colors hover:text-ink"
             >
               {t(item.key)}
-              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-belour-perla transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-brand transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </div>
@@ -71,7 +74,7 @@ export function Header() {
           <LanguageSwitcher />
           <a
             href="#contact"
-            className="rounded-full border border-belour-perla/40 px-5 py-2 text-sm font-medium text-belour-perla transition-all duration-300 hover:bg-belour-perla hover:text-belour-noir"
+            className="rounded-full border border-brand/40 px-5 py-2 text-sm font-medium text-brand transition-all duration-300 hover:bg-brand hover:text-brand-on"
           >
             {t("cta")}
           </a>
@@ -80,7 +83,7 @@ export function Header() {
         {/* Toggle móvil */}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="cursor-pointer p-2 text-belour-white lg:hidden"
+          className="cursor-pointer p-2 text-ink lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
@@ -96,7 +99,7 @@ export function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-white/8 bg-belour-noir/95 backdrop-blur-xl lg:hidden"
+            className="overflow-hidden border-t border-rule/10 bg-surface/95 backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col gap-1 px-6 py-5">
               {NAV_ITEMS.map((item) => (
@@ -104,7 +107,7 @@ export function Header() {
                   key={item.key}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="py-3 text-base text-belour-piedra transition-colors hover:text-belour-perla"
+                  className="py-3 text-base text-ink-muted transition-colors hover:text-brand"
                 >
                   {t(item.key)}
                 </a>
@@ -114,7 +117,7 @@ export function Header() {
                 <a
                   href="#contact"
                   onClick={() => setOpen(false)}
-                  className="rounded-full bg-belour-perla px-5 py-2.5 text-sm font-medium text-belour-noir"
+                  className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-brand-on"
                 >
                   {t("cta")}
                 </a>

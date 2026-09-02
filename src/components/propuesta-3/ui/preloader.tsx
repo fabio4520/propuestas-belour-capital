@@ -66,7 +66,7 @@ export function Preloader() {
               initial={{ y: "110%" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-              className="font-sans text-4xl font-light tracking-[0.12em] text-belour-white sm:text-5xl"
+              className="font-sans text-4xl font-light tracking-[0.12em] text-ink sm:text-5xl"
             >
               BELOUR
             </motion.span>
@@ -74,20 +74,20 @@ export function Preloader() {
               initial={{ y: "110%" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.14 }}
-              className="font-cormorant text-4xl font-light italic text-belour-perla sm:text-5xl"
+              className="font-cormorant text-4xl font-light italic text-brand sm:text-5xl"
             >
               Capital
             </motion.span>
           </div>
 
           <div className="mt-8 flex w-56 items-center gap-4">
-            <div className="h-px flex-1 overflow-hidden bg-white/10">
+            <div className="h-px flex-1 overflow-hidden bg-rule/10">
               <motion.div
-                className="h-full bg-gradient-to-r from-belour-perla to-belour-hueso"
+                className="h-full bg-gradient-to-r from-brand to-brand/60"
                 style={{ width: `${count}%` }}
               />
             </div>
-            <span className="w-10 text-right text-xs tabular-nums text-belour-piedra">
+            <span className="w-10 text-right text-xs tabular-nums text-ink-muted">
               {count}
             </span>
           </div>

@@ -13,7 +13,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative inline-flex items-center rounded-full border border-white/12 p-0.5",
+        "relative inline-flex items-center rounded-full border border-rule/12 p-0.5",
         className
       )}
     >
@@ -25,14 +25,14 @@ export function LanguageSwitcher({ className }: { className?: string }) {
             onClick={() => setLocale(l)}
             className={cn(
               "relative z-10 cursor-pointer rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wider transition-colors duration-300",
-              active ? "text-belour-noir" : "text-belour-piedra hover:text-belour-white"
+              active ? "text-brand-on" : "text-ink-muted hover:text-ink"
             )}
             aria-pressed={active}
           >
             {active && (
               <motion.span
                 layoutId="lang-active-p3"
-                className="absolute inset-0 -z-10 rounded-full bg-belour-perla"
+                className="absolute inset-0 -z-10 rounded-full bg-brand"
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             )}

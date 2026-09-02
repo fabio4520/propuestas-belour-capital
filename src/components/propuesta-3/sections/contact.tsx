@@ -11,10 +11,10 @@ import { EASE_OUT_EXPO } from "../motion/transitions";
 import { cn } from "@/lib/utils";
 
 const fieldClass =
-  "w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-belour-white placeholder:text-belour-piedra/50 transition-colors focus:border-belour-perla/50 focus:outline-none focus:ring-1 focus:ring-belour-perla/30";
+  "w-full rounded-lg border border-rule/12 bg-ink/[0.03] px-4 py-3 text-ink placeholder:text-ink-muted/60 transition-colors focus:border-brand/50 focus:outline-none focus:ring-1 focus:ring-brand/30";
 
 const labelClass =
-  "mb-2 block text-xs font-medium uppercase tracking-wider text-belour-piedra";
+  "mb-2 block text-xs font-medium uppercase tracking-wider text-ink-muted";
 
 /**
  * Contacto — CTA y datos oficiales del Brochure 2026. El formulario no
@@ -54,8 +54,8 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-belour-noir py-28 sm:py-36">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,227,220,0.06),transparent_65%)]" />
+    <section id="contact" className="surface-noir relative overflow-hidden bg-surface py-28 sm:py-36">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgb(var(--brand)/0.07),transparent_65%)]" />
 
       <div className="relative mx-auto grid max-w-[1400px] gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:px-10">
         <div>
@@ -77,18 +77,18 @@ export function Contact() {
           >
             {infoItems.map(({ icon: Icon, label, href }) => (
               <li key={label} className="flex items-start gap-4">
-                <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/12 text-belour-perla">
+                <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-rule/12 text-brand">
                   <Icon className="h-4 w-4" strokeWidth={1.4} />
                 </span>
                 {href ? (
                   <a
                     href={href}
-                    className="pt-1.5 text-sm text-belour-white/85 transition-colors hover:text-belour-perla"
+                    className="pt-1.5 text-sm text-ink/85 transition-colors hover:text-brand"
                   >
                     {label}
                   </a>
                 ) : (
-                  <span className="pt-1.5 text-sm leading-relaxed text-belour-white/85">
+                  <span className="pt-1.5 text-sm leading-relaxed text-ink/85">
                     {label}
                   </span>
                 )}
@@ -138,13 +138,13 @@ export function Contact() {
                 id="c-interest"
                 name="interest"
                 defaultValue=""
-                className={cn(fieldClass, "cursor-pointer bg-belour-noir")}
+                className={cn(fieldClass, "cursor-pointer bg-surface")}
               >
-                <option value="" disabled className="bg-belour-noir">
+                <option value="" disabled className="bg-surface text-ink">
                   {t("interestPlaceholder")}
                 </option>
                 {interestOptions.map((opt) => (
-                  <option key={opt} value={opt} className="bg-belour-noir">
+                  <option key={opt} value={opt} className="bg-surface text-ink">
                     {opt}
                   </option>
                 ))}
@@ -167,7 +167,7 @@ export function Contact() {
 
           <button
             type="submit"
-            className="group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-belour-perla px-7 py-3.5 text-sm font-medium text-belour-noir transition-all duration-300 hover:bg-belour-hueso hover:shadow-[0_10px_40px_-10px_rgba(230,227,220,0.4)] sm:w-auto"
+            className="group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-medium text-brand-on transition-all duration-300 hover:brightness-110 hover:shadow-[0_10px_40px_-10px_rgba(230,227,220,0.4)] sm:w-auto"
           >
             {t("submit")}
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -180,16 +180,16 @@ export function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
-                className="mt-5 flex items-center gap-2 text-sm text-belour-hueso"
+                className="mt-5 flex items-center gap-2 text-sm text-brand"
                 role="status"
               >
-                <CheckCircle2 className="h-4 w-4 text-belour-perla" strokeWidth={1.6} />
+                <CheckCircle2 className="h-4 w-4 text-brand" strokeWidth={1.6} />
                 {t("success")}
               </motion.p>
             )}
           </AnimatePresence>
 
-          <p className="mt-4 text-xs text-belour-piedra/50">{t("note")}</p>
+          <p className="mt-4 text-xs text-ink-muted/60">{t("note")}</p>
         </motion.form>
       </div>
     </section>

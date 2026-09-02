@@ -40,7 +40,7 @@ export function Hero() {
       /* 100svh y no 100vh: en móvil, vh se mide con la barra de URL retraída,
          así que al cargar (con la barra visible) el hero queda más alto que el
          área visible y empuja el indicador de scroll fuera de pantalla. */
-      className="grain-belour relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-belour-noir"
+      className="grain-belour surface-noir relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-surface"
     >
       {/* Fondo cinematográfico */}
       <div className="absolute inset-0">
@@ -66,14 +66,14 @@ export function Hero() {
           animateOnView={false}
           text="BELOUR Capital"
           highlight="Capital"
-          className="font-sans text-6xl font-light leading-[1.05] tracking-[0.03em] text-belour-white drop-shadow-[0_0_40px_rgba(10,10,10,0.9)] sm:text-7xl lg:text-8xl"
+          className="font-sans text-6xl font-light leading-[1.05] tracking-[0.03em] text-ink drop-shadow-[0_0_40px_rgba(10,10,10,0.9)] sm:text-7xl lg:text-8xl"
         />
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.65 }}
-          className="mt-7 max-w-lg text-lg tracking-wide text-belour-piedra drop-shadow-[0_0_20px_rgba(10,10,10,0.9)] sm:text-xl"
+          className="mt-7 max-w-lg text-lg tracking-wide text-ink-muted drop-shadow-[0_0_20px_rgba(10,10,10,0.9)] sm:text-xl"
         >
           {t("slogan")}
         </motion.p>
@@ -84,7 +84,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-belour-piedra lg:flex"
+        className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-ink-muted lg:flex"
       >
         <span className="text-[10px] uppercase tracking-[0.35em]">
           {t("scroll")}
@@ -93,7 +93,7 @@ export function Hero() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ArrowDown className="h-4 w-4 text-belour-perla" />
+          <ArrowDown className="h-4 w-4 text-brand" />
         </motion.span>
       </motion.div>
     </section>

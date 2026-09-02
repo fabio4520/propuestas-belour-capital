@@ -7,20 +7,22 @@ import { cn } from "@/lib/utils";
 type Variant = "primary" | "outline" | "ghost";
 
 const BASE =
-  "group relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-belour-perla/60 focus-visible:ring-offset-2 focus-visible:ring-offset-belour-noir";
+  "group relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
 
 const VARIANTS: Record<Variant, string> = {
   primary:
-    "bg-belour-perla text-belour-noir hover:bg-belour-hueso hover:shadow-[0_10px_40px_-10px_rgba(230,227,220,0.5)] hover:-translate-y-0.5",
+    "bg-brand text-brand-on hover:brightness-110 hover:shadow-[0_10px_40px_-10px_rgb(var(--brand)/0.5)] hover:-translate-y-0.5",
   outline:
-    "border border-white/15 text-belour-white hover:border-belour-perla/60 hover:text-belour-perla",
-  ghost: "text-belour-piedra hover:text-belour-white",
+    "border border-rule/15 text-ink hover:border-brand/60 hover:text-brand",
+  ghost: "text-ink-muted hover:text-ink",
 };
 
 /**
  * Botón institucional de la Propuesta 3.
  * Renderiza directamente un <a> o <button> (el elemento interactivo lleva los
- * estilos y el foco); único acento de fondo dorado permitido en toda la UI.
+ * estilos y el foco); único relleno de acento permitido en toda la UI. El
+ * relleno es `brand` y su tinta `brand-on`, así que se invierte solo cuando la
+ * sección pasa de noir a papel.
  */
 export function Button({
   children,

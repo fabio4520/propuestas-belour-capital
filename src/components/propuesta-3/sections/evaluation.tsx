@@ -17,7 +17,7 @@ export function Evaluation() {
   const criteria = t.raw("criteria") as Criterion[];
 
   return (
-    <section id="evaluation" className="relative bg-belour-noir py-28 sm:py-36">
+    <section id="evaluation" className="surface-noir relative bg-surface py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="04"
@@ -32,17 +32,17 @@ export function Evaluation() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-16 grid grid-cols-1 gap-x-8 gap-y-10 border-t border-white/8 pt-12 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-16 grid grid-cols-1 gap-x-8 gap-y-10 border-t border-rule/10 pt-12 sm:grid-cols-2 lg:grid-cols-4"
         >
           {criteria.map((criterion, i) => (
             <motion.div key={criterion.title} variants={staggerItem}>
-              <span className="font-cormorant text-sm italic text-belour-hueso/70">
+              <span className="font-cormorant text-sm italic text-brand/70">
                 0{i + 1}
               </span>
-              <h3 className="mt-3 font-sans text-xl font-light leading-tight text-belour-white sm:text-2xl">
+              <h3 className="mt-3 font-sans text-xl font-light leading-tight text-ink sm:text-2xl">
                 {criterion.title}
               </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-belour-piedra">
+              <p className="mt-2.5 text-sm leading-relaxed text-ink-muted">
                 {criterion.text}
               </p>
             </motion.div>
