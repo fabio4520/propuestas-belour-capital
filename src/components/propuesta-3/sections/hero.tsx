@@ -40,7 +40,7 @@ export function Hero() {
       /* 100svh y no 100vh: en móvil, vh se mide con la barra de URL retraída,
          así que al cargar (con la barra visible) el hero queda más alto que el
          área visible y empuja el indicador de scroll fuera de pantalla. */
-      className="grain-velour relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-velour-black"
+      className="grain-belour relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-belour-noir"
     >
       {/* Fondo cinematográfico */}
       <div className="absolute inset-0">
@@ -57,7 +57,7 @@ export function Hero() {
             para el wordmark sin tapar el tejido de partículas con un bloque */}
         <div className="absolute inset-0 bg-[radial-gradient(55%_55%_at_50%_50%,transparent_0%,rgba(10,10,10,0.55)_65%,rgba(10,10,10,0.95)_100%)]" />
         {/* Viñeta vertical: funde el header arriba y el indicador de scroll abajo */}
-        <div className="absolute inset-0 bg-gradient-to-b from-velour-black/70 via-transparent to-velour-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-belour-noir/70 via-transparent to-belour-noir" />
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-6 text-center">
@@ -66,14 +66,14 @@ export function Hero() {
           animateOnView={false}
           text="BELOUR Capital"
           highlight="Capital"
-          className="font-garamond text-6xl font-light leading-[1.05] tracking-tight text-velour-white drop-shadow-[0_0_40px_rgba(10,10,10,0.9)] sm:text-7xl lg:text-8xl"
+          className="font-sans text-6xl font-light leading-[1.05] tracking-[0.03em] text-belour-white drop-shadow-[0_0_40px_rgba(10,10,10,0.9)] sm:text-7xl lg:text-8xl"
         />
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.65 }}
-          className="mt-7 max-w-lg text-lg tracking-wide text-velour-stone drop-shadow-[0_0_20px_rgba(10,10,10,0.9)] sm:text-xl"
+          className="mt-7 max-w-lg text-lg tracking-wide text-belour-piedra drop-shadow-[0_0_20px_rgba(10,10,10,0.9)] sm:text-xl"
         >
           {t("slogan")}
         </motion.p>
@@ -84,7 +84,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-velour-stone lg:flex"
+        className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-belour-piedra lg:flex"
       >
         <span className="text-[10px] uppercase tracking-[0.35em]">
           {t("scroll")}
@@ -93,7 +93,7 @@ export function Hero() {
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ArrowDown className="h-4 w-4 text-velour-gold" />
+          <ArrowDown className="h-4 w-4 text-belour-perla" />
         </motion.span>
       </motion.div>
     </section>

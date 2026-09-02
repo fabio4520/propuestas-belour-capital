@@ -48,23 +48,23 @@ const VH_PER_CARD = 100;
 
 function ServiceCardBody({ item, icon: Icon }: { item: Item; icon: LucideIcon }) {
   return (
-    <div className="glass-velour w-full max-w-[560px] rounded-3xl border border-white/10 p-6 sm:p-10">
-      <h3 className="font-garamond text-xl font-light text-velour-white sm:text-3xl">
+    <div className="glass-belour w-full max-w-[560px] rounded-3xl border border-white/10 p-6 sm:p-10">
+      <h3 className="font-cormorant text-xl font-light text-belour-white sm:text-3xl">
         {item.title}
       </h3>
 
-      <div className="relative mt-5 flex h-36 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-velour-black sm:mt-7 sm:h-60">
+      <div className="relative mt-5 flex h-36 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-belour-noir sm:mt-7 sm:h-60">
         <div
           aria-hidden
-          className="absolute h-28 w-28 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.25),transparent_70%)] blur-xl sm:h-36 sm:w-36"
+          className="absolute h-28 w-28 rounded-full bg-[radial-gradient(circle,rgba(230,227,220,0.25),transparent_70%)] blur-xl sm:h-36 sm:w-36"
         />
         <Icon
-          className="relative h-11 w-11 text-velour-gold sm:h-14 sm:w-14"
+          className="relative h-11 w-11 text-belour-perla sm:h-14 sm:w-14"
           strokeWidth={1}
         />
       </div>
 
-      <p className="mt-5 text-sm leading-relaxed text-velour-stone sm:mt-7 sm:text-base">
+      <p className="mt-5 text-sm leading-relaxed text-belour-piedra sm:mt-7 sm:text-base">
         {item.text}
       </p>
     </div>
@@ -151,7 +151,7 @@ function CarouselDot({
   return (
     <motion.span
       style={{ width, opacity }}
-      className="h-2 rounded-full bg-velour-gold"
+      className="h-2 rounded-full bg-belour-perla"
     />
   );
 }
@@ -182,7 +182,7 @@ export function Services() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section id="services" className="relative bg-velour-coal/40 py-28 sm:py-36">
+    <section id="services" className="relative bg-belour-coal/40 py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="05"
@@ -247,12 +247,12 @@ export function Services() {
         {/* Protocolo Velour — proceso disciplinado 01-04 */}
         <div className="mt-20 lg:mt-28">
           <div className="flex items-center gap-3">
-            <span className="h-px w-8 bg-velour-gold/50" />
-            <span className="text-xs font-medium uppercase tracking-[0.35em] text-velour-gold">
+            <span className="h-px w-8 bg-belour-perla/50" />
+            <span className="text-xs font-medium uppercase tracking-[0.35em] text-belour-perla">
               {tp("label")}
             </span>
           </div>
-          <h3 className="mt-6 max-w-2xl font-garamond text-3xl font-light leading-[1.15] text-velour-white sm:text-4xl">
+          <h3 className="mt-6 max-w-2xl font-cormorant text-3xl font-light leading-[1.15] text-belour-white sm:text-4xl">
             {tp("headline")}
           </h3>
 
@@ -260,7 +260,7 @@ export function Services() {
             <div className="absolute left-[19px] top-2 hidden h-[calc(100%-16px)] w-px bg-white/10 sm:block">
               <motion.div
                 style={{ scaleY: mounted ? lineScale : 0 }}
-                className="h-full w-full origin-top bg-gradient-to-b from-velour-gold to-velour-champagne"
+                className="h-full w-full origin-top bg-gradient-to-b from-belour-perla to-belour-hueso"
               />
             </div>
             <div className="flex flex-col">
@@ -275,17 +275,17 @@ export function Services() {
                     viewport={viewportOnce}
                     className="grid grid-cols-[auto_1fr] items-start gap-6 border-t border-white/8 py-8 first:border-t-0 sm:grid-cols-[auto_auto_1fr] sm:gap-8"
                   >
-                    <span className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-velour-gold/40 bg-velour-coal text-xs font-medium text-velour-gold">
+                    <span className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-belour-perla/40 bg-belour-coal text-xs font-medium text-belour-perla">
                       0{i + 1}
                     </span>
-                    <span className="hidden text-velour-gold sm:inline-flex sm:h-10 sm:w-10 sm:items-center sm:justify-center">
+                    <span className="hidden text-belour-perla sm:inline-flex sm:h-10 sm:w-10 sm:items-center sm:justify-center">
                       <Icon className="h-5 w-5" strokeWidth={1.4} />
                     </span>
                     <div>
-                      <h4 className="font-garamond text-xl text-velour-white sm:text-2xl">
+                      <h4 className="font-cormorant text-xl text-belour-white sm:text-2xl">
                         {step.title}
                       </h4>
-                      <p className="mt-2 max-w-md text-sm leading-relaxed text-velour-stone">
+                      <p className="mt-2 max-w-md text-sm leading-relaxed text-belour-piedra">
                         {step.text}
                       </p>
                     </div>

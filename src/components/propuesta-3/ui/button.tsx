@@ -7,14 +7,14 @@ import { cn } from "@/lib/utils";
 type Variant = "primary" | "outline" | "ghost";
 
 const BASE =
-  "group relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-velour-gold/60 focus-visible:ring-offset-2 focus-visible:ring-offset-velour-black";
+  "group relative inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-belour-perla/60 focus-visible:ring-offset-2 focus-visible:ring-offset-belour-noir";
 
 const VARIANTS: Record<Variant, string> = {
   primary:
-    "bg-velour-gold text-velour-black hover:bg-velour-champagne hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.5)] hover:-translate-y-0.5",
+    "bg-belour-perla text-belour-noir hover:bg-belour-hueso hover:shadow-[0_10px_40px_-10px_rgba(230,227,220,0.5)] hover:-translate-y-0.5",
   outline:
-    "border border-white/15 text-velour-white hover:border-velour-gold/60 hover:text-velour-gold",
-  ghost: "text-velour-stone hover:text-velour-white",
+    "border border-white/15 text-belour-white hover:border-belour-perla/60 hover:text-belour-perla",
+  ghost: "text-belour-piedra hover:text-belour-white",
 };
 
 /**

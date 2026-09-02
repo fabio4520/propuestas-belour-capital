@@ -46,12 +46,12 @@ export function SectionHeading({
         )}
       >
         {index && (
-          <span className="font-garamond text-sm italic text-velour-champagne/80">
+          <span className="font-cormorant text-sm italic text-belour-hueso/80">
             {index}
           </span>
         )}
-        <span className="h-px w-8 bg-velour-gold/50" />
-        <span className="text-xs font-medium uppercase tracking-[0.35em] text-velour-gold">
+        <span className="h-px w-8 bg-belour-perla/50" />
+        <span className="text-xs font-medium uppercase tracking-[0.35em] text-belour-perla">
           {eyebrow}
         </span>
       </motion.div>
@@ -60,7 +60,7 @@ export function SectionHeading({
         as="h2"
         text={title}
         highlight={highlight}
-        className="mt-6 font-garamond text-4xl font-light leading-[1.1] text-velour-white sm:text-5xl"
+        className="mt-6 font-sans text-4xl font-light leading-[1.12] tracking-[0.01em] text-belour-white sm:text-5xl"
       />
 
       {description && (
@@ -69,7 +69,7 @@ export function SectionHeading({
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-5 max-w-xl text-base leading-relaxed text-velour-stone sm:text-lg"
+          className="mt-5 max-w-xl text-base leading-relaxed text-belour-piedra sm:text-lg"
         >
           {description}
         </motion.p>

@@ -40,7 +40,7 @@ export function ScrollToTop() {
           whileHover={{ y: -3 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
           aria-label="Volver arriba"
-          className="glass-velour fixed bottom-6 right-6 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full text-velour-gold transition-colors duration-300 hover:bg-velour-gold hover:text-velour-black"
+          className="glass-belour fixed bottom-6 right-6 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full text-belour-perla transition-colors duration-300 hover:bg-belour-perla hover:text-belour-noir"
         >
           <ArrowUp className="h-5 w-5" />
         </motion.button>

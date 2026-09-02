@@ -54,7 +54,7 @@ export function CustomCursor() {
           opacity: active ? 0.9 : 0.6,
         }}
         transition={{ type: "spring", stiffness: 260, damping: 20 }}
-        className="block h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-velour-gold"
+        className="block h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-belour-perla"
       />
       <motion.span
         animate={{
@@ -62,7 +62,7 @@ export function CustomCursor() {
           opacity: active ? 0.8 : 0,
         }}
         transition={{ type: "spring", stiffness: 260, damping: 20 }}
-        className="absolute left-0 top-0 block h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full border border-velour-gold/70"
+        className="absolute left-0 top-0 block h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full border border-belour-perla/70"
       />
     </motion.div>
   );

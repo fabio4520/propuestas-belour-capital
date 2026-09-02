@@ -10,10 +10,10 @@ import { EASE_OUT_EXPO } from "../motion/transitions";
 import { cn } from "@/lib/utils";
 
 const fieldClass =
-  "w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-velour-white placeholder:text-velour-stone/50 transition-colors focus:border-velour-gold/50 focus:outline-none focus:ring-1 focus:ring-velour-gold/30";
+  "w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 text-belour-white placeholder:text-belour-piedra/50 transition-colors focus:border-belour-perla/50 focus:outline-none focus:ring-1 focus:ring-belour-perla/30";
 
 const labelClass =
-  "mb-2 block text-xs font-medium uppercase tracking-wider text-velour-stone";
+  "mb-2 block text-xs font-medium uppercase tracking-wider text-belour-piedra";
 
 export function Contact() {
   const t = useTranslations("contact");
@@ -34,8 +34,8 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-velour-black py-28 sm:py-36">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.06),transparent_65%)]" />
+    <section id="contact" className="relative overflow-hidden bg-belour-noir py-28 sm:py-36">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(230,227,220,0.06),transparent_65%)]" />
 
       <div className="relative mx-auto grid max-w-[1400px] gap-14 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:px-10">
         <SectionHeading
@@ -52,7 +52,7 @@ export function Contact() {
           whileInView="visible"
           viewport={viewportOnce}
           onSubmit={handleSubmit}
-          className="glass-velour rounded-2xl p-8 sm:p-10"
+          className="glass-belour rounded-2xl p-8 sm:p-10"
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
@@ -87,13 +87,13 @@ export function Contact() {
                 id="c-interest"
                 name="interest"
                 defaultValue=""
-                className={cn(fieldClass, "cursor-pointer bg-velour-black")}
+                className={cn(fieldClass, "cursor-pointer bg-belour-noir")}
               >
-                <option value="" disabled className="bg-velour-black">
+                <option value="" disabled className="bg-belour-noir">
                   {t("interestPlaceholder")}
                 </option>
                 {interestOptions.map((opt) => (
-                  <option key={opt} value={opt} className="bg-velour-black">
+                  <option key={opt} value={opt} className="bg-belour-noir">
                     {opt}
                   </option>
                 ))}
@@ -117,7 +117,7 @@ export function Contact() {
           <button
             type="submit"
             disabled={submitting || submitted}
-            className="group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-velour-gold px-7 py-3.5 text-sm font-medium text-velour-black transition-all duration-300 hover:bg-velour-champagne hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.5)] disabled:opacity-60 sm:w-auto"
+            className="group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-belour-perla px-7 py-3.5 text-sm font-medium text-belour-noir transition-all duration-300 hover:bg-belour-hueso hover:shadow-[0_10px_40px_-10px_rgba(230,227,220,0.5)] disabled:opacity-60 sm:w-auto"
           >
             {submitting ? "…" : t("submit")}
             {!submitting && (
@@ -132,16 +132,16 @@ export function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
-                className="mt-5 flex items-center gap-2 text-sm text-velour-champagne"
+                className="mt-5 flex items-center gap-2 text-sm text-belour-hueso"
                 role="status"
               >
-                <CheckCircle2 className="h-4 w-4 text-velour-gold" strokeWidth={1.6} />
+                <CheckCircle2 className="h-4 w-4 text-belour-perla" strokeWidth={1.6} />
                 {t("success")}
               </motion.p>
             )}
           </AnimatePresence>
 
-          <p className="mt-4 text-xs text-velour-stone/50">{t("note")}</p>
+          <p className="mt-4 text-xs text-belour-piedra/50">{t("note")}</p>
         </motion.form>
       </div>
     </section>

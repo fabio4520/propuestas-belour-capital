@@ -48,8 +48,8 @@ export function Geography() {
   }, []);
 
   return (
-    <section id="geography" className="relative overflow-hidden bg-velour-coal/40 py-28 sm:py-36">
-      <div className="pointer-events-none absolute right-0 top-1/4 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.08),transparent_65%)]" />
+    <section id="geography" className="relative overflow-hidden bg-belour-coal/40 py-28 sm:py-36">
+      <div className="pointer-events-none absolute right-0 top-1/4 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(230,227,220,0.08),transparent_65%)]" />
 
       <div className="relative mx-auto grid max-w-[1400px] items-center gap-14 px-6 lg:grid-cols-2 lg:gap-20 lg:px-10">
         <div>
@@ -78,12 +78,12 @@ export function Geography() {
                     onFocus={() => setActive(node.id)}
                     onClick={() => setActive(node.id)}
                     className={`flex items-center gap-2 text-sm transition-colors duration-300 ${
-                      isActive ? "text-velour-gold" : "text-velour-white/70 hover:text-velour-white"
+                      isActive ? "text-belour-perla" : "text-belour-white/70 hover:text-belour-white"
                     }`}
                   >
                     <MapPin
                       className={`h-4 w-4 transition-colors duration-300 ${
-                        isActive ? "text-velour-gold" : "text-velour-gold/50"
+                        isActive ? "text-belour-perla" : "text-belour-perla/50"
                       }`}
                       strokeWidth={1.5}
                     />
@@ -118,7 +118,7 @@ export function Geography() {
               initialLongitude={76}
               dots={GLOBE_DOTS}
               oceanColor="#0A0A0A"
-              outlineColor="rgba(212,175,55,0.45)"
+              outlineColor="rgba(230,227,220,0.45)"
               outlineWidth={1}
               showOutline
               showGrid={false}
@@ -138,10 +138,10 @@ export function Geography() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 1.4 }}
-            className="glass-velour absolute bottom-2 right-0 w-60 rounded-xl p-5"
+            className="glass-belour absolute bottom-2 right-0 w-60 rounded-xl p-5"
           >
-            <p className="flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-velour-gold/70">
-              <span className="h-1 w-1 rounded-full bg-velour-gold" />
+            <p className="flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-belour-perla/70">
+              <span className="h-1 w-1 rounded-full bg-belour-perla" />
               {t("hint")}
             </p>
             <AnimatePresence mode="wait">
@@ -152,8 +152,8 @@ export function Geography() {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
               >
-                <p className="mt-2 font-garamond text-xl text-velour-white">{locations[active]}</p>
-                <p className="mt-1.5 text-xs leading-relaxed text-velour-stone">{markets[active]}</p>
+                <p className="mt-2 font-cormorant text-xl text-belour-white">{locations[active]}</p>
+                <p className="mt-1.5 text-xs leading-relaxed text-belour-piedra">{markets[active]}</p>
               </motion.div>
             </AnimatePresence>
           </motion.div>

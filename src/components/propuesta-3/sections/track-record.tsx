@@ -39,7 +39,7 @@ export function TrackRecord() {
     className?: string;
   }) => (
     <div className={cn("flex items-baseline justify-between gap-3 lg:block", className)}>
-      <span className="text-[10px] uppercase tracking-wider text-velour-stone/40 lg:hidden">
+      <span className="text-[10px] uppercase tracking-wider text-belour-piedra/40 lg:hidden">
         {label}
       </span>
       {children}
@@ -47,7 +47,7 @@ export function TrackRecord() {
   );
 
   return (
-    <section id="track-record" className="relative bg-velour-black py-28 sm:py-36">
+    <section id="track-record" className="relative bg-belour-noir py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="06"
@@ -61,7 +61,7 @@ export function TrackRecord() {
           {/* Encabezado de columnas (solo desktop) */}
           <div
             className={cn(
-              "hidden gap-6 border-b border-white/8 pb-4 text-[11px] font-medium uppercase tracking-[0.2em] text-velour-gold/70 lg:grid",
+              "hidden gap-6 border-b border-white/8 pb-4 text-[11px] font-medium uppercase tracking-[0.2em] text-belour-perla/70 lg:grid",
               GRID
             )}
           >
@@ -90,29 +90,29 @@ export function TrackRecord() {
                 )}
               >
                 <Field label={cols.year}>
-                  <span className="font-garamond text-xl text-velour-champagne">
+                  <span className="font-cormorant text-xl text-belour-hueso">
                     {deal.year}
                   </span>
                 </Field>
                 <Field label={cols.sector}>
-                  <span className="font-garamond text-lg text-velour-white transition-colors duration-300 group-hover:text-velour-champagne">
+                  <span className="font-cormorant text-lg text-belour-white transition-colors duration-300 group-hover:text-belour-hueso">
                     {deal.sector}
                   </span>
                 </Field>
                 <Field label={cols.location}>
-                  <span className="text-sm text-velour-stone">{deal.location}</span>
+                  <span className="text-sm text-belour-piedra">{deal.location}</span>
                 </Field>
                 <Field label={cols.size}>
-                  <span className="font-garamond text-lg text-velour-gold">
+                  <span className="font-cormorant text-lg text-belour-perla">
                     {deal.size}
                   </span>
                 </Field>
                 <Field label={cols.role}>
-                  <span className="text-sm text-velour-stone">{deal.role}</span>
+                  <span className="text-sm text-belour-piedra">{deal.role}</span>
                 </Field>
                 <Field label={cols.status} className="lg:justify-self-end">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-velour-gold/25 px-3 py-1 text-[11px] uppercase tracking-wider text-velour-champagne/90">
-                    <span className="h-1 w-1 rounded-full bg-velour-gold" />
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-belour-perla/25 px-3 py-1 text-[11px] uppercase tracking-wider text-belour-hueso/90">
+                    <span className="h-1 w-1 rounded-full bg-belour-perla" />
                     {deal.status}
                   </span>
                 </Field>
@@ -120,7 +120,7 @@ export function TrackRecord() {
             ))}
           </motion.div>
 
-          <p className="mt-8 max-w-2xl text-xs leading-relaxed text-velour-stone/50">
+          <p className="mt-8 max-w-2xl text-xs leading-relaxed text-belour-piedra/50">
             {t("note")}
           </p>
         </div>

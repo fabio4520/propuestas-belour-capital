@@ -18,7 +18,7 @@ export function Introduction() {
   const t = useTranslations("introduction");
 
   return (
-    <section id="introduction" className="relative bg-velour-black py-28 sm:py-36">
+    <section id="introduction" className="relative bg-belour-noir py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="01"
@@ -43,10 +43,10 @@ export function Introduction() {
           </Magnetic>
           <a
             href="#contact"
-            className="group relative text-sm font-medium tracking-wide text-velour-white/85 transition-colors hover:text-velour-white"
+            className="group relative text-sm font-medium tracking-wide text-belour-white/85 transition-colors hover:text-belour-white"
           >
             {t("ctaSecondary")}
-            <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-velour-gold transition-transform duration-300 group-hover:scale-x-100" />
+            <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-belour-perla transition-transform duration-300 group-hover:scale-x-100" />
           </a>
         </motion.div>
       </div>

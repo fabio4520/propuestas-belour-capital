@@ -62,7 +62,7 @@ export function AnimatedText({
           variants={wordItem}
           className={cn(
             "inline-block",
-            isHighlighted(word) && "text-velour-gold-gradient"
+            isHighlighted(word) && "font-cormorant italic text-belour-perla-gradient"
           )}
         >
           {word}

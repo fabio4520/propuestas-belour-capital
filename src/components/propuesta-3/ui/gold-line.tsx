@@ -15,7 +15,7 @@ export function GoldLine({ className }: { className?: string }) {
       transition={{ duration: 1.1, ease: EASE_OUT_EXPO }}
       aria-hidden
       className={cn(
-        "block h-px w-full origin-left bg-gradient-to-r from-velour-gold/70 via-velour-gold/25 to-transparent",
+        "block h-px w-full origin-left bg-gradient-to-r from-belour-perla/70 via-belour-perla/25 to-transparent",
         className
       )}
     />

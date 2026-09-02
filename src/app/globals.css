@@ -3,59 +3,32 @@
 @tailwind utilities;
 
 /*
- * Tokens semánticos (shadcn/ui) afinados a la identidad Velour Capital.
- * Base oscura institucional con acento dorado.
+ * Tokens semánticos (shadcn/ui) afinados a la identidad Belour Capital.
+ * Base noir institucional con acento gris perla (Manual de Marca 2026:
+ * paleta monocromática — sin color de acento vivo).
  */
 @layer base {
   :root {
-    --background: 0 0% 4%; /* ink-900 #0a0a0a aprox */
+    --background: 0 0% 4%; /* noir #0a0a0a aprox */
     --foreground: 40 30% 96%; /* blanco cálido */
 
     --muted: 0 0% 12%;
-    --muted-foreground: 40 8% 64%;
+    --muted-foreground: 45 4% 53%; /* gris piedra */
 
     --accent: 0 0% 14%;
-    --accent-foreground: 45 65% 60%;
+    --accent-foreground: 42 17% 88%; /* gris perla */
 
-    --primary: 46 65% 52%; /* dorado #d4af37 */
+    --primary: 42 17% 88%; /* gris perla #e6e3dc */
     --primary-foreground: 0 0% 6%;
 
     --secondary: 0 0% 10%;
     --secondary-foreground: 40 30% 92%;
 
-    --border: 40 20% 22%;
-    --input: 40 14% 26%;
-    --ring: 46 65% 52%;
+    --border: 45 5% 22%;
+    --input: 45 5% 26%;
+    --ring: 42 17% 88%;
 
     --radius: 0.25rem;
-  }
-
-  /*
-   * Tema Balance Consulting — claro, corporativo, ambiental.
-   * Se aplica con la clase .theme-balance en el contenedor de la propuesta;
-   * los componentes shadcn/ui (Button, Input…) adoptan estos tokens.
-   */
-  .theme-balance {
-    --background: 0 0% 100%;
-    --foreground: 155 24% 12%;
-
-    --muted: 150 20% 96%;
-    --muted-foreground: 155 10% 38%;
-
-    --accent: 150 28% 93%;
-    --accent-foreground: 153 42% 20%;
-
-    --primary: 153 42% 22%; /* verde bosque #1f4d3a */
-    --primary-foreground: 40 33% 98%;
-
-    --secondary: 40 30% 95%;
-    --secondary-foreground: 155 24% 14%;
-
-    --border: 150 16% 88%;
-    --input: 150 16% 82%;
-    --ring: 153 42% 30%;
-
-    --radius: 0.5rem;
   }
 }
 
@@ -67,185 +40,39 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-ink-900 text-foreground font-sans antialiased;
-    font-feature-settings: "cv11", "ss01";
+    @apply bg-belour-noir text-foreground font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
-  /* Selección con tinte dorado */
+  /* Selección con tinte perla */
   ::selection {
-    background: rgba(212, 175, 55, 0.85);
+    background: rgba(230, 227, 220, 0.9);
     color: #0a0a0a;
   }
 }
 
 @layer utilities {
-  /* Texto con acabado dorado pulido */
-  .text-gold-sheen {
-    background: linear-gradient(
-      110deg,
-      #a8862a 0%,
-      #d4af37 35%,
-      #f3e3a6 50%,
-      #d4af37 65%,
-      #a8862a 100%
-    );
-    background-size: 200% auto;
+  /* Titular con acabado perla pulido, muy sutil (solo para detalle/highlight) */
+  .text-belour-perla-gradient {
+    background: linear-gradient(100deg, #f4f2ed 0%, #b8b6ae 50%, #f4f2ed 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
   }
 
-  /* Línea fina decorativa */
-  .hairline {
+  /* Línea fina perla — firma visual recurrente entre secciones */
+  .hairline-belour-perla {
     height: 1px;
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(212, 175, 55, 0.5),
-      transparent
-    );
-  }
-
-  /* Textura de grano sutil para dar profundidad al fondo oscuro */
-  .grain::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.035;
-    z-index: 1;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  /* Oculta la barra de scroll en marquees */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  /* ── Utilidades Propuesta 2 (Velour cinematográfico) ── */
-
-  /* Texto con degradado champagne→copper */
-  .text-champagne-gradient {
-    background: linear-gradient(100deg, #e8d8b0 0%, #d8c290 40%, #b0764f 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
-  /* Tarjeta de vidrio sutil sobre fondo oscuro */
-  .glass {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-  }
-
-  /* Borde con degradado champagne (para hover de cards) */
-  .border-champagne-gradient {
-    border-image: linear-gradient(120deg, #d8c290, #b0764f) 1;
-  }
-
-  /* Línea fina champagne */
-  .hairline-champagne {
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(216, 194, 144, 0.45),
-      transparent
-    );
-  }
-
-  /* ── Utilidades Propuesta 2 · Balance Consulting (Environmental Intelligence) ── */
-
-  /* Titular con degradado moss→copper (territorio + mineral) */
-  .text-balance-gradient {
-    background: linear-gradient(100deg, #74b08c 0%, #4f8f68 38%, #b5764c 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
-  /* Acento agua → cobre, para labels de gestión hídrica */
-  .text-water-gradient {
-    background: linear-gradient(100deg, #8fbecb 0%, #6aa0b0 50%, #4f8f68 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
-  /* Tarjeta de vidrio sobre fondo pino (cards técnicas) */
-  .glass-pine {
-    background: rgba(116, 176, 140, 0.04);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(116, 176, 140, 0.1);
-  }
-
-  /* Línea fina moss (separadores) */
-  .hairline-moss {
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(79, 143, 104, 0.5),
-      transparent
-    );
-  }
-
-  /* Retícula técnica sutil (background de secciones de datos) */
-  .grid-technical {
-    background-image:
-      linear-gradient(rgba(116, 176, 140, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(116, 176, 140, 0.05) 1px, transparent 1px);
-    background-size: 56px 56px;
-  }
-
-  /* Grano fino para fondos cinematográficos */
-  .noise::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.04;
-    z-index: 1;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-}
-
-@layer utilities {
-  /* ── Utilidades Propuesta 3 (Velour · Obsidiana institucional) ── */
-
-  /* Titular con acabado dorado pulido, muy sutil (solo para detalle/highlight) */
-  .text-velour-gold-gradient {
-    background: linear-gradient(100deg, #e8d9a0 0%, #d4af37 50%, #e8d9a0 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-
-  /* Línea fina dorada — firma visual recurrente entre secciones */
-  .hairline-velour-gold {
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(212, 175, 55, 0.5),
+      rgba(230, 227, 220, 0.5),
       transparent
     );
   }
 
   /* Grano de película muy sutil sobre el negro absoluto */
-  .grain-velour::before {
+  .grain-belour::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -256,7 +83,7 @@
   }
 
   /* Vidrio sutil sobre negro absoluto (formulario de contacto, cards flotantes) */
-  .glass-velour {
+  .glass-belour {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -265,14 +92,13 @@
 
   /*
    * backdrop-filter es de los efectos más caros del compositor: obliga a
-   * rasterizar el fondo en una capa aparte por cada elemento. En esta página
-   * hay hasta siete .glass-velour vivos a la vez (las 4 tarjetas del carrusel
-   * de Servicios están montadas simultáneamente, más Contacto, Inversionistas
-   * y Geografía). Sobre el negro absoluto de la marca el desenfoque casi no se
-   * percibe, así que en móvil se cambia por un relleno opaco equivalente.
+   * rasterizar el fondo en una capa aparte por cada elemento. Las tarjetas
+   * del carrusel de Servicios están montadas simultáneamente, más Contacto.
+   * Sobre el negro absoluto de la marca el desenfoque casi no se percibe,
+   * así que en móvil se cambia por un relleno opaco equivalente.
    */
   @media (max-width: 768px) {
-    .glass-velour {
+    .glass-belour {
       background: rgba(24, 24, 24, 0.92);
       backdrop-filter: none;
       -webkit-backdrop-filter: none;

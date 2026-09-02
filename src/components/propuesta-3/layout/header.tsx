@@ -33,16 +33,16 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-white/8 bg-velour-black/85 backdrop-blur-xl"
+          ? "border-b border-white/8 bg-belour-noir/85 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent",
       )}
     >
       <nav className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-10">
         <a href="#top" className="flex items-baseline gap-2">
-          <span className="font-garamond text-2xl tracking-wide text-velour-white">
+          <span className="font-cormorant text-2xl tracking-wide text-belour-white">
             BELOUR
           </span>
-          <span className="font-garamond text-2xl italic text-velour-gold">
+          <span className="font-cormorant text-2xl italic text-belour-perla">
             Capital
           </span>
         </a>
@@ -53,10 +53,10 @@ export function Header() {
             <a
               key={item.key}
               href={item.href}
-              className="group relative text-sm text-velour-stone transition-colors hover:text-velour-white"
+              className="group relative text-sm text-belour-piedra transition-colors hover:text-belour-white"
             >
               {t(item.key)}
-              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-velour-gold transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-belour-perla transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </div>
@@ -65,7 +65,7 @@ export function Header() {
           <LanguageSwitcher />
           <a
             href="#contact"
-            className="rounded-full border border-velour-gold/40 px-5 py-2 text-sm font-medium text-velour-gold transition-all duration-300 hover:bg-velour-gold hover:text-velour-black"
+            className="rounded-full border border-belour-perla/40 px-5 py-2 text-sm font-medium text-belour-perla transition-all duration-300 hover:bg-belour-perla hover:text-belour-noir"
           >
             {t("cta")}
           </a>
@@ -74,7 +74,7 @@ export function Header() {
         {/* Toggle móvil */}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="cursor-pointer p-2 text-velour-white lg:hidden"
+          className="cursor-pointer p-2 text-belour-white lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
@@ -90,7 +90,7 @@ export function Header() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-white/8 bg-velour-black/95 backdrop-blur-xl lg:hidden"
+            className="overflow-hidden border-t border-white/8 bg-belour-noir/95 backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col gap-1 px-6 py-5">
               {NAV_ITEMS.map((item) => (
@@ -98,7 +98,7 @@ export function Header() {
                   key={item.key}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="py-3 text-base text-velour-stone transition-colors hover:text-velour-gold"
+                  className="py-3 text-base text-belour-piedra transition-colors hover:text-belour-perla"
                 >
                   {t(item.key)}
                 </a>
@@ -108,7 +108,7 @@ export function Header() {
                 <a
                   href="#contact"
                   onClick={() => setOpen(false)}
-                  className="rounded-full bg-velour-gold px-5 py-2.5 text-sm font-medium text-velour-black"
+                  className="rounded-full bg-belour-perla px-5 py-2.5 text-sm font-medium text-belour-noir"
                 >
                   {t("cta")}
                 </a>

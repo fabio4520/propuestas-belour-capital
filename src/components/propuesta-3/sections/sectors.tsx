@@ -77,23 +77,23 @@ function SectorCardBody({
             priority={priority}
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-velour-black/70 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-belour-noir/70 via-transparent to-transparent" />
         <div className="absolute inset-0 rounded-3xl border border-white/8" />
       </div>
 
       <div className={cn(reversed && "lg:order-1")}>
         <div className="flex items-center gap-4">
-          <span className="font-garamond text-2xl italic text-velour-champagne/60">
+          <span className="font-cormorant text-2xl italic text-belour-hueso/60">
             0{index + 1}
           </span>
-          <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-velour-gold">
+          <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-belour-perla">
             <Icon className="h-5 w-5" strokeWidth={1.4} />
           </span>
         </div>
-        <h3 className="mt-4 font-garamond text-3xl font-light leading-[1.1] text-velour-white sm:mt-6 sm:text-4xl lg:text-5xl">
+        <h3 className="mt-4 font-cormorant text-3xl font-light leading-[1.1] text-belour-white sm:mt-6 sm:text-4xl lg:text-5xl">
           {item.title}
         </h3>
-        <p className="mt-3 max-w-md text-sm leading-relaxed text-velour-stone sm:mt-5 sm:text-base lg:text-lg">
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-belour-piedra sm:mt-5 sm:text-base lg:text-lg">
           {item.text}
         </p>
       </div>
@@ -180,7 +180,7 @@ export function Sectors() {
   });
 
   return (
-    <section id="sectors" className="relative bg-velour-black">
+    <section id="sectors" className="relative bg-belour-noir">
       <div className="mx-auto max-w-[1400px] px-6 pt-28 sm:pt-36 lg:px-10">
         <SectionHeading
           index="03"

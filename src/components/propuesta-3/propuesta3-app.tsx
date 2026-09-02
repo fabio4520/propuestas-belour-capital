@@ -41,7 +41,7 @@ export function Propuesta3App() {
         <SmoothScroll />
         <CustomCursor />
         <ReadingProgress />
-        <div className="relative min-h-screen bg-velour-black font-sans text-velour-white antialiased">
+        <div className="relative min-h-screen bg-belour-noir font-sans text-belour-white antialiased">
           <Header />
           <main>
             <Hero />

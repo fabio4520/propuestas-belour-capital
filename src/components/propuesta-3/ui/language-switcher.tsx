@@ -25,14 +25,14 @@ export function LanguageSwitcher({ className }: { className?: string }) {
             onClick={() => setLocale(l)}
             className={cn(
               "relative z-10 cursor-pointer rounded-full px-3 py-1 text-xs font-medium uppercase tracking-wider transition-colors duration-300",
-              active ? "text-velour-black" : "text-velour-stone hover:text-velour-white"
+              active ? "text-belour-noir" : "text-belour-piedra hover:text-belour-white"
             )}
             aria-pressed={active}
           >
             {active && (
               <motion.span
                 layoutId="lang-active-p3"
-                className="absolute inset-0 -z-10 rounded-full bg-velour-gold"
+                className="absolute inset-0 -z-10 rounded-full bg-belour-perla"
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             )}

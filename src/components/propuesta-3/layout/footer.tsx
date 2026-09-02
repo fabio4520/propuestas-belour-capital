@@ -11,13 +11,13 @@ export function Footer() {
   const legal = t.raw("footer.legal") as string[];
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/8 bg-velour-black">
+    <footer className="relative overflow-hidden border-t border-white/8 bg-belour-noir">
       <div className="mx-auto max-w-[1400px] px-6 pt-16 lg:px-10">
         {/* Masthead editorial. "Velour Capital" son 14 caracteres: a 13vw se
             desbordaba del contenedor en móvil (px-6 se come 48 px del ancho) y
             la palabra quedaba cortada. El tamaño se calcula ahora sobre el
             ancho útil y se limita para que la línea entre completa. */}
-        <p className="font-garamond text-[min(11vw,3.5rem)] font-light leading-none tracking-tight text-velour-white/[0.06] sm:text-[9vw] lg:text-[6.5vw]">
+        <p className="font-cormorant text-[min(11vw,3.5rem)] font-light leading-none tracking-tight text-belour-white/[0.06] sm:text-[9vw] lg:text-[6.5vw]">
           Velour Capital
         </p>
 
@@ -25,14 +25,14 @@ export function Footer() {
           {/* Marca */}
           <div className="max-w-sm">
             <div className="flex items-baseline gap-2">
-              <span className="font-garamond text-2xl tracking-wide text-velour-white">
+              <span className="font-cormorant text-2xl tracking-wide text-belour-white">
                 VELOUR
               </span>
-              <span className="font-garamond text-2xl italic text-velour-gold">
+              <span className="font-cormorant text-2xl italic text-belour-perla">
                 Capital
               </span>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-velour-stone">
+            <p className="mt-4 text-sm leading-relaxed text-belour-piedra">
               {t("footer.description")}
             </p>
             <div className="mt-6">
@@ -42,14 +42,14 @@ export function Footer() {
 
           {/* Explorar */}
           <nav className="flex flex-col gap-3">
-            <span className="mb-1 text-xs uppercase tracking-[0.25em] text-velour-gold/70">
+            <span className="mb-1 text-xs uppercase tracking-[0.25em] text-belour-perla/70">
               {t("footer.columns.explore")}
             </span>
             {FOOTER_LINKS.map((item) => (
               <a
                 key={item.key}
                 href={item.href}
-                className="text-sm text-velour-stone transition-colors hover:text-velour-white"
+                className="text-sm text-belour-piedra transition-colors hover:text-belour-white"
               >
                 {t(`nav.${item.key}`)}
               </a>
@@ -58,14 +58,14 @@ export function Footer() {
 
           {/* Legal + social */}
           <nav className="flex flex-col gap-3">
-            <span className="mb-1 text-xs uppercase tracking-[0.25em] text-velour-gold/70">
+            <span className="mb-1 text-xs uppercase tracking-[0.25em] text-belour-perla/70">
               {t("footer.columns.legal")}
             </span>
             {legal.map((l) => (
               <a
                 key={l}
                 href="#legal"
-                className="text-sm text-velour-stone transition-colors hover:text-velour-white"
+                className="text-sm text-belour-piedra transition-colors hover:text-belour-white"
               >
                 {l}
               </a>
@@ -75,7 +75,7 @@ export function Footer() {
                 <a
                   key={s.name}
                   href={s.href}
-                  className="text-xs uppercase tracking-wider text-velour-stone transition-colors hover:text-velour-gold"
+                  className="text-xs uppercase tracking-wider text-belour-piedra transition-colors hover:text-belour-perla"
                 >
                   {s.name}
                 </a>
@@ -87,10 +87,10 @@ export function Footer() {
         <GoldLine />
 
         <div className="flex flex-col items-start justify-between gap-4 py-8 sm:flex-row sm:items-center">
-          <p className="text-xs text-velour-stone/70">
+          <p className="text-xs text-belour-piedra/70">
             © {year} {t("footer.rights")}
           </p>
-          <p className="text-xs text-velour-stone/50">{t("footer.demo")}</p>
+          <p className="text-xs text-belour-piedra/50">{t("footer.demo")}</p>
         </div>
       </div>
     </footer>

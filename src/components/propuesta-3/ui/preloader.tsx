@@ -58,7 +58,7 @@ export function Preloader() {
         <motion.div
           exit={{ clipPath: "inset(0 0 100% 0)" }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-velour-black"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-belour-noir"
           aria-hidden
         >
           <div className="flex items-baseline gap-2 overflow-hidden">
@@ -66,7 +66,7 @@ export function Preloader() {
               initial={{ y: "110%" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-              className="font-garamond text-4xl font-light tracking-wide text-velour-white sm:text-5xl"
+              className="font-cormorant text-4xl font-light tracking-wide text-belour-white sm:text-5xl"
             >
               Velour
             </motion.span>
@@ -74,7 +74,7 @@ export function Preloader() {
               initial={{ y: "110%" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.14 }}
-              className="font-garamond text-4xl font-light italic text-velour-gold sm:text-5xl"
+              className="font-cormorant text-4xl font-light italic text-belour-perla sm:text-5xl"
             >
               Capital
             </motion.span>
@@ -83,11 +83,11 @@ export function Preloader() {
           <div className="mt-8 flex w-56 items-center gap-4">
             <div className="h-px flex-1 overflow-hidden bg-white/10">
               <motion.div
-                className="h-full bg-gradient-to-r from-velour-gold to-velour-champagne"
+                className="h-full bg-gradient-to-r from-belour-perla to-belour-hueso"
                 style={{ width: `${count}%` }}
               />
             </div>
-            <span className="w-10 text-right text-xs tabular-nums text-velour-stone">
+            <span className="w-10 text-right text-xs tabular-nums text-belour-piedra">
               {count}
             </span>
           </div>

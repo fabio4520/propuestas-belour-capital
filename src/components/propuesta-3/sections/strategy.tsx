@@ -20,7 +20,7 @@ export function Strategy() {
   const criteria = t.raw("criteria") as Criterion[];
 
   return (
-    <section id="strategy" className="relative bg-velour-black py-28 sm:py-36">
+    <section id="strategy" className="relative bg-belour-noir py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="04"
@@ -40,13 +40,13 @@ export function Strategy() {
         >
           {parameters.map((p) => (
             <motion.div key={p.label} variants={staggerItem}>
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-velour-gold/70">
+              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-belour-perla/70">
                 {p.label}
               </p>
-              <p className="mt-3 font-garamond text-2xl font-light leading-tight text-velour-white sm:text-[1.75rem]">
+              <p className="mt-3 font-cormorant text-2xl font-light leading-tight text-belour-white sm:text-[1.75rem]">
                 {p.value}
               </p>
-              <p className="mt-2.5 text-xs leading-relaxed text-velour-stone">
+              <p className="mt-2.5 text-xs leading-relaxed text-belour-piedra">
                 {p.note}
               </p>
             </motion.div>
@@ -62,8 +62,8 @@ export function Strategy() {
             viewport={viewportOnce}
             className="flex items-center gap-3"
           >
-            <span className="h-px w-8 bg-velour-gold/50" />
-            <span className="text-xs font-medium uppercase tracking-[0.35em] text-velour-gold">
+            <span className="h-px w-8 bg-belour-perla/50" />
+            <span className="text-xs font-medium uppercase tracking-[0.35em] text-belour-perla">
               {t("criteriaLabel")}
             </span>
           </motion.div>
@@ -81,14 +81,14 @@ export function Strategy() {
                 variants={staggerItem}
                 className="grid grid-cols-[auto_1fr] items-start gap-5 border-t border-white/8 pt-6"
               >
-                <span className="font-garamond text-sm italic text-velour-champagne/70">
+                <span className="font-cormorant text-sm italic text-belour-hueso/70">
                   0{i + 1}
                 </span>
                 <div>
-                  <h3 className="font-garamond text-xl font-light text-velour-white sm:text-2xl">
+                  <h3 className="font-cormorant text-xl font-light text-belour-white sm:text-2xl">
                     {c.title}
                   </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-velour-stone">
+                  <p className="mt-2.5 text-sm leading-relaxed text-belour-piedra">
                     {c.text}
                   </p>
                 </div>
@@ -97,7 +97,7 @@ export function Strategy() {
           </motion.div>
         </div>
 
-        <p className="mt-14 text-xs text-velour-stone/50">{t("note")}</p>
+        <p className="mt-14 text-xs text-belour-piedra/50">{t("note")}</p>
       </div>
     </section>
   );

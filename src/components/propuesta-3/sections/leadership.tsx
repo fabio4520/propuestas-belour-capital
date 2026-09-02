@@ -45,7 +45,7 @@ export function Leadership() {
   return (
     <section
       id="leadership"
-      className="relative bg-velour-black py-24 sm:py-28 lg:flex lg:h-[100svh] lg:flex-col lg:overflow-hidden lg:pb-12 lg:pt-24"
+      className="relative bg-belour-noir py-24 sm:py-28 lg:flex lg:h-[100svh] lg:flex-col lg:overflow-hidden lg:pb-12 lg:pt-24"
     >
       {/* pt-24 en desktop deja el eyebrow por debajo del header fijo (h-20)
           cuando se llega a la sección por ancla o por scroll. */}
@@ -83,7 +83,7 @@ export function Leadership() {
                 )}
               />
             ))}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-velour-black/50 via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-belour-noir/50 via-transparent to-transparent" />
           </div>
 
           {/* Lista vinculada. self-center la mantiene ópticamente alineada con
@@ -103,15 +103,15 @@ export function Leadership() {
                   >
                     <span
                       className={cn(
-                        "h-px shrink-0 bg-velour-gold transition-all duration-300",
+                        "h-px shrink-0 bg-belour-perla transition-all duration-300",
                         isActive ? "w-8" : "w-0"
                       )}
                     />
                     <span className="flex-1">
                       <span
                         className={cn(
-                          "block font-garamond text-2xl transition-colors duration-300 sm:text-3xl",
-                          isActive ? "text-velour-white" : "text-velour-stone/70"
+                          "block font-cormorant text-2xl transition-colors duration-300 sm:text-3xl",
+                          isActive ? "text-belour-white" : "text-belour-piedra/70"
                         )}
                       >
                         {member.name}
@@ -119,7 +119,7 @@ export function Leadership() {
                       <span
                         className={cn(
                           "mt-1 block text-xs uppercase tracking-[0.2em] transition-colors duration-300",
-                          isActive ? "text-velour-gold" : "text-velour-stone/40"
+                          isActive ? "text-belour-perla" : "text-belour-piedra/40"
                         )}
                       >
                         {member.role}
@@ -127,7 +127,7 @@ export function Leadership() {
                     </span>
                     <span
                       className={cn(
-                        "text-velour-gold transition-all duration-300",
+                        "text-belour-perla transition-all duration-300",
                         isActive
                           ? "translate-x-0 opacity-100"
                           : "translate-x-2 opacity-0"

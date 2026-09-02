@@ -24,7 +24,7 @@ export function Manifesto() {
   const stats = t.raw("stats") as Stat[];
 
   return (
-    <section id="manifesto" className="relative bg-velour-black py-28 sm:py-36">
+    <section id="manifesto" className="relative bg-belour-noir py-28 sm:py-36">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
           index="02"
@@ -38,10 +38,10 @@ export function Manifesto() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-10 max-w-3xl font-garamond text-2xl font-light leading-relaxed text-velour-white/90 sm:text-3xl"
+          className="mt-10 max-w-3xl font-cormorant text-2xl font-light leading-relaxed text-belour-white/90 sm:text-3xl"
         >
           {t("textBefore")}{" "}
-          <em className="text-velour-gold-gradient italic">{t("emphasis")}</em>
+          <em className="text-belour-perla-gradient italic">{t("emphasis")}</em>
           {t("textAfter")}
         </motion.p>
 
@@ -54,16 +54,16 @@ export function Manifesto() {
         >
           {stats.map((stat) => (
             <motion.div key={stat.label} variants={staggerItem}>
-              <p className="font-garamond text-4xl font-light text-velour-white sm:text-5xl">
+              <p className="font-cormorant text-4xl font-light text-belour-white sm:text-5xl">
                 {stat.prefix}
                 <CountUp value={stat.value} decimals={stat.decimals} />
                 {stat.suffix}
               </p>
-              <p className="mt-2 text-sm text-velour-stone">{stat.label}</p>
+              <p className="mt-2 text-sm text-belour-piedra">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
-        <p className="mt-8 text-xs text-velour-stone/50">{t("note")}</p>
+        <p className="mt-8 text-xs text-belour-piedra/50">{t("note")}</p>
       </div>
     </section>
   );

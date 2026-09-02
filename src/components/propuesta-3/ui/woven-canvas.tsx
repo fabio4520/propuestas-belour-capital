@@ -21,8 +21,8 @@ import {
 
 /**
  * Fondo generativo del Hero: un torus-knot "tejido" en partículas que
- * reacciona sutilmente al cursor. Técnica adaptada a la paleta Obsidiana
- * (regla dura: ≥90% negro, ~8% blanco, ≤2% dorado — nunca un fondo dorado
+ * reacciona sutilmente al cursor. Adaptado a la paleta monocroma Belour
+ * (regla dura: ≥90% negro, ~8% blanco, ≤2% perla — nunca un fondo claro
  * grande), no al arcoíris HSL del componente de referencia.
  *
  * Todo el trabajo de Three.js vive en un único useEffect imperativo que
@@ -77,12 +77,12 @@ export function WovenCanvas() {
     const torusKnot = new TorusKnotGeometry(1.5, 0.5, 200, 32);
     const sourcePositions = torusKnot.attributes.position;
 
-    // Paleta de marca — blanco/stone dominante, dorado como acento escaso
-    // (nunca HSL aleatorio, para no romper la regla ≤2% dorado del sitio).
+    // Paleta de marca (Manual Belour 2026) — blanco/piedra dominante, perla y
+    // hueso como acento escaso (nunca HSL aleatorio: la paleta es monocroma).
     const WHITE = new Color("#FFFFFF");
-    const STONE = new Color("#A3A3A3");
-    const GOLD = new Color("#D4AF37");
-    const CHAMPAGNE = new Color("#E8D9A0");
+    const PIEDRA = new Color("#8A8880");
+    const PERLA = new Color("#E6E3DC");
+    const HUESO = new Color("#F4F2ED");
 
     for (let i = 0; i < particleCount; i++) {
       const vertexIndex = i % sourcePositions.count;
@@ -98,7 +98,7 @@ export function WovenCanvas() {
       originalPositions[i * 3 + 2] = z;
 
       const roll = Math.random();
-      const color = roll < 0.08 ? GOLD : roll < 0.12 ? CHAMPAGNE : roll < 0.55 ? WHITE : STONE;
+      const color = roll < 0.08 ? PERLA : roll < 0.12 ? HUESO : roll < 0.55 ? WHITE : PIEDRA;
       colors[i * 3] = color.r;
       colors[i * 3 + 1] = color.g;
       colors[i * 3 + 2] = color.b;

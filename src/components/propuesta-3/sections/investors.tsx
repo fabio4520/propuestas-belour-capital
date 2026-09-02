@@ -21,8 +21,8 @@ export function Investors() {
   const documents = t.raw("documents") as string[];
 
   return (
-    <section id="investors" className="relative overflow-hidden bg-velour-black py-28 sm:py-36">
-      <div className="pointer-events-none absolute right-0 top-1/4 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(212,175,55,0.06),transparent_65%)]" />
+    <section id="investors" className="relative overflow-hidden bg-belour-noir py-28 sm:py-36">
+      <div className="pointer-events-none absolute right-0 top-1/4 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(230,227,220,0.06),transparent_65%)]" />
 
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-10">
         <SectionHeading
@@ -43,15 +43,15 @@ export function Investors() {
           {/* Prospecto */}
           <motion.div
             variants={staggerItem}
-            className="glass-velour flex flex-col rounded-3xl border border-white/10 p-8 sm:p-10"
+            className="glass-belour flex flex-col rounded-3xl border border-white/10 p-8 sm:p-10"
           >
-            <span className="inline-flex w-fit items-center rounded-full border border-velour-gold/40 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-velour-gold">
+            <span className="inline-flex w-fit items-center rounded-full border border-belour-perla/40 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-belour-perla">
               {prospect.tag}
             </span>
-            <h3 className="mt-6 font-garamond text-2xl font-light text-velour-white sm:text-3xl">
+            <h3 className="mt-6 font-cormorant text-2xl font-light text-belour-white sm:text-3xl">
               {prospect.title}
             </h3>
-            <p className="mt-4 flex-1 text-sm leading-relaxed text-velour-stone sm:text-base">
+            <p className="mt-4 flex-1 text-sm leading-relaxed text-belour-piedra sm:text-base">
               {prospect.text}
             </p>
             <div className="mt-8">
@@ -67,15 +67,15 @@ export function Investors() {
           {/* Inversionista actual */}
           {/*<motion.div
             variants={staggerItem}
-            className="glass-velour flex flex-col rounded-3xl border border-white/10 p-8 sm:p-10"
+            className="glass-belour flex flex-col rounded-3xl border border-white/10 p-8 sm:p-10"
           >
-            <span className="inline-flex w-fit items-center rounded-full border border-white/15 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-velour-stone">
+            <span className="inline-flex w-fit items-center rounded-full border border-white/15 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-belour-piedra">
               {lp.tag}
             </span>
-            <h3 className="mt-6 font-garamond text-2xl font-light text-velour-white sm:text-3xl">
+            <h3 className="mt-6 font-cormorant text-2xl font-light text-belour-white sm:text-3xl">
               {lp.title}
             </h3>
-            <p className="mt-4 flex-1 text-sm leading-relaxed text-velour-stone sm:text-base">
+            <p className="mt-4 flex-1 text-sm leading-relaxed text-belour-piedra sm:text-base">
               {lp.text}
             </p>
             <div className="mt-8">
@@ -96,7 +96,7 @@ export function Investors() {
           className="mt-14 border-t border-white/8 pt-10"
         >
           <div className="flex items-center gap-3">
-            <span className="text-xs font-medium uppercase tracking-[0.25em] text-velour-gold/70">
+            <span className="text-xs font-medium uppercase tracking-[0.25em] text-belour-perla/70">
               {t("documentsLabel")}
             </span>
           </div>
@@ -104,15 +104,15 @@ export function Investors() {
             {documents.map((doc) => (
               <span
                 key={doc}
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-4 py-2 text-sm text-velour-stone"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-4 py-2 text-sm text-belour-piedra"
               >
-                <FileText className="h-3.5 w-3.5 text-velour-gold/70" strokeWidth={1.6} />
+                <FileText className="h-3.5 w-3.5 text-belour-perla/70" strokeWidth={1.6} />
                 {doc}
               </span>
             ))}
           </div>
-          <p className="mt-8 flex items-center gap-2 text-xs text-velour-stone/50">
-            <ArrowRight className="h-3 w-3 text-velour-gold/50" />
+          <p className="mt-8 flex items-center gap-2 text-xs text-belour-piedra/50">
+            <ArrowRight className="h-3 w-3 text-belour-perla/50" />
             {t("note")}
           </p>
         </motion.div>
