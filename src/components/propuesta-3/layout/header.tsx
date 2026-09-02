@@ -8,10 +8,12 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "../lib/constants";
 import { LanguageSwitcher } from "../ui/language-switcher";
+import logo from "../../../../public/belour/logo.png";
 
 export function Header() {
   const t = useTranslations("nav");
@@ -38,13 +40,17 @@ export function Header() {
       )}
     >
       <nav className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-10">
-        <a href="#top" className="flex items-baseline gap-2">
-          <span className="font-cormorant text-2xl tracking-wide text-belour-white">
-            BELOUR
-          </span>
-          <span className="font-cormorant text-2xl italic text-belour-perla">
-            Capital
-          </span>
+        {/* Logotipo oficial (manual de marca: primera opción en aplicaciones
+            institucionales). El PNG es negro sobre transparente: brightness-0
+            + invert lo vuelve blanco sobre el fondo noir sin un asset extra. */}
+        <a href="#top" aria-label="Belour Capital — inicio">
+          <Image
+            src={logo}
+            alt="Belour Capital"
+            priority
+            sizes="150px"
+            className="h-9 w-auto brightness-0 invert sm:h-10"
+          />
         </a>
 
         {/* Nav desktop */}

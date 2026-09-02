@@ -24,12 +24,12 @@ export function Preloader() {
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const seen = sessionStorage.getItem("velour-p3-preloaded");
+    const seen = sessionStorage.getItem("belour-preloaded");
     if (reduce || seen) {
       setDone(true);
       return;
     }
-    sessionStorage.setItem("velour-p3-preloaded", "1");
+    sessionStorage.setItem("belour-preloaded", "1");
 
     const start = performance.now();
     // El contador se normaliza contra este plazo, que se acorta en cuanto las
@@ -66,9 +66,9 @@ export function Preloader() {
               initial={{ y: "110%" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1], delay: 0.05 }}
-              className="font-cormorant text-4xl font-light tracking-wide text-belour-white sm:text-5xl"
+              className="font-sans text-4xl font-light tracking-[0.12em] text-belour-white sm:text-5xl"
             >
-              Velour
+              BELOUR
             </motion.span>
             <motion.span
               initial={{ y: "110%" }}

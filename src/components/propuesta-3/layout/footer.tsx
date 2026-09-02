@@ -13,20 +13,20 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/8 bg-belour-noir">
       <div className="mx-auto max-w-[1400px] px-6 pt-16 lg:px-10">
-        {/* Masthead editorial. "Velour Capital" son 14 caracteres: a 13vw se
+        {/* Masthead editorial. "Belour Capital" son 14 caracteres: a 13vw se
             desbordaba del contenedor en móvil (px-6 se come 48 px del ancho) y
             la palabra quedaba cortada. El tamaño se calcula ahora sobre el
             ancho útil y se limita para que la línea entre completa. */}
-        <p className="font-cormorant text-[min(11vw,3.5rem)] font-light leading-none tracking-tight text-belour-white/[0.06] sm:text-[9vw] lg:text-[6.5vw]">
-          Velour Capital
+        <p className="font-sans text-[min(11vw,3.5rem)] font-light leading-none tracking-tight text-belour-white/[0.06] sm:text-[9vw] lg:text-[6.5vw]">
+          Belour Capital
         </p>
 
         <div className="-mt-6 grid gap-12 pb-16 sm:-mt-10 lg:-mt-16 lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-20">
           {/* Marca */}
           <div className="max-w-sm">
             <div className="flex items-baseline gap-2">
-              <span className="font-cormorant text-2xl tracking-wide text-belour-white">
-                VELOUR
+              <span className="font-sans text-2xl font-light tracking-[0.12em] text-belour-white">
+                BELOUR
               </span>
               <span className="font-cormorant text-2xl italic text-belour-perla">
                 Capital
