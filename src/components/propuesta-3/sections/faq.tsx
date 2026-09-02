@@ -77,7 +77,7 @@ export function Faq() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      transition={{ duration: 0.05, ease: "easeOut" }}
                       className="overflow-hidden"
                     >
                       <p className="pb-6 pr-10 text-sm leading-relaxed text-ink-muted sm:text-base">
